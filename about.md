@@ -8,4 +8,4 @@ layout: page
 My main research interests lie at the intersection of causal inference and statistical learning. 
 I aim to contribute to the recent causal machine learning literature by developing new methodologies 
 to estimate and describe treatment effect heterogeneity, thereby providing tools to deepen our understanding 
-of how the policies' effect varies according to the units' observable characteristics.</p>
+of how the policies' impact varies according to the units' observable characteristics.</p>
