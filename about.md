@@ -4,6 +4,8 @@ layout: page
 ---
 ![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %})
 
+{: style="text-align: justify" }
+
 <p>I am a Ph.D. candidate in Economics and Finance at the University of Rome Tor Vergata.
 My main research interests lie at the intersection of causal inference and statistical learning. 
 I aim to contribute to the recent causal machine learning literature by developing new methodologies 
