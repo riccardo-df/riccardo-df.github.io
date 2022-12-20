@@ -49,12 +49,12 @@ authors:
 width: large
 
 # if you do/don't need pagination, toggle 'enabled' between true/false below
-pagination:
-  enabled: false
-  sort_reverse: true # display recent posts first
-  title: ":title" # Changing this will mess up the header display logic
-  per_page: 5
-  permalink: "/:num/" # pagination link that will be appended
+# pagination:
+#   enabled: false
+#   sort_reverse: true # display recent posts first
+#   title: ":title" # Changing this will mess up the header display logic
+#   per_page: 5
+#   permalink: "/:num/" # pagination link that will be appended
 
 # if you don't need projects, comment the *projects* configs below
 # projects: true
