@@ -62,6 +62,7 @@ width: large
 # if you don't need "about" or "blog", comment them out below
 about: true
 research: true
+blog: true
 # code: true
 
 # do you want to show the "read time" of the posts?
