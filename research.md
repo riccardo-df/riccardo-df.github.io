@@ -18,7 +18,9 @@ Di Francesco, R. (2022).
 [*Draft available on request*]
 [<a href="https://riccardo-df.github.io/morf/">R package</a>]
 
-**Abstract:**
+**Abstract:** Empirical studies from various social sciences frequently deal with discrete outcomes that exhibit inherent ordering, such as self-evaluations of subjective well-being and self-assessments in health domains. While ordered choice models are commonly used to analyze these outcomes, existing estimators make restrictive parametric and distributional assumptions. This paper proposes a completely nonparametric estimator, the modified ordered random forest, which overcomes these limitations. The estimator modifies a standard random forest splitting criterion to build a collection of forests, each estimating the conditional probability of a single class. Under an honesty condition, the predicted probabilities are consistent and asymptotically normal, allowing for the construction of valid confidence intervals. The weights induced by each forest are used to estimate the variance of the predictions and obtain estimation and inference about the covariates' marginal effects. Evidence from synthetic and real data sets shows that the proposed estimator features a superior prediction performance than alternative estimators.
+
+<b>**The Cost of Coming Out.** (joint with [https://sites.google.com/view/ebrox](Enzo Brox)</b>
 
 ## Conferences
 **2023** *(including scheduled)*
