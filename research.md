@@ -22,7 +22,7 @@ Di Francesco, R. (2022).
 
 ___
 
-<b>**The Cost of Coming Out.** (joint with [Enzo Brox](https://sites.google.com/view/ebrox))</b>
+<b>**The Cost of Coming Out** (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b>
 
 ## Conferences
 **2023** *(including scheduled)*
