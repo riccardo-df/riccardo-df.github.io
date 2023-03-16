@@ -16,7 +16,7 @@ Di Francesco, R. (2022).
 [<a href="https://riccardo-df.github.io/morf/">R package</a>]
 
 ## Conferences
-**2023** *(including scheduled)
+**2023** *(including scheduled)*
 - 10th Italian Congress of Econometrics and Empirical Economics (ICEEE).
 
 **2022** 
