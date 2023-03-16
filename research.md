@@ -6,7 +6,7 @@ layout: page
 # Research
 
 ## Working Papers
-- <b>**Aggregation Trees.**</b> <i>CEIS Research Paper, 546 (2022).</i>
+- <b>**Aggregation Trees.**</b> <i>CEIS Research Paper, 546</i> (2022).
 [<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4304256">paper</a>]
 [<a href="https://riccardo-df.github.io/aggTrees/index.html">R package</a>]
 
