@@ -7,8 +7,8 @@ layout: page
 
 ## Working Papers
 - **Aggregation Trees.** *CEIS Research Paper, 546* (2022).
-[*paper*](https://sites.google.com/view/ebrox](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4304256)
-[*R package*]([https://sites.google.com/view/ebrox](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4304256](https://riccardo-df.github.io/aggTrees/index.html))
+[*paper*](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4304256)
+[*R package*](https://riccardo-df.github.io/aggTrees/index.html)
 
 > <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects in different subgroups based on observable covariates. However, there is likely to be considerable uncertainty about the appropriate grouping. This paper proposes a nonparametric approach to discovering heterogeneous subgroups in a selection-on-observables framework. The approach constructs a sequence of groupings, one for each level of granularity. Groupings are nested and feature an optimality property. An "honesty" condition allows us to construct valid confidence intervals for the average treatment effect of each group. The use of the proposed methodology is illustrated through an empirical exercise that revisits the effects of maternal smoking on birth weight.* </sub>
 
