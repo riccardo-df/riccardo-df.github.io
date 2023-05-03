@@ -29,5 +29,6 @@ layout: page
 - 10th Italian Congress of Econometrics and Empirical Economics (ICEEE).
 
 **2022** 
-- 10th Workshop for Ph.D. students in Econometrics and Empirical Economics (WEEE).
 - 1st Rome Ph.D. in Economics and Finance Conference.
+- 10th Workshop for Ph.D. students in Econometrics and Empirical Economics (WEEE).
+
