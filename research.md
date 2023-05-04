@@ -13,9 +13,9 @@ layout: page
 > <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects in different subgroups based on observable covariates. However, there is likely to be considerable uncertainty about the appropriate grouping. This paper proposes a nonparametric approach to discovering heterogeneous subgroups in a selection-on-observables framework. The approach constructs a sequence of groupings, one for each level of granularity. Groupings are nested and feature an optimality property. An "honesty" condition allows us to construct valid confidence intervals for the average treatment effect of each group. The use of the proposed methodology is illustrated through an empirical exercise that revisits the effects of maternal smoking on birth weight.* </sub>
 
 ## Work in Progress
-- <b>**Modified Ordered Random Forest.**</b>
+- <b>**Ordered Correlation Forest.**</b>
 [*Draft available on request*]
-[[*R package*]](https://riccardo-df.github.io/morf/)
+[[*R package*]](https://riccardo-df.github.io/ocf/)
 
 > <sub> *Empirical studies in various social sciences often involve categorical outcomes with inherent ordering, such as self-evaluations of subjective well-being and self-assessments in health domains. While ordered choice models, such as the ordered logit and ordered probit, are popular tools for analyzing such outcomes, they may impose restrictive parametric and distributional assumptions. This paper provides a novel estimator, the modified ordered random forest, which overcomes these limitations. The proposed estimator modifies a standard random forest splitting criterion to build a collection of forests, each estimating the conditional probability of a single class. Under an "honesty" condition, predictions are consistent and asymptotically normal. The weights induced by each forest are used to estimate the variance of the predictions and obtain estimation and inference about the covariates' marginal effects. Evidence from synthetic and real data sets shows that the proposed estimator features a superior prediction performance than alternative estimators.*
     
