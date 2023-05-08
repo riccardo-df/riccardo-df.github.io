@@ -6,7 +6,4 @@ layout: page
 
 {: style="text-align: justify" }
 
-<p>Riccardo is a Ph.D. candidate in Economics and Finance at the University of Rome Tor Vergata. His
-main research interests lie at the intersection of causal inference and statistical learning. He is currently
-developing methodologies to understand the driving mechanisms of a policy's impact. His hobbies include
-hiking, reading, and playing the guitar. After finishing his Ph.D., he plans to apply for a Post-Doc position.</p>
+<p>Riccardo is a Ph.D. candidate in Economics and Finance at the University of Rome Tor Vergata. He is an econometrician with a keen interest in adapting machine learning techniques for causal inference. He also focuses on applied microeconomics, particularly mental health issues and LGBTQ+ economics. When Riccardo is not busy crunching numbers and analyzing data, you might find him out for a hike, training in the boxing ring, or strumming away on his guitar. Looking to the future, Riccardo plans to pursue a Post-Doc position after completing his Ph.D.</p>
