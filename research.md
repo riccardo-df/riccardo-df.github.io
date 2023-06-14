@@ -26,6 +26,7 @@ layout: page
 
 ## Conferences
 **2023** *(including scheduled)*
+- 2nd Rome Ph.D. in Economics and Finance Conference.
 - 10th Italian Congress of Econometrics and Empirical Economics (ICEEE).
 
 **2022** 
