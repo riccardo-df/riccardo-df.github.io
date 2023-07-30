@@ -4,6 +4,8 @@
 
 {% if showHeader == true %}
     <header class="header-home {% if site.animation %}animated{% endif %}">
+        
+        <!-- This works only with an about page.
         {% if site.about %}
             <a class="link" href="{{ site.url }}/about">
                 <img class="image" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" width="350" height="450" />
@@ -13,6 +15,11 @@
                 <img class="selfie" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
             </span>
         {% endif %}
+        -->
+
+        <a class="link" href="{{ site.url }}/about">
+                <img class="image" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" width="350" height="450" />
+        </a>
 
         <h1 class="title">{{ site.title }}</h1>
         <h2 class="description">{{ site.bio }}</h2>
