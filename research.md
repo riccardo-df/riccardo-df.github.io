@@ -23,14 +23,3 @@ layout: page
 [*Draft available on request*]
 
 > <sub> *Sexual orientation is a fundamental aspect of human identity, and being open about it is strongly associated with an individual’s psychological and emotional well-being. While disclosing one's sexual minority status can lead to positive outcomes, experiences of repercussion can also have lasting negative outcomes. This paper aims to investigate how people react to stigma disclosure based on sexual orientation. Measuring discrimination against sexual minority groups and understanding responses to sexual minority status disclosure is challenging due to data and methodological limitations. To overcome these challenges, we propose to use an innovative source of data from the online video game industry. Our analysis focuses on one of the playable characters of a famous online video game, whose sexual minority status was exogenously disclosed by the video game developers. This provides a quasi-experimental research design that allows for estimating causal effects. We use synthetic control methods to estimate how the disclosure impacts the players' revealed preferences for the character who disclosed his sexual minority status. Our preliminary results suggest a substantial negative impact of coming out that lasts for more than six weeks, which is unlikely to be driven by statistical discrimination.* </sub>
-
-## Conferences
-**2023** *(including scheduled)*
-- 2nd Rome Ph.D. in Economics and Finance Conference.
-- 11th SIdE Workshop for Ph.D. students in Econometrics and Empirical Economics (WEEE).
-- 10th Italian Congress of Econometrics and Empirical Economics (ICEEE).
-
-**2022** 
-- 1st Rome Ph.D. in Economics and Finance Conference.
-- 10th SIdE Workshop for Ph.D. students in Econometrics and Empirical Economics (WEEE).
-
