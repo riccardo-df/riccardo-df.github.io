@@ -1,4 +1,6 @@
-{% assign showHeader = true %}
+{% if page.title == "Home"
+   or page.title == "Research"
+%}{% assign showHeader = true %}{% endif %}
 
 <header class="header-home {% if site.animation %}animated{% endif %}">
     
