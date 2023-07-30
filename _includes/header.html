@@ -1,7 +1,3 @@
-{% if page.title == "Home"
-   or page.title == "Research"
-%}{% assign showHeader = true %}{% endif %}
-
 <header class="header-home {% if site.animation %}animated{% endif %}">
     
     <a class="link" href="{{ site.url }}/about">
@@ -18,8 +14,6 @@
         focuses on applied microeconomics, particularly mental health issues and LGBTQ+ economics. When Riccardo is not busy crunching numbers and analyzing data, you might find him out for a hike, training in the 
         boxing ring, or strumming away on his bass guitar. Looking to the future, Riccardo plans to pursue a Post-Doc position after completing his Ph.D.
     </p>
-
-    {% include ../research.md %}
     
 </header>
 
