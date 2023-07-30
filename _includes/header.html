@@ -6,7 +6,7 @@
     <header class="header-home {% if site.animation %}animated{% endif %}">
         
         <a class="link" href="{{ site.url }}/about">
-                <img class="image" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" width="350" height="450" />
+            <img class="image" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" width="350" height="450" />
         </a>
 
         <h1 class="title">{{ site.title }}</h1>
@@ -14,11 +14,13 @@
 
         {% include social-links.html %}
 
-        <p align="justify">Riccardo is a Ph.D. candidate in Economics and Finance at the University of Rome Tor Vergata. He is an econometrician with a keen interest in adapting machine learning techniques for causal inference. He also 
-           focuses on applied microeconomics, particularly mental health issues and LGBTQ+ economics. When Riccardo is not busy crunching numbers and analyzing data, you might find him out for a hike, training in the 
-           boxing ring, or strumming away on his bass guitar. Looking to the future, Riccardo plans to pursue a Post-Doc position after completing his Ph.D.</p>
+        <p align="justify">
+            Riccardo is a Ph.D. candidate in Economics and Finance at the University of Rome Tor Vergata. He is an econometrician with a keen interest in adapting machine learning techniques for causal inference. He also 
+            focuses on applied microeconomics, particularly mental health issues and LGBTQ+ economics. When Riccardo is not busy crunching numbers and analyzing data, you might find him out for a hike, training in the 
+            boxing ring, or strumming away on his bass guitar. Looking to the future, Riccardo plans to pursue a Post-Doc position after completing his Ph.D.
+        </p>
 
-        <div>
+        <div markdown="1">
             ## Working Papers
             - **Aggregation Trees.** *CEIS Research Paper, 546* (2022).
             [[*paper*]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4304256)
