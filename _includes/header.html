@@ -1,6 +1,6 @@
 <header class="header-home {% if site.animation %}animated{% endif %}">
 
-    {% if page.title != "Home" %}
+    {% if page.title == "Home" %}
         <a class="link">
             <img class="image" alt="{{ site.title }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" width="350" height="450" />
         </a>
