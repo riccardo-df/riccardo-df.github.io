@@ -9,6 +9,7 @@ layout: page
 
 **evaluCATE**: Evalutation of CATEs Estimates
 [[*Website*]](https://riccardo-df.github.io/evaluCATE/)
+> <sub> *R package to estimate and make inference about key features of heterogeneous treatment effects.* </sub>
 
 **ocf**: Ordered Correlation Forest 
 [[*Website*]](https://riccardo-df.github.io/ocf/)
