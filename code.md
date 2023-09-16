@@ -13,7 +13,7 @@ layout: page
 **ocf**: Ordered Correlation Forest 
 [[*Website*]](https://riccardo-df.github.io/ocf/)
 [[*CRAN*]](https://cran.r-project.org/web/packages/ocf/index.html)
-> <sub> *Machine learning estimator specifically optimized for handling ordered non-numeric outcomes. OCF provides estimation and inference about the conditional choice probabilities and the covariates’ marginal effects.* </sub>
+> <sub> *Machine learning estimator specifically optimized for handling ordered non-numeric outcomes. OCF provides forest-based estimation of the conditional choice probabilities and the covariates’ marginal effects. Under an "honesty" condition, the estimates are consistent and asymptotically normal, and standard errors can be obtained by leveraging the weight-based representation of the random forest predictions.* </sub>
 
 **aggTrees**: Aggregation Trees 
 [[*Website*]](https://riccardo-df.github.io/aggTrees/)
