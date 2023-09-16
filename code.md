@@ -9,7 +9,7 @@ layout: page
 
 **evaluCATE**: Evalutation of CATEs Estimates[^1]
 [[*Website*]](https://riccardo-df.github.io/evaluCATE/)
-> <sub> *Quality evaluation of conditional average treatment effect (CATE) estimates. The quality is assesed by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs. * </sub>
+> <sub> *Quality evaluation of conditional average treatment effect (CATE) estimates. The quality is assesed by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
 
 **ocf**: Ordered Correlation Forest 
 [[*Website*]](https://riccardo-df.github.io/ocf/)
