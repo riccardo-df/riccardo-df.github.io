@@ -6,7 +6,7 @@ layout: page
 # Research
 
 ## Working Papers
-- <b>**Ordered Correlation Forest.**</b>
+- <b>**Ordered Correlation Forest.** arXiv preprint arXiv:2309.08755.</b>
 [[*paper*]](https://arxiv.org/abs/2309.08755)
 [[*R package*]](https://riccardo-df.github.io/ocf/)
 
