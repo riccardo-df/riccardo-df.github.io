@@ -22,14 +22,6 @@
             {% endif %}
         {% endif %}
 
-        {% if site.conferences == true %}
-            {% if page.title != "Conferences" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/conferences">Conferences</a>
-                </li>
-            {% endif %}
-        {% endif %}
-
         {% if site.code == true %}
             {% if page.title != "Code" %}
                 <li class="item">
@@ -42,6 +34,14 @@
             {% if page.title != "Teaching" %}
                 <li class="item">
                     <a class="link" href="{{ site.url }}/teaching">Teaching</a>
+                </li>
+            {% endif %}
+        {% endif %}
+
+        {% if site.conferences == true %}
+            {% if page.title != "Conferences" %}
+                <li class="item">
+                    <a class="link" href="{{ site.url }}/conferences">Conferences</a>
                 </li>
             {% endif %}
         {% endif %}
