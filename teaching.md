@@ -8,7 +8,7 @@ layout: page
 **AY 2023/2024** *(including scheduled)*
 
 **AY 2021/2022** 
-- <b>**Statistical Learning.** </b>  
+- <b>**Statistical Learning** </b>  
 *Teaching Assistant*    
 *Master of Science course, held by Prof. Tommaso Proietti*
 
