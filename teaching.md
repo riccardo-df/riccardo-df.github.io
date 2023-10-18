@@ -10,7 +10,7 @@ layout: page
 *Bachelor of Science course, held by Marianna Brunetti*  
 *LUISS University, Rome*
 
-> <sub> *Students were tasked with completing a research project as part of the course requirements. I guided them in formulating research questions, collecting relevant data, and applying econometric tools. Additionally, I assessed and graded these projects.
+> <sub> *Students were tasked with completing a research project as part of the course requirements. I guided them in formulating research questions, collecting relevant data, and applying econometric tools. Additionally, I assessed and graded these projects.*
 
 **AY 2021/2022** 
 - <b>**Teaching Assistant in Statistical Learning** </b>  
