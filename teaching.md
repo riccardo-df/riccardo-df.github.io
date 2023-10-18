@@ -6,7 +6,7 @@ layout: page
 # Teaching
 
 **AY 2023/2024** *(including scheduled)*
-- <b>**Teaching Assistant in Statistical Learning** </b>  
+- <b>**Teaching Assistant in Applied Statistics and Econometrics** </b>  
 *Bachelor of Science course, held by Marianna Brunetti*
 *LUISS University, Rome*
 
