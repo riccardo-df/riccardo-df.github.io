@@ -23,4 +23,8 @@ layout: page
 
 > <sub> *Despite significant progress in advancing lesbian, gay, and bisexual (LGB) rights, discrimination based on sexual orientation remains a prevalent issue in many countries. The concealable nature of sexual orientation presents LGB individuals with a trade-off: to avoid discrimination, they may choose to hide their identity, but this decision often results in negative mental health outcomes. Consequently, understanding people's reactions to the disclosure of sexual minority status is crucial. In this paper, we use an innovative source of data from a famous online video game to credibly identify the effects of coming out. At the beginning of the 2022 LGBT Pride Month, the developers of the game announced that one of their playable characters is gay. We use detailed daily data to track players’ revealed preferences for the character over time and employ synthetic control methods to isolate the effect of the disclosure. Our findings suggest a substantial and persistent negative effect of coming out.* </sub>
 
+- <b>**Beyond Bostock: Stereotyped language in job ads and LGBT Occupational Sorting** (joint with [Chiara Lubicz](https://economia.uniroma2.it/phd/ef/phd-students/241-474/lubicz)).</b>
+
+- <b>**Evaluating Machine Learning Estimated Conditional Average Treatment Effects in RCTs** (joint with [Michael C. Knaus](https://mcknaus.github.io/)).</b>
+
 [^1]: I do not have a final working paper yet, but I do have a draft I can share!
