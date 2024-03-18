@@ -6,6 +6,7 @@ layout: page
 # Conferences
 
 **2024** *(including scheduled)*
+- Annual Conference of the European Society for Population Economics (ESPE).
 - Annual Conference of the Scottish Economic Society (SES).
 
 **2023**
