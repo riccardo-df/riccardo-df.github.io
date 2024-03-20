@@ -22,8 +22,3 @@ layout: page
 [[*R package*]](https://riccardo-df.github.io/aggTrees/index.html)
 
 > <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across different subgroups based on observable covariates. However, there is likely to be considerable uncertainty about the appropriate grouping. This paper proposes a nonparametric approach to discovering heterogeneous subgroups in a selection-on-observables framework. The approach constructs a sequence of groupings, one for each level of granularity. Groupings are nested and feature an optimality property. An "honesty" condition allows us to construct valid confidence intervals for the average treatment effect of each group. The utility of the proposed methodology is illustrated through an empirical exercise that revisits the impact of maternal smoking on birth weight.* </sub>
-
-## Work in Progress
-- <b>**A Local Hausman-Like Test for the Credibility of Selection-on-Observables** (joint with [Franco Peracchi](https://www.eief.it/eief/index.php/people/faculty-az?id=174)).</b>
-
-- <b>**Evaluating Machine Learning Estimated Conditional Average Treatment Effects in RCTs** (joint with [Michael C. Knaus](https://mcknaus.github.io/)).</b>
