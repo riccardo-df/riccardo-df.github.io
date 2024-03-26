@@ -8,7 +8,8 @@ layout: page
 **2024** *(including scheduled)*
 - European Association of Labour Economists Conference (EALE).
 - Annual Conference of the European Society for Population Economics (ESPE).
-- RCEA International Conference in Economics, Econometrics and Finance (ICEEF).
+- Annual Conference of the International Association for Applied Econometrics (IAEE).
+- International Conference in Economics, Econometrics and Finance (ICEEF).
 - Annual Conference of the Scottish Economic Society (SES).
 
 **2023**
