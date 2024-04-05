@@ -7,8 +7,8 @@ layout: page
 
 **2024** *(including scheduled)*
 - 29th International Panel Data Conference (IPDC).
-- Annual Conference of the International Association for Applied Econometrics (IAEE Greece).
-- Annual Conference of the International Association for Applied Econometrics (IAEE China).
+- Annual Conference of the International Association for Applied Econometrics (IAAE Greece).
+- Annual Conference of the International Association for Applied Econometrics (IAAE China).
 - Annual Conference of the Scottish Economic Society (SES).
 
 **2023**
