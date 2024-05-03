@@ -6,6 +6,7 @@ layout: page
 # Conferences
 
 **2024** *(including scheduled)*
+- Virtual International Conference on Empirical Economics (ICEE PSU).
 - 29th International Panel Data Conference (IPDC).
 - Annual Conference of the International Association for Applied Econometrics (IAAE Greece).
 - Annual Conference of the International Association for Applied Econometrics (IAAE China).
