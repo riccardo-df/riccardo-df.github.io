@@ -10,7 +10,7 @@ layout: page
 *Bachelor of Science course, held by Livia De Giovanni*  
 *LUISS University, Rome*
 
-> <sub> *Throughout the course, I supported students in crafting a concise research project that required the application of statistical tools for analyzing real data sets. I provided assistance in selecting the most suitable methodologies, supported the implementation of R code for analysis, and ensured the development of a clear and cohesive report.*
+> <sub> *Throughout the course, I assisted students in implementing R code for analyzing real data. After completing their analysis, students submitted a report detailing their results, which I then graded.*
 
 - <b>**Teaching Assistant in Applied Statistics and Econometrics** </b>  
 *Bachelor of Science course, held by Marianna Brunetti*  
