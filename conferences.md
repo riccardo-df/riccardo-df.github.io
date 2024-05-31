@@ -5,6 +5,9 @@ layout: page
 
 # Conferences
 
+**2025** *(including scheduled)*
+- Allied Social Science Associations Annual Meeting (ASSA).
+
 **2024** *(including scheduled)*
 - Virtual International Conference on Empirical Economics (ICEE PSU).
 - 29th International Panel Data Conference (IPDC).
