@@ -9,6 +9,7 @@ layout: page
 - Allied Social Science Associations Annual Meeting (ASSA).
 
 **2024** *(including scheduled)*
+- EIEF Conference.
 - Virtual International Conference on Empirical Economics (ICEE PSU).
 - 29th International Panel Data Conference (IPDC).
 - Annual Conference of the International Association for Applied Econometrics (IAAE Greece).
