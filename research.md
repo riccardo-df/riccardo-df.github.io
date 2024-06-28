@@ -12,6 +12,8 @@ layout: page
 > <sub> *The fear of social stigma leads many individuals worldwide to hesitate in disclosing their sexual orientation. Since concealing identity is costly, it is crucial to understand the extent of anti-LGB sentiments and reactions to coming out. This paper uses an innovative data source from a popular online game together with a natural experiment to overcome existing data and endogeneity issues. We exploit exogenous variation in the identity of a character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.* </sub>
 
 - <b>**Ordered Correlation Forest.** arXiv preprint arXiv:2309.08755 (2023).</b>
+*Honorable mention at the IAAE 2024 Greece*
+*Revise and resubmit at Econometric Reviews (minor revision)*
 [[*paper*]](https://arxiv.org/abs/2309.08755)
 [[*R package*]](https://riccardo-df.github.io/ocf/)
 
