@@ -12,8 +12,8 @@ layout: page
 - EIEF Conference.
 - 3rd Rome Ph.D. in Economics and Finance Conference.
 - 29th International Panel Data Conference (IPDC).
-- Annual Conference of the International Association for Applied Econometrics (IAAE Greece).
-- Annual Conference of the International Association for Applied Econometrics (IAAE China).
+- Annual Conference of the International Association for Applied Econometrics (IAAE Thessaloniki).
+- Annual Conference of the International Association for Applied Econometrics (IAAE Xiamen).
 - Annual Conference of the Scottish Economic Society (SES).
 
 **2023**
