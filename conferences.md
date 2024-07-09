@@ -9,7 +9,7 @@ layout: page
 - Allied Social Science Associations Annual Meeting (ASSA).
 
 **2024** *(including scheduled)*
-- EIEF Conference.
+- Rome Conference on Econometrics: Frontiers in Casual Inference.
 - 3rd Rome Ph.D. in Economics and Finance Conference.
 - 29th International Panel Data Conference (IPDC).
 - Annual Conference of the International Association for Applied Econometrics (IAAE Thessaloniki).
