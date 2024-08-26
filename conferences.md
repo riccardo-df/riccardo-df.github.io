@@ -9,6 +9,7 @@ layout: page
 - Allied Social Science Associations Annual Meeting (ASSA).
 
 **2024** *(including scheduled)*
+- CSQIEP Virtual Seminar.
 - Rome Conference on Econometrics: Frontiers in Casual Inference.
 - 3rd Rome Ph.D. in Economics and Finance Conference.
 - 29th International Panel Data Conference (IPDC).
