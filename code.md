@@ -7,9 +7,9 @@ layout: page
 
 ## R Packages
 
-**evaluCATE**: Evaluation of CATE Estimates[^1]
-[[*Website*]](https://riccardo-df.github.io/evaluCATE/)
-> <sub> *Quality evaluation of machine learning estimated conditional average treatment effects (CATEs). The quality is assessed by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
+**valiCATE**: Validation of CATE Models[^1]
+[[*Website*]](https://riccardo-df.github.io/valiCATE/)
+> <sub> *Validation of machine learning models for the conditional average treatment effects (CATEs). Models are validated by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
 
 **ocf**: Ordered Correlation Forest 
 [[*Website*]](https://riccardo-df.github.io/ocf/)
