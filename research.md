@@ -7,9 +7,10 @@ layout: page
 
 ## Publications
 - <b>**Ordered Correlation Forest.** Econometric Reviews (forthcoming).</b>
+
 [[*paper*]](https://arxiv.org/abs/2309.08755)
+
 [[*R package*]](https://riccardo-df.github.io/ocf/)  
-*Honorable mention at the IAAE 2024 Thessaloniki*  
 
 ## Working Papers
 - <b>**The Cost of Coming Out.** arXiv preprint arXiv:2403.03649 (2024) (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b>
