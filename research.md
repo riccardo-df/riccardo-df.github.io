@@ -9,7 +9,7 @@ layout: page
 - <b>**Ordered Correlation Forest.** Econometric Reviews (forthcoming).</b>
 [[*paper*]](https://arxiv.org/abs/2309.08755)
 [[*R package*]](https://riccardo-df.github.io/ocf/)
-[[*podcast*]](https://drive.google.com/file/d/1fo-eDfwXWp7Pn9CP8hvcYiuo7cNbelPR/view?usp=sharing)
+[[*podcast*]](https://drive.google.com/file/d/1JZ5bzqYOCiFIyEAPgHtHYQM44ymDwV-R/view?usp=sharing)
 
 ## Working Papers
 - <b>**Aggregation Trees.** arXiv preprint arXiv:2410.11408 (2024).</b>
