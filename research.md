@@ -8,7 +8,7 @@ layout: page
 ## Publications
 - <b>**Ordered Correlation Forest.** Econometric Reviews (forthcoming).</b>
 [[*paper*]](https://arxiv.org/abs/2309.08755)
-[[*R package*]](https://riccardo-df.github.io/ocf/)  
+[[*R package*]](https://riccardo-df.github.io/ocf/)
 [[*podcast*]](https://drive.google.com/file/d/1fo-eDfwXWp7Pn9CP8hvcYiuo7cNbelPR/view?usp=sharing)
 
 ## Working Papers
