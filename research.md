@@ -19,5 +19,6 @@ layout: page
 
 - <b>**The Cost of Coming Out.** arXiv preprint arXiv:2403.03649 (2024) (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b>
 [[*paper*]](https://arxiv.org/abs/2403.03649)
+[[*podcast*]](https://drive.google.com/file/d/1KLnz4wA1v7agiHloNLnKTc19EqilZaxX/view?usp=sharing)
 
 > <sub> *The fear of social stigma leads many individuals worldwide to hesitate in disclosing their sexual orientation. Since concealing identity is costly, it is crucial to understand the extent of anti-LGB sentiments and reactions to coming out. This paper uses an innovative data source from a popular online game together with a natural experiment to overcome existing data and endogeneity issues. We exploit exogenous variation in the identity of a character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.* </sub>
