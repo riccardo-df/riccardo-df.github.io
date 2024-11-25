@@ -5,7 +5,7 @@ layout: page
 
 # Teaching
 
-**AY 2023/2024** *(including scheduled)*
+**AY 2023/2024**
 - <b>**Teaching Assistant in Statistics** </b>  
 *Bachelor of Science course, held by Livia De Giovanni*  
 *LUISS University, Rome*
