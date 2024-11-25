@@ -5,10 +5,7 @@ layout: page
 
 # Conferences
 
-**2025** *(including scheduled)*
-- Allied Social Science Associations Annual Meeting (ASSA).
-
-**2024** *(including scheduled)*
+**2024**
 - CSQIEP Virtual Seminar.
 - Rome Conference on Econometrics: Frontiers in Casual Inference.
 - 3rd Rome Ph.D. in Economics and Finance Conference.
