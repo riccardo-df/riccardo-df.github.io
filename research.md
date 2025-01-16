@@ -6,9 +6,8 @@ layout: page
 # Research
 
 ## Publications
-- <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 1–17.</b>
-
-    [[*paper*]](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596)
+- <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 1–17.</b><br>
+[[*paper*]](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596)
 [[*R package*]](https://riccardo-df.github.io/ocf/)
 [[*podcast*]](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing)
 
