@@ -7,6 +7,7 @@ layout: page
 
 ## Publications
 - <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 1–17.</b>
+
   <a href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596" style="margin: 0; padding: 0;">[*paper*]</a>
   <a href="https://riccardo-df.github.io/ocf/" style="margin: 0; padding: 0;">[*R package*]</a>
   <a href="https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing" style="margin: 0; padding: 0;">[*podcast*]</a>
