@@ -12,13 +12,13 @@ layout: page
 [[*podcast*]](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing)
 
 ## Working Papers
-- <b>**Aggregation Trees.** arXiv preprint arXiv:2410.11408 (2024).</b>
+- <b>**Aggregation Trees.** arXiv preprint arXiv:2410.11408 (2024).</b><br>
 [[*paper*]](https://arxiv.org/abs/2410.11408)
 [[*R package*]](https://riccardo-df.github.io/aggTrees/index.html)
 
 > <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of p-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.* </sub>
 
-- <b>**The Cost of Coming Out.** arXiv preprint arXiv:2403.03649 (2024) (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b>
+- <b>**The Cost of Coming Out.** arXiv preprint arXiv:2403.03649 (2024) (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b><br>
 [[*paper*]](https://arxiv.org/abs/2403.03649)
 [[*podcast*]](https://drive.google.com/file/d/1KLnz4wA1v7agiHloNLnKTc19EqilZaxX/view?usp=sharing)
 
