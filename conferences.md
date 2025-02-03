@@ -5,7 +5,7 @@ layout: page
 
 # Conferences
 
-**2024** *(including scheduled)*
+**2025** *(including scheduled)*
 - 11th Italian Congress of Econometrics and Empirical Economics (ICEEE).
 
 **2024**
