@@ -7,7 +7,12 @@ layout: page
 
 ## R Packages
 
-**valiCATE**: Validation of CATE Models[^1]<br> <span style="float:right;"><a href="https://riccardo-df.github.io/valiCATE/"><img src="/assets/images/valiCATE-logo.svg" height="60"></a></span>  
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <strong>valiCATE</strong>: Validation of CATE Models[^1]
+  <a href="https://riccardo-df.github.io/valiCATE/">
+    <img src="/assets/images/valiCATE-logo.svg" height="40">
+  </a>
+</div>
 [[*Website*]](https://riccardo-df.github.io/valiCATE/)
 > <sub> *Validation of machine learning models for the conditional average treatment effects (CATEs). Models are validated by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
 
