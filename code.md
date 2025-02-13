@@ -13,6 +13,7 @@ layout: page
     <img src="/assets/images/valiCATE-logo.svg" height="40">
   </a>
 </div>
+
 [[*Website*]](https://riccardo-df.github.io/valiCATE/)
 > <sub> *Validation of machine learning models for the conditional average treatment effects (CATEs). Models are validated by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
 
