@@ -31,7 +31,7 @@ layout: page
 <div style="display: flex; align-items: center;">
     <div style="flex: 1; font-size: 0.9em;">
         <em>Machine learning estimator specifically optimized for predictive modeling of ordered non-numeric outcomes. 'ocf' provides forest-based estimation of the conditional choice probabilities and the covariates’ marginal effects. Under an "honesty" condition, the estimates are consistent and asymptotically normal and standard errors can be obtained by leveraging the weight-based representation of the random forest predictions. Please reference the use as 
-            <a href="https://doi.org/10.1080/07474938.2024.2429596">Di Francesco (2025).</a></em>
+            <a href="https://doi.org/10.1080/07474938.2024.2429596">Di Francesco (2025)</a>.</em>
     </div>
     <div style="margin-left: 20px;">
         <a href="https://riccardo-df.github.io/ocf/">
