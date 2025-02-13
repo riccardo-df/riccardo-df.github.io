@@ -7,7 +7,9 @@ layout: page
 
 ## R Packages
 
-**valiCATE**: Validation of CATE Models[^1]  
+---
+
+**valiCATE**: Validation of CATE Models
 [[*Website*]](https://riccardo-df.github.io/valiCATE/)
 
 |  |  |
@@ -33,5 +35,3 @@ layout: page
 | <sub> *Nonparametric data-driven approach to discovering heterogeneous subgroups in a selection-on-observables framework. 'aggTrees' allows researchers to assess whether there exists relevant heterogeneity in treatment effects by generating a sequence of optimal groupings, one for each level of granularity. For each grouping, we obtain point estimation and inference about the group average treatment effects. Please reference the use as [Di Francesco (2024)](https://arxiv.org/abs/2410.11408).* </sub> | <a href="https://riccardo-df.github.io/aggTrees/"><img src="/assets/images/aggTrees-logo.svg" height="80"></a> |
 
 ---
-
-[^1]: Under development but already functioning.
