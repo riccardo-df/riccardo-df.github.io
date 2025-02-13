@@ -7,20 +7,20 @@ layout: page
 
 ## R Packages
 
-<div style="display: flex; align-items: center; gap: 1px;">
+<div style="display: flex; align-items: center; gap: 3px;">
   <strong>valiCATE</strong>: Validation of CATE Models
   <a href="https://riccardo-df.github.io/valiCATE/">
-    <img src="/assets/images/valiCATE-logo.svg" height="40" style="vertical-align: middle;">
+    <img src="/assets/images/valiCATE-logo.svg" height="60" style="vertical-align: middle;">
   </a>
 </div>
 
 [[*Website*]](https://riccardo-df.github.io/valiCATE/)
 > <sub> *Validation of machine learning models for the conditional average treatment effects (CATEs). Models are validated by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.* </sub>
 
-<div style="display: flex; align-items: center; gap: 1px;">
+<div style="display: flex; align-items: center; gap: 3px;">
   <strong>ocf</strong>: Ordered Correlation Forest
   <a href="https://riccardo-df.github.io/ocf/">
-    <img src="/assets/images/ocf-logo.svg" height="40" style="vertical-align: middle;">
+    <img src="/assets/images/ocf-logo.svg" height="60" style="vertical-align: middle;">
   </a>
 </div>
 
@@ -28,10 +28,10 @@ layout: page
 [[*CRAN*]](https://cran.r-project.org/web/packages/ocf/index.html)
 > <sub> *Machine learning estimator specifically optimized for predictive modeling of ordered non-numeric outcomes. 'ocf' provides forest-based estimation of the conditional choice probabilities and the covariates’ marginal effects. Under an "honesty" condition, the estimates are consistent and asymptotically normal and standard errors can be obtained by leveraging the weight-based representation of the random forest predictions. Please reference the use as [Di Francesco (2025)](https://doi.org/10.1080/07474938.2024.2429596).* </sub>
 
-<div style="display: flex; align-items: center; gap: 1px;">
+<div style="display: flex; align-items: center; gap: 3px;">
   <strong>aggTrees</strong>: Aggregation Trees
   <a href="https://riccardo-df.github.io/aggTrees/">
-    <img src="/assets/images/aggTrees-logo.svg" height="40" style="vertical-align: middle;">
+    <img src="/assets/images/aggTrees-logo.svg" height="60" style="vertical-align: middle;">
   </a>
 </div>
 
