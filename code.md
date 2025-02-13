@@ -7,7 +7,7 @@ layout: page
 
 ## R Packages
 
-<div style="display: flex; align-items: center; gap: 10px;">
+<div style="display: flex; align-items: center; gap: 1px;">
   <strong>valiCATE</strong>: Validation of CATE Models
   <a href="https://riccardo-df.github.io/valiCATE/">
     <img src="/assets/images/valiCATE-logo.svg" height="40" style="vertical-align: middle;">
