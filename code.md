@@ -46,7 +46,8 @@ layout: page
 
 <div style="display: flex; align-items: center;">
     <div style="flex: 1; font-size: 0.9em;">
-        <em>Nonparametric data-driven approach to discovering heterogeneous subgroups in a selection-on-observables framework. 'aggTrees' allows researchers to assess whether there exists relevant heterogeneity in treatment effects by generating a sequence of optimal groupings, one for each level of granularity. For each grouping, we obtain point estimation and inference about the group average treatment effects. Please reference the use as [Di Francesco (2024)](https://arxiv.org/abs/2410.11408).</em>
+        <em>Nonparametric data-driven approach to discovering heterogeneous subgroups in a selection-on-observables framework. 'aggTrees' allows researchers to assess whether there exists relevant heterogeneity in treatment effects by generating a sequence of optimal groupings, one for each level of granularity. For each grouping, we obtain point estimation and inference about the group average treatment effects. Please reference the use as 
+        <a href="https://arxiv.org/abs/2410.11408">Di Francesco (2024)</a>.</em>
     </div>
     <div style="margin-left: 20px;">
         <a href="https://riccardo-df.github.io/aggTrees/">
