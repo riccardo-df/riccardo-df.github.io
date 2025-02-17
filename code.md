@@ -9,6 +9,25 @@ layout: page
 
 ---
 
+### causalQual: Causal inference for qualitative outcomes
+[*Website*](https://riccardo-df.github.io/causalQual/)
+
+<div style="display: flex; align-items: center;">
+    <div style="flex: 1; font-size: 0.9em;">
+        <em>'causalQual' provides a suite of tools for estimating causal effects when the outcome of interest is qualitative - i.e., multinomial or ordered. The package
+    implements the framework introduced in Di Francesco and Mellace (2025), shifting the focus to well-defined and interpretable estimands that quantify how treatment 
+    affects the probability distribution over outcome categories. It supports selection-on-observables, instrumental variables, regression discontinuity, and
+    difference-in-differences designs.</em>
+    </div>
+    <div style="margin-left: 20px;">
+        <a href="https://riccardo-df.github.io/causalQual/">
+            <img src="/assets/images/causalQual-logo.svg" height="120">
+        </a>
+    </div>
+</div>
+
+---
+
 ### valiCATE: Validation of CATE Models  
 [*Website*](https://riccardo-df.github.io/valiCATE/)
 
