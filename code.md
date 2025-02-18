@@ -9,7 +9,7 @@ layout: page
 
 ---
 
-### causalQual: Causal inference for qualitative outcomes
+### causalQual: Causal Inference for Qualitative Outcomes
 [*Website*](https://riccardo-df.github.io/causalQual/)
 
 <div style="display: flex; align-items: center;">
