@@ -12,6 +12,13 @@ layout: page
 ---
 
 ## Working Papers
+- <b>**Causal Inference for Qualitative Outcomes.** arXiv preprint arXiv:2502.11691 (2025) (joint with [Giovanni Mellace](https://sites.google.com/site/giovannimellace/)).</b><br>
+[*paper*](https://arxiv.org/abs/2502.11691) | [*R package*](https://riccardo-df.github.io/causalQual/)
+
+> <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of p-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.* </sub>
+
+---
+
 - <b>**Aggregation Trees.** arXiv preprint arXiv:2410.11408 (2024).</b><br>
 [*paper*](https://arxiv.org/abs/2410.11408) | [*R package*](https://riccardo-df.github.io/aggTrees/index.html)
 
