@@ -15,7 +15,7 @@ layout: page
 <div style="display: flex; align-items: center;">
     <div style="flex: 1; font-size: 0.9em;">
         <em>'causalQual' provides a suite of tools for estimating causal effects when the outcome of interest is qualitative - i.e., multinomial or ordered. The package
-    implements the framework introduced in Di Francesco and Mellace (2025), shifting the focus to well-defined and interpretable estimands that quantify how treatment 
+    implements the framework introduced in <a href="https://arxiv.org/abs/2502.11691">Di Francesco and Mellace (2025)</a>, shifting the focus to well-defined and interpretable estimands that quantify how treatment 
     affects the probability distribution over outcome categories. It supports selection-on-observables, instrumental variables, regression discontinuity, and
     difference-in-differences designs.</em>
     </div>
