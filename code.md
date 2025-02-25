@@ -10,7 +10,7 @@ layout: page
 ---
 
 ### causalQual: Causal Inference for Qualitative Outcomes
-[*Website*](https://riccardo-df.github.io/causalQual/)
+[*Website*](https://riccardo-df.github.io/causalQual/) | [*CRAN*](https://cran.r-project.org/web/packages/causalQual/index.html)
 
 <div style="display: flex; align-items: center;">
     <div style="flex: 1; font-size: 0.9em;">
