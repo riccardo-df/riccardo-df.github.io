@@ -6,6 +6,8 @@ layout: page
 # Conferences
 
 **2025** *(including scheduled)*
+- 16th International Health Economics Association World Congress (IHEA).
+- 38th Annual Conference of the European Society for Population Economics (ESPE).
 - 11th Italian Congress of Econometrics and Empirical Economics (ICEEE).
 
 **2024**
