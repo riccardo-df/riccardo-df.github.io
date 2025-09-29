@@ -5,6 +5,13 @@ layout: page
 
 # Teaching
 
+**AY 2025/2026**
+- <b>**Guest Lecturer in Microeconometrics** </b>  
+*Master of Science course, held by Giovanni Mellace*  
+*University of Southern Denmark, Odense*
+
+> <sub> *I delivered two guest lectures on predictive modeling of discrete outcomes and causal machine learning, integrating theory, implementation, and case studies.*
+
 **AY 2023/2024**
 - <b>**Teaching Assistant in Statistics** </b>  
 *Bachelor of Science course, held by Livia De Giovanni*  
