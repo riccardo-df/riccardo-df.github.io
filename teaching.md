@@ -10,7 +10,7 @@ layout: page
 *Master of Science course, held by Giovanni Mellace*  
 *University of Southern Denmark, Odense*
 
-> <sub> *I delivered two guest lectures on predictive modeling of discrete outcomes and causal machine learning, integrating theory, implementation, and case studies.*
+> <sub> *I delivered two guest lectures$—$Predictive Modeling for Discrete Outcomes and Causal Machine Learning$—$integrating theory, implementation, and case studies.*
 
 **AY 2023/2024**
 - <b>**Teaching Assistant in Statistics** </b>  
