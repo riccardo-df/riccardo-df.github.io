@@ -9,8 +9,6 @@ layout: page
 - <b>Di Francesco, R. & Mellace, G. (2025). **Causal inference for qualitative outcomes**. Economics Letters, 112626.</b><br>
 [*paper*](https://www.sciencedirect.com/science/article/pii/S016517652500463X) | [*R package*](https://riccardo-df.github.io/causalQual/) | [*podcast*](https://drive.google.com/file/d/19WJQsrR53737NM-Lt-zJL5G4XZ9Xybzl/view?usp=sharing)
 
-> <sub> *Causal inference methods such as instrumental variables, regression discontinuity, and difference-in-differences are widely used to identify and estimate treatment effects. However, when outcomes are qualitative, their application poses fundamental challenges. This paper highlights these challenges and proposes an alternative framework that focuses on well-defined and interpretable estimands. We show that conventional identification assumptions suffice for identifying the new estimands and outline simple, intuitive estimation strategies that remain fully compatible with conventional econometric methods. We provide an accompanying open-source R package, **causalQual**, which is publicly available on CRAN.* </sub>
-
 - <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 44(4), 416-432.</b><br>
 [*paper*](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596) | [*R package*](https://riccardo-df.github.io/ocf/) | [*podcast*](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing)
 
