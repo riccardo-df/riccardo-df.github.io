@@ -10,7 +10,7 @@ layout: page
 [*paper*](https://www.sciencedirect.com/science/article/pii/S016517652500463X) | [*R package*](https://riccardo-df.github.io/causalQual/) | [*podcast*](https://drive.google.com/file/d/19WJQsrR53737NM-Lt-zJL5G4XZ9Xybzl/view?usp=sharing)
 
 - <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 44(4), 416-432.</b><br>
-[*paper*](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596) | [*R package*](https://riccardo-df.github.io/ocf/) | [*podcast*](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing) | [*award*](https://github.com/riccardo-df/riccardo-df.github.io/blob/gh-pages/assets/others/EmergingEconometrician_DiFrancesco.pdf)
+[*paper*](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596) | [*R package*](https://riccardo-df.github.io/ocf/) | [*podcast*](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing) | [*award*](https://riccardo-df.github.io/assets/others/EmergingEconometrician_DiFrancesco.pdf)
 
 ---
 
