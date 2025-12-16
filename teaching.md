@@ -6,12 +6,13 @@ layout: page
 # Teaching
 
 **AY 2025/2026**
-- <b>**Guest Lecturer in Microeconometrics**</b>  [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html)  
+- <b>**Guest Lecturer in Microeconometrics**</b> 
 *Master of Science course, taught by Giovanni Mellace*  
 *University of Southern Denmark, Odense*
 
-
-> <sub> *I delivered two guest lectures—Predictive Modeling for Discrete Outcomes and Causal Machine Learning—integrating theory, implementation, and case studies.*
+> <sub> *I delivered two guest lectures, integrating theory, implementation, and case studies.*
+> - *Predictive Modeling for Discrete Outcomes* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/DiscreteOutcomes.html))
+> - *Causal Machine Learning* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html)
 
 **AY 2023/2024**
 - <b>**Teaching Assistant in Statistics** </b>  
