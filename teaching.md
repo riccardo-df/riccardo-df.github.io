@@ -11,8 +11,8 @@ layout: page
 *University of Southern Denmark, Odense*
 
 > <sub> *I delivered two guest lectures, integrating theory, implementation, and case studies.*
-> <sub> - *Predictive Modeling for Discrete Outcomes* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/DiscreteOutcomes.html) | [*notebook1*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/LeagueofLogits.html) | [*notebook2*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/GoodBadOrdinal.html)
-> <sub> - *Causal Machine Learning* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html)
+> - <sub> *Predictive Modeling for Discrete Outcomes* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/DiscreteOutcomes.html) | [*notebook1*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/LeagueofLogits.html) | [*notebook2*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/GoodBadOrdinal.html)
+> - <sub> *Causal Machine Learning* [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html)
 
 **AY 2023/2024**
 - <b>**Teaching Assistant in Statistics** </b>  
