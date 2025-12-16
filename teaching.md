@@ -10,6 +10,8 @@ layout: page
 *Master of Science course, taught by Giovanni Mellace*  
 *University of Southern Denmark, Odense*
 
+ [*slides*](https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/)
+
 > <sub> *I delivered two guest lectures—Predictive Modeling for Discrete Outcomes and Causal Machine Learning—integrating theory, implementation, and case studies.*
 
 **AY 2023/2024**
