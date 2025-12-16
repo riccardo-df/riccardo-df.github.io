@@ -6,7 +6,7 @@ layout: page
 # Teaching
 
 **AY 2025/2026**
-- <b>**Guest Lecturer in Microeconometrics**</b> 
+- <b>**Guest Lecturer in Microeconometrics** </b> 
 *Master of Science course, taught by Giovanni Mellace*  
 *University of Southern Denmark, Odense*
 
