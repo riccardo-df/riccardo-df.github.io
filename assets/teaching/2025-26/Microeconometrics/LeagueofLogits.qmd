@@ -1,0 +1,805 @@
+---
+title: "League of Logits"
+subtitle: "A mini tour of binary models"
+author: "Riccardo Di Francesco"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Show code"
+    df-print: paged
+    smooth-scroll: true
+    embed-resources: true
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+rm(list = ls())
+set.seed(1986)
+
+pkgs <- c("tibble", "dplyr", "kableExtra", "ggplot2", "scales", "tidyr", "broom", "marginaleffects", "patchwork")
+pkgs_to_install <- pkgs[!(pkgs %in% installed.packages()[,"Package"])]
+if(length(pkgs_to_install)) install.packages(pkgs_to_install, quiet = TRUE)
+invisible(lapply(pkgs, library, character.only = TRUE))
+```
+
+## Case brief
+
+Riot’s analytics team just dropped a brief on our desk: *“Help us understand and predict wins vs. losses using only post-match stats and basic context (role, champion).”*
+
+Why? Two concrete use-cases:
+
+-   *Player coaching:* spot patterns like *“given your role and gold, your win probability usually looks like X,”* so players get actionable feedback.
+-   *Live ops balance checks:* spot champions whose *predicted* win probabilities look out of line, as an early signal for balance reviews.
+
+We’re going to build a transparent baseline predictor for $\mathbb P(Win=1 | X)$ and show what drives it. Think of this as the first, trustworthy rung on the ladder$—$usable on its own and a solid reference if we later try fancier models.
+
+::: callout-tip
+Today we’re modeling *associations*, not *causation*. If a champion shows higher predicted win probability, that could be skill selection, role synergy, or meta effects$—$not necessarily “the champion causes wins.”
+:::
+
+We’ll follow a standard pipeline:
+
+1)  *Load & peek*$—$confirm columns, types, and granularity.\
+2)  *Sanity checks*$—$missing and impossible values.\
+3)  *Descriptive statistics*$—$Summary stats for scale and plausibility.\
+4)  *Fit models*$—$LPM, Logit, Probit for $\mathbb P(Win=1 | X)$; compare on held-out data.\
+5)  *Explain*$—$report coefficients sensibly.\
+6)  *Deliver*$—$a short, readable summary with the few visuals that actually deliver insights.
+
+## Load & peek
+
+First things first: let’s open the box and see what Riot actually gave us. This step isn’t about modeling$—$it’s *orientation*. We want to be sure we understand the basic structure of the data.
+
+We load the data.
+
+```{r}
+#| label: load-data
+#| message: false
+
+## Load data.
+path <- "../data/LoLTeaching.Rds" # If you preserved the structure of my folder, this should work; otherwise, edit.
+dta <- readRDS(path)
+```
+
+Now let’s peek at a few rows. We’re not hunting for patterns yet$—$just confirming that what we think we have is what we actually have. From Riot's documentation, we expect to see the following variables:
+
+-   `player_name`: player’s username (identifier).
+-   `match_id`: match identifier.
+-   `win`: outcome (1 = win, 0 = loss).
+-   `champion`: champion used in that match.
+-   `position`: role.
+-   `kills`, `assists`, `deaths`: in-match counts.
+-   `gold`: total gold earned in the match
+
+::: callout-tip
+While you peek, ask yourself:
+
+-   What does one row represent (i.e., what is the unit of observation)?
+-   Do we have a stable key to uniquely identify rows?
+
+In our data, one row is a *player–match* observation, and a (`player_name`, `match_id`) pair looks like a unique key.
+:::
+
+```{r}
+#| label: peek-data
+#| message: false
+
+## Kable.
+dta %>%
+  slice_head(n = 7) %>%
+  kbl(caption = "League of Legends data") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+Next, we check column types. Some models behave very differently depending on types, and R will happily coerce behind your back if you let it.
+
+::: callout-warning
+#### Why column types matter
+
+If `win` is a string instead of numeric 0/1, many models will silently coerce it and produce odd results. If qualitative variables like `position` arrive as numbers, the model may treat them as numeric, which is wrong.
+:::
+
+```{r}
+#| label: structure-data
+#| message: false
+
+## Column types.
+str(dta)
+```
+
+## Sanity checks
+
+If the data is messy, models will confidently learn nonsense. So before visuals or modeling, we audit the basics.
+
+::: callout-important
+#### “Garbage in, garbage out.”
+
+Even a fancy model can’t fix broken inputs.
+:::
+
+### Missingness
+
+If key fields are missing, fix that now$—$before plots and models.
+
+::: callout-tip
+If you find missing values, typical options are:
+
+(i) drop rows (safe only when few and not systematic),
+(ii) simple imputations for non-outcomes, or
+(iii) model-based imputations.
+
+Be especially careful if the outcome is missing$—$removing or imputing those rows can bias results.
+:::
+
+```{r}
+#| label: sanity-checks-missingness
+
+## Missingness.
+miss_tbl <- dta %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "missing") %>%
+  mutate(n_rows = nrow(dta),
+  missing = as.integer(missing),
+  frac_missing = missing / n_rows,
+  pct_missing = percent(frac_missing, accuracy = 0.1)) %>%
+  arrange(desc(frac_missing))
+
+## Kable.
+miss_tbl %>%
+  dplyr::select(variable, missing, pct_missing) %>%
+  kbl(caption = "Missing values per column",
+      col.names = c("Variable", "Missing (n)", "Missing (%)"),
+      align = c("l", "r", "r")) %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### Non-sensical values
+
+Now we apply plain common sense. By construction, `kills`, `assists`, `deaths`, and `gold` cannot be negative. If they are, something went wrong upstream.
+
+::: callout-tip
+Build a small checklist of “obvious rules” for every project. If a rule is violated, decide whether to fix, filter, or flag the row$—$and write down that decision.
+:::
+
+```{r}
+## Non-sensical values.
+neg_counts <- sapply(dta[, c("kills", "assists", "deaths", "gold")], function(x) sum(x < 0))
+tibble(variable = names(neg_counts),
+       negatives = as.integer(neg_counts)) %>%
+  kbl(caption = "N. negative values per column") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+Moreover, what’s the roster size per match? In League of Legends, we expect 10 players per match. If a match deviates, those rows may need attention.
+
+```{r}
+## Players per match (should be 10 in standard 5v5).
+players_per_match <- dta %>%
+  count(match_id, name = "players_in_match")
+
+pp_summary <- players_per_match %>%
+  summarise(min = min(players_in_match),
+    q25 = quantile(players_in_match, 0.25),
+    mean = mean(players_in_match),
+    q75 = quantile(players_in_match, 0.75),
+    max = max(players_in_match)) %>%
+  mutate(across(everything(), as.numeric))
+
+## Kable.
+kbl(pp_summary, caption = "Players per match: distribution summary", col.names = c("Min", "Q1", "Mean", "Q3", "Max")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Data descriptives
+
+Before we fit anything, we need to understand our data. We start by sizing the data set. How many rows do we have overall? How many unique players and matches?
+
+```{r}
+## Core counts.
+counts <- tibble(observations = nrow(dta),
+                 matches_unique = n_distinct(dta$match_id),
+                 players_unique = n_distinct(dta$player_name))
+
+## Kable.
+kbl(counts, caption = "Dataset size and uniqueness", col.names = c("N","N. matches", "N. players")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+Next, we investigate scale and plausibility. Min/max/mean/sd tell us if values live where we expect and whether any column needs attention (e.g., huge spread, suspicious extremes).
+
+::: callout-warning
+#### Why summary stats matter
+
+If a variable’s range is off (e.g., negative gold or 3,000 kills), models will faithfully learn nonsense. Moreover, a “nice” mean can hide a broken column (e.g., many zeros + a few giant values). Looking at all summary stats (min/max/mean/sd) is a fast “smell test” for outliers, unit mistakes, or columns that need transformation.
+:::
+
+Here is a useful function to compute summary stats; you can also copy-paste it in your future projects.
+
+```{r}
+#| label: useful-function
+#| message: false
+
+## Useful function.
+summarize_vars <- function(df, 
+                           vars = character(),
+                           digits = 3, include_na_level = TRUE) {
+  ## Keep only columns that exist; warn on missing names.
+  exist <- intersect(vars, names(df))
+
+  if (length(setdiff(vars, exist)) > 0) {
+    warning("These vars were not found and were ignored: ",
+            paste(setdiff(vars, exist), collapse = ", "))
+  }
+
+  ## Summary stats.
+  vars_list <- lapply(vars, function(v) {
+    x <- df[[v]]
+
+    tibble(variable = v,
+           n = sum(!is.na(x)),
+           missing = sum(is.na(x)),
+           min = suppressWarnings(min(x, na.rm = TRUE)),
+           mean = mean(x, na.rm = TRUE),
+           sd = sd(x, na.rm = TRUE),
+           max = suppressWarnings(max(x, na.rm = TRUE)))
+  })
+  
+  vars_list <- Filter(Negate(is.null), vars_list)  
+  
+  ## Bundle in table.
+  out <- if (length(vars_list)) {
+    bind_rows(vars_list) %>%
+      mutate(across(c(min, mean, sd, max), ~ round(.x, digits)))
+  } else {
+    tibble()
+  }
+}
+```
+
+::: callout-tip
+For qualitative variables (e.g., `position`), computing min/mean/sd/max doesn’t make sense. Instead, we *dummy-encode* each level into a 0/1 indicator. This is often helpful for modeling too, since coefficients become easier to interpret. To keep summaries readable, we avoid dummy-expanding very high-cardinality variables (e.g., `champion`) at this stage.
+:::
+
+```{r}
+## Useful function.
+#| label: descriptives
+#| message: false
+
+## Expand `position` into dummy columns.
+pos_dummies <- as_tibble(model.matrix(~ dta$position - 1), .name_repair = "minimal")
+names(pos_dummies) <- c("bottom", "jungle", "middle", "top", "support")
+
+## Bind dummies to the original data. Drop original position.
+new_dta <- bind_cols(dta, pos_dummies) %>%
+  select(-position)
+
+## Compute summary table using our function.
+stats_table <- summarize_vars(new_dta, vars = c("win", "kills", "assists", "deaths", "gold", "bottom", "jungle", "middle", "top", "support"))
+
+## Kable.
+stats_table %>%
+  kbl(caption = "Descriptive statistics") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Fit models
+
+Now we get to the core task: fit simple, transparent models for $\mathbb P(Win=1 | X)$. Before we press “go,” let’s quickly peek at the current data set.
+
+```{r}
+#| label: peek-new-data
+#| message: false
+
+## Kable.
+new_dta %>%
+  slice_head(n = 7) %>%
+  kbl(caption = "Estimation sample") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### Baseline models
+
+We start with a baseline: model $\mathbb P (Win = 1 | X)$ using only player performance$—$`kills`, `assists`, `deaths`, and `gold`. We fit three standard binary models: LPM, Logit, and Probit. We train the models on one split ($80\%$) and evaluate their performance on a held-out test set ($20\%$). That way, we measure how well the models generalize to data they haven’t seen.
+
+::: callout-tip
+#### Held-out test $=$ honest assessment
+
+Fitting and judging on the same data rewards memorization (*overfitting*). A held-out test set simulates future, unseen observations.
+:::
+
+::: callout-warning
+#### Avoid leakage, respect dependence
+
+Rows are player–match observations. To avoid over-optimism, we split the data by match, so players from the same match don’t land in both train and test sets.
+:::
+
+```{r}
+#| label: data-split
+#| message: false
+
+## Train/test split by match_id.
+ids <- unique(new_dta$match_id)
+test_ids <- sample(ids, size = max(1, floor(0.2 * length(ids))))
+d_train <- new_dta[!(new_dta$match_id %in% test_ids), ]
+d_test <- new_dta[(new_dta$match_id %in% test_ids), ]
+```
+
+```{r}
+#| label: fit-baseline
+#| message: false
+#| warning: false
+
+## Fit baseline models.
+base_formula <- win ~ kills + assists + deaths + gold
+
+lpm_base <- lm(base_formula, data = d_train)                             
+logit_base <- glm(base_formula, data = d_train, family = binomial("logit"))  
+probit_base <- glm(base_formula, data = d_train, family = binomial("probit")) 
+```
+
+We evaluate on the held-out test set to get an honest sense of generalization. We use two performance measures:
+
+$$ MSE(\hat{\pi}) = \frac{1}{n} \sum_{i = 1}^n (Y_i - \hat{\pi} (\boldsymbol{X_i}))^2,$$ $$ LogLoss(\hat{\pi}) = - \frac{1}{n} \sum_{i = 1}^n [ Y_i \log(\hat{\pi} (\boldsymbol{X_i})) + (1 - Y_i) \log(1 - \hat{\pi} (\boldsymbol{X_i}))].$$ Lower is better for both.
+
+::: callout-warning
+#### Clamp LPM's predictions
+
+The LPM can produce predictions outside $[0,1]$, but our performance measures treat predictions as probabilities. To score models fairly, we *clamp* LPM's predicted probability $\hat{\pi}(\boldsymbol{x})$ into a safe open interval:
+
+$$ \hat{\pi}_{clamp} (\boldsymbol{x}) = \min \{ \max \{ \hat{\pi} (\boldsymbol{x}), \varepsilon \}, 1 - \varepsilon \}$$ for a "very small" $\varepsilon$. This keeps probabilities in $(0,1)$. Importantly, clamping is only for evaluation$—$it doesn’t change the model, just ensures a valid comparison to Logit/Probit on probability-based metrics.
+:::
+
+Results indicate that Logit and Probit predict win probabilities better than the LPM. On $MSE(\cdot)$, there is essentially no performance difference across models. On $LogLoss(\cdot)$$—$which penalizes over-confident mistakes and is often more discriminating$—$Logit and Probit are clearly better than LPM. We do not over-interpret any tiny difference between Logit and Probit here$—$their performance is practically indistinguishable.
+
+```{r}
+#| label: evaluate-baseline
+#| message: false
+#| warning: false
+
+## Predict on the test set. Clapm prediction for LPM.
+clamp01 <- function(p, eps = 1e-6) pmin(pmax(p, eps), 1 - eps)
+
+lpm_base_preds <- predict(lpm_base, newdata = d_test)
+lpm_base_preds_clamped <- clamp01(predict(lpm_base, newdata = d_test))
+logit_base_preds <- predict(logit_base, newdata = d_test, type = "response")
+probit_base_preds <- predict(probit_base, newdata = d_test, type = "response")
+
+## Outcome on test set.
+Y_test <- d_test$win
+
+## Metrics.
+eval_metrics <- function(p, y) {
+  tibble(n_test = length(y),
+         mse = mean((y - p)^2), # MSE on probabilities.
+         log_loss = -mean(y * log(p) + (1 - y) * log(1 - p))) # cross-entropy.
+}
+
+performance_base <- bind_rows(eval_metrics(lpm_base_preds, Y_test) %>%
+                    mutate(model = "LPM"),
+                  eval_metrics(lpm_base_preds_clamped, Y_test) %>%
+                    mutate(model = "LPM-C"),
+                  eval_metrics(logit_base_preds, Y_test) %>% 
+                    mutate(model = "Logit"),
+                  eval_metrics(probit_base_preds, Y_test) %>% 
+                    mutate(model = "Probit")) %>%
+  select(model, n_test, mse, log_loss) %>%
+  mutate(model_type = "Baseline")
+
+## Plot.
+performance_base_long <- performance_base %>%
+  pivot_longer(cols = c(mse, log_loss), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", log_loss = "Log loss"),
+         model = factor(model, levels = c("LPM", "LPM-C", "Logit", "Probit")))
+
+ggplot(performance_base_long, aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(cols = vars(factor(metric, levels = c("MSE", "Log loss"))), scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(performance_base_long$value) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+::: callout-warning
+#### Exercise question
+
+Can you tell why we have no $LogLoss(\hat{\pi})$ for LPM? Spoiler: it's not a bug.
+:::
+
+### Adding more covariates
+
+We extend the baseline by adding `position` dummies, so the models’ baseline win chance can differ by role. We omit the intercept from models so each role’s coefficient is its own baseline level (when other covariates are zero).
+
+Results barely change after adding position dummies. That’s expected: in every match both teams field all roles, so the unconditional win rate by role is exactly $50\%$. Role dummies therefore add little signal beyond performance stats. To confirm, below we plot win rates by role.
+
+::: callout-tip
+*Parsimony* is a key desideratum in model building: when two models perform similarly on held-out data, prefer the simpler one for interpretability. Our results show that adding position dummies yields no meaningful gain in performance. Therefore, in the next models we omit position dummies.
+:::
+
+```{r}
+#| label: fit-with-position
+#| message: false
+#| warning: false
+
+## Fit new models.
+lpm_position <- lm(update(base_formula, .~ . + bottom + jungle + middle + top + support - 1), data = d_train)                             
+logit_position <- glm(update(base_formula, .~ . + bottom + jungle + middle + top + support - 1), data = d_train, family = binomial("logit"))  
+probit_position <- glm(update(base_formula, .~ . + bottom + jungle + middle + top + support - 1), data = d_train, family = binomial("probit")) 
+
+## Predict on the test set. Clapm prediction for LPM.
+lpm_position_preds <- predict(lpm_position, newdata = d_test)
+lpm_position_preds_clamped <- clamp01(predict(lpm_position, newdata = d_test))
+logit_position_preds <- predict(logit_position, newdata = d_test, type = "response")
+probit_position_preds <- predict(probit_position, newdata = d_test, type = "response")
+
+## Metrics.
+performance_position <- bind_rows(eval_metrics(lpm_position_preds, Y_test) %>%
+                                    mutate(model = "LPM"),
+                                  eval_metrics(lpm_position_preds_clamped, Y_test) %>%
+                                    mutate(model = "LPM-C"),
+                                  eval_metrics(logit_position_preds, Y_test) %>% 
+                                    mutate(model = "Logit"),
+                                  eval_metrics(probit_position_preds, Y_test) %>% mutate(model = "Probit")) %>%
+  select(model, n_test, mse, log_loss) %>%
+  mutate(model_type = "+ Position controls")
+
+## Plot.
+performance_position_long <- performance_position %>%
+  pivot_longer(cols = c(mse, log_loss), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", log_loss = "Log loss"),
+         model = factor(model, levels = c("LPM", "LPM-C", "Logit", "Probit")))
+
+ggplot(bind_rows(performance_base_long, performance_position_long), aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(rows = vars(factor(metric, levels = c("MSE", "Log loss"))), 
+             cols = vars(factor(model_type, levels = c("Baseline", "+ Position controls"))),
+             scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(max(performance_base_long$value, performance_position_long$value)) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+```{r}
+#| label: winrate-by-role
+#| message: false
+#| warning: false
+#| fig.width: 7
+#| fig.height: 4
+
+## Compute win rate per role.
+role_stats <- dta %>%
+  group_by(position) %>%
+  summarise(n = n(),
+            winrate = mean(win),
+            .groups = "drop") %>%
+  mutate(position = factor(position, 
+                           levels = c("TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"),
+                           labels = c("Top", "Jungle", "Middle", "Bottom", "Support")))
+
+## Plot.
+ggplot(role_stats, aes(position, winrate, fill = position)) +
+  geom_col(width = 0.7) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "grey40") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Win rate by role", x = "", y = "Win rate") +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(), legend.position = "none")
+```
+
+### Team context via feature engineering
+
+Sometimes better predictions require feature engineering$—$being creative and thoughtful about new covariates.
+
+Here, remember that League of Legends is won and lost at the team level. A player’s raw counts (kills, assists, deaths, gold) only make sense relative to what their own team and the opposing team did in the same match. Ignoring that context can misread performance, so adding team information should improve prediction.
+
+A straightforward option is to include both teams’ aggregates (own and opponent totals). For parsimony and to reduce collinearity, we instead summarize team strength with differences between own and opponent totals (i.e., `diff_kills`, `diff_assists`, and `diff_gold`). These capture relative strength while keeping the specification compact and symmetric across sides. Below, we fit our models using only these team-aggregate differences.
+
+::: callout-tip
+We don’t have an explicit team ID, but teammates within a match share the same outcome (win or loss). We therefore identify teams with the interaction (`match_id`, `win`) and aggregate within that key.
+:::
+
+::: callout-important
+In League of Legends, every kill for your team is a death for the other team, so `diff_kills = - diff_deaths`. We thus do not include `diff_deaths` in our models.
+:::
+
+We observe a clear improvement in predictive performance for all models. On both $MSE(\cdot)$ and $LogLoss(\cdot)$, Logit and Probit substantially outperform LPM, with Logit performing slighlty better than Probit on $LogLoss(\cdot)$.
+
+```{r}
+#| label: fit-team
+#| message: false
+#| warning: false
+
+## Construct team performance.
+d_train <- d_train %>%
+    mutate(team_key = interaction(match_id, win, drop = TRUE)) %>%
+    group_by(team_key) %>%
+    mutate(team_kills = sum(kills),
+           team_assists = sum(assists),
+           team_deaths = sum(deaths),
+           team_gold = sum(gold),) %>%
+    ungroup() %>%
+    group_by(match_id) %>%
+    mutate(opp_kills = sum(kills) - team_kills,
+           opp_assists = sum(assists) - team_assists,
+           opp_deaths = sum(deaths) - team_deaths,
+           opp_gold = sum(gold) - team_gold,
+           diff_kills = team_kills - opp_kills,
+           diff_assists = team_assists - opp_assists,
+           diff_deaths = team_deaths - opp_deaths,
+           diff_gold = team_gold - opp_gold) %>%
+    ungroup()
+
+d_test <- d_test %>%
+    mutate(team_key = interaction(match_id, win, drop = TRUE)) %>%
+    group_by(team_key) %>%
+    mutate(team_kills = sum(kills),
+           team_assists = sum(assists),
+           team_deaths = sum(deaths),
+           team_gold = sum(gold),) %>%
+    ungroup() %>%
+    group_by(match_id) %>%
+    mutate(opp_kills = sum(kills) - team_kills,
+           opp_assists = sum(assists) - team_assists,
+           opp_deaths = sum(deaths) - team_deaths,
+           opp_gold = sum(gold) - team_gold,
+           diff_kills = team_kills - opp_kills,
+           diff_assists = team_assists - opp_assists,
+           diff_deaths = team_deaths - opp_deaths,
+           diff_gold = team_gold - opp_gold) %>%
+    ungroup()
+
+## Fit new models.
+lpm_team <- lm(win ~ diff_kills + diff_assists + diff_gold, data = d_train)                             
+logit_team <- glm(win ~ diff_kills + diff_assists + diff_gold, data = d_train, family = binomial("logit"))  
+probit_team <- glm(win ~ diff_kills + diff_assists + diff_gold, data = d_train, family = binomial("probit")) 
+
+## Predict on the test set. Clapm prediction for LPM.
+lpm_team_preds <- predict(lpm_team, newdata = d_test)
+lpm_team_preds_clamped <- clamp01(predict(lpm_team, newdata = d_test))
+logit_team_preds <- predict(logit_team, newdata = d_test, type = "response")
+probit_team_preds <- predict(probit_team, newdata = d_test, type = "response")
+
+## Metrics.
+performance_team <- bind_rows(eval_metrics(lpm_team_preds, Y_test) %>%
+                    mutate(model = "LPM"),
+                  eval_metrics(lpm_team_preds_clamped, Y_test) %>%
+                    mutate(model = "LPM-C"),
+                  eval_metrics(logit_team_preds, Y_test) %>% 
+                    mutate(model = "Logit"),
+                  eval_metrics(probit_team_preds, Y_test) %>% mutate(model = "Probit")) %>%
+  select(model, n_test, mse, log_loss) %>%
+  mutate(model_type = "Team aggregates")
+
+## Plot.
+performance_team_long <- performance_team %>%
+  pivot_longer(cols = c(mse, log_loss), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", log_loss = "Log loss"),
+         model = factor(model, levels = c("LPM", "LPM-C", "Logit", "Probit")))
+
+ggplot(bind_rows(performance_base_long, performance_position_long, performance_team_long), aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(rows = vars(factor(metric, levels = c("MSE", "Log loss"))), 
+             cols = vars(factor(model_type, levels = c("Baseline", "+ Position controls", "Team aggregates"))),
+             scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(max(performance_base_long$value, performance_position_long$value, performance_team_long$value)) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+## Explain
+
+We now focus on the team-aware specification, which performed best for predicting win probability. To maximize accuracy for our end goal, we refit these models on the full data set (train + test) and report their raw summaries and interpretable outputs. All subsequent interpretation are based on these refit models.
+
+```{r}
+#| label: fit-team-full
+#| message: false
+#| warning: false
+
+## Fit models on full data.
+full_dta <- bind_rows(d_train, d_test)
+
+lpm_team_full <- lm(win ~ diff_kills + diff_assists + diff_gold, data = full_dta)                             
+logit_team_full <- glm(win ~ diff_kills + diff_assists + diff_gold, data = full_dta, family = binomial("logit"))  
+probit_team_full <- glm(win ~ diff_kills + diff_assists + diff_gold, data = full_dta, family = binomial("probit")) 
+```
+
+Let’s peek at the estimated coefficients. Keep in mind: logit/probit coefficients aren’t on the probability scale (unlike the LPM), so you can’t read them as “probability changes.” That’s why we’ll focus on marginal effects next.
+
+```{r}
+#| label: peek-estimates
+#| message: false
+#| warning: false
+
+## Rename for pretty output.
+pretty <- c(diff_kills = "Diff. kills", diff_assists = "Diff. assists", diff_deaths = "Diff. deaths", diff_gold = "Diff gold")
+
+## Tidy fit summaries.
+tidy_lpm <- tidy(lpm_team_full, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(model = "LPM",
+         term = recode(term, !!!pretty))
+
+tidy_logit <- tidy(logit_team_full, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(model = "Logit",
+         term = recode(term, !!!pretty))
+
+tidy_probit <- tidy(probit_team_full, conf.int = TRUE) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(model = "Probit",
+         term = recode(term, !!!pretty))
+
+all_tidy <- bind_rows(tidy_lpm, tidy_logit, tidy_probit) %>%
+  mutate(term_pretty = recode(term, !!!pretty, .default = term))
+
+## Format each cell as "\hat{\beta}\n[low, high]".
+fmt_cell <- function(est, lo, hi, digits = 3) {
+  if (any(is.na(c(est, lo, hi)))) return("—")
+  
+  paste0(formatC(est, format = "f", digits = digits),
+         "\n[", formatC(lo, format = "f", digits = digits),
+         ", ",  formatC(hi, format = "f", digits = digits), "]")
+}
+
+tab_cells <- all_tidy %>% 
+  transmute(Variable = term_pretty,
+            model,
+            cell = fmt_cell(estimate, conf.low, conf.high)) %>%
+  pivot_wider(names_from = model, values_from = cell)
+
+## Kable.
+tab_cells %>%
+  kbl(align = c("l", "c", "c", "c"), booktabs = TRUE, escape = FALSE, caption = "Coefficient estimates and 95% confidence intervals") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, width = "8cm")
+```
+
+We now use the fitted models to compute *marginal effects at the mean* and *mean marginal effects*.
+
+::: callout-note
+In the LPM, marginal effects on the win probability equal the model coefficients. In Logit and Probit, marginal effects depend on $\boldsymbol{x}$ through the link’s derivative, so we must compute them rather than reading raw coefficients.
+:::
+
+::: callout-tip
+*Mean marginal effects* and *marginal effects at the mean* and generally differ (they coincide only for the LPM), and they answer slightly different questions. A mean marginal effect averages individual marginal effects $\nabla^j \pi(\boldsymbol{x})$ over the sample, so it reflects "typical" behavior across real covariate profiles and is usually the most interpretable quantity to report. A marginal effect at the mean evaluates $\nabla^j \pi(\cdot)$ at the mean covariate vector; it’s quick, but the “average person” may not exist$—$especially awkward with dummies$—$so its interpretation is thinner. As a rule of thumb, lean on marginal effects at the mean for substantive reporting and keep mean marginal effects as a lightweight check.
+:::
+
+The results are clear: net kills matter most, assists help a little, and gold adds no extra signal once kills and assists are in. Logit/Probit map these signals to probabilities far better than a flat LPM. At the decision margin, one extra net kill increases win probability; a net assist nudges it up (team play helps). Averaged across all profiles, effects shrink.
+
+```{r}
+#| label: marginal-effects
+#| message: false
+#| warning: false
+
+## Mean marginal effects.
+ame_lpm <- avg_slopes(lpm_team_full)  
+ame_logit <- avg_slopes(logit_team_full)  
+ame_probit <- avg_slopes(probit_team_full)  
+
+## Marginal effects at mean.
+mem_lpm <- slopes(lpm_team_full, newdata = "mean")
+mem_logit  <- slopes(logit_team_full, newdata = "mean")
+mem_probit <- slopes(probit_team_full, newdata = "mean")
+
+## Helpers.
+fmt_cell <- function(est, lo, hi, digits = 3) {
+  if (any(is.na(c(est, lo, hi)))) return("—")
+  paste0(
+    formatC(est, format = "f", digits = digits),
+    "\n[", formatC(lo, format = "f", digits = digits),
+    ", ",  formatC(hi, format = "f", digits = digits), "]"
+  )
+}
+
+tidy_me <- function(df, model_label, pretty_map = NULL) {
+  out <- df %>%
+    select(term, estimate, conf.low, conf.high) %>%
+    mutate(term = if (!is.null(pretty_map)) recode(term, !!!pretty_map) else term,
+           model = model_label)
+  out
+}
+
+## Prepare MEM and AME for each model.
+mem_lpm <- tidy_me(mem_lpm, "LPM", pretty)
+mem_logit <- tidy_me(mem_logit, "Logit", pretty)
+mem_probit <- tidy_me(mem_probit, "Probit", pretty)
+
+ame_lpm <- tidy_me(ame_lpm, "LPM", pretty)
+ame_logit <- tidy_me(ame_logit, "Logit", pretty)
+ame_probit <- tidy_me(ame_probit, "Probit", pretty)
+
+## Wide panels (one row per variable; columns = models).
+to_panel <- function(df_long, order_terms) {
+  df_long %>%
+    mutate(term = factor(term, levels = order_terms)) %>%
+    arrange(term, model) %>%
+    mutate(cell = fmt_cell(estimate, conf.low, conf.high)) %>%
+    select(term, model, cell) %>%
+    pivot_wider(names_from = model, values_from = cell) %>%
+    rename(Variable = term)
+}
+
+mem_wide <- bind_rows(mem_lpm, mem_logit, mem_probit) %>% to_panel(c("Diff. kills", "Diff. assists", "Diff. deaths", "Diff gold"))
+ame_wide <- bind_rows(ame_lpm, ame_logit, ame_probit) %>% to_panel(c("Diff. kills", "Diff. assists", "Diff. deaths", "Diff gold"))
+
+## Bind panels and kable.
+mem_n <- nrow(mem_wide)
+ame_n <- nrow(ame_wide)
+
+full_tab <- bind_rows(mem_wide, ame_wide)
+
+full_tab %>%
+  kbl(align = c("l","c","c","c"), booktabs = TRUE, escape = FALSE, caption = "Marginal effects on win probability and 95% confidence intervals.") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, width = "9cm") %>%
+  group_rows("Panel A: Marginal effects at the mean", 1, mem_n) %>%
+  group_rows("Panel B: Mean marginal effects", mem_n + 1, mem_n + ame_n)
+```
+
+## Deliver
+
+Beyond the obvious *more net kills ⇒ higher win rate*, the data says something actionable: coordination adds extra lift, even after accounting for kills and gold. Teams that out-assist opponents convert more of the same fights into wins. In practice, the same kill margin is worth more when fights are coordinated. That’s a lever you can coach and productize: surface assist margins and highlight comps/players who consistently turn assists into wins.
+
+::: callout-tip
+“Net assists help” is the *what*. The *why* is often where the insight lives. After answering the main question, we dig into mechanisms$—$sometimes by post-processing model outputs$—$to learn when a factor matters most. Here, we ask: when do net assists move the needle the most? To avoid over-reporting, we focus this part using only the best specification in our tests$—$here, Logit.
+:::
+
+We plot individual marginal effects of net assists against (i) net kills and (ii) predicted win probabilities. The picture is consistent and useful: the lift from an extra assist is largest in close games$—$when kill gaps and (predicted) win probabilities are near 50–50. As a game snowballs, that marginal boost naturally tapers, but it never turns negative: coordination always helps; it just helps most when the game is tight.
+
+```{r}
+#| label: coordination-mes
+#| message: false
+#| warning: false
+
+## Marginal effects of net assists. Focus only on Logit for simplicity (best-performing model).
+mes_assist <- slopes(logit_team_full, variables = "diff_assists", newdata = full_dta)
+
+## Attach covariates and baseline probabilities for plotting.
+plot_me <- full_dta %>%
+  mutate(rowid = row_number(),
+         p_hat = predict(logit_team_full, type = "response")) %>%
+  inner_join(mes_assist %>% mutate(rowid = row_number()) %>% 
+               select(rowid, me = estimate), by = "rowid")
+
+## Left: marginal effects vs net kills (biggest lift near even fights).
+plot_left <- ggplot(plot_me, aes(diff_kills, me)) +
+  geom_point(alpha = 0.08) +
+  geom_smooth(se = FALSE, color = "steelblue") +
+  labs(x = "Net kills", y = "Δ Win probability for +1 net assist") +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank())
+
+## Right: marginal effects vs baseline win prob (biggest lift around 50%).
+plot_right <- ggplot(plot_me, aes(p_hat, me)) +
+  geom_point(alpha = 0.08) +
+  geom_smooth(se = FALSE, color = "steelblue") +
+  scale_x_continuous(labels = percent) +
+  labs(x = "Predicted win probability", y = "") +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank())
+
+## Plot.
+plot_left + plot_right
+```
+
+What coaches can do with these results?
+
+-   **Practice even-state conversion**. Tag scrim moments where the game is roughly even and drill clean engage chains, peel timing, and follow-through. Track assists per even fight and an assist conversion rate (how often coordinated starts become assists).
+-   **Call the nudge live**. In tight states, prompt “play for coordinated engage”$—$group, secure vision, commit together. Treat assist margin as a live KPI to push.
+-   **Draft for coordination**. Favor comps and duos with reliable setup/follow-up (hard CC + burst, peel + hypercarry). Review which pairs consistently turn setups into assists and lean on them in close drafts.

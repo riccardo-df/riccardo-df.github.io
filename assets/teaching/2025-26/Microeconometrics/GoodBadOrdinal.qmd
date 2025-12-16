@@ -1,0 +1,820 @@
+---
+title: "The Good, the Bad & the Ordinal"
+subtitle: "A mini tour of ordered models"
+author: "Riccardo Di Francesco"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-summary: "Show code"
+    df-print: paged
+    smooth-scroll: true
+    embed-resources: true
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+
+rm(list = ls())
+set.seed(1986)
+
+pkgs <- c("tibble", "dplyr", "kableExtra", "ggplot2", "scales", "tidyr", "broom", "MASS", "patchwork", "ocf", "rsample", "ggrepel")
+pkgs_to_install <- pkgs[!(pkgs %in% installed.packages()[,"Package"])]
+if(length(pkgs_to_install)) install.packages(pkgs_to_install, quiet = TRUE)
+invisible(lapply(pkgs, library, character.only = TRUE))
+```
+
+## Case brief
+
+Christian’s movie log just landed on our desk. He asked: *“I need an econometrician to predict my rating from basic film info (year, box office, etc.)."* We'll help him by modelling $\mathbb P(Rating=m | X)$, where $m$ is Christian's rating (from $1$ to $10$).
+
+Why? A concrete use-case:
+
+-   *Movie-night triage*: Surface what actually drives Christian’s 7–10s and rank new films by a *watchlist score* $\mathbb P(Rating \geq 7 | X)$ (likely good) and the *disaster risk* $\mathbb P(Rating \leq 3 | X)$ (likely painful)$—$so we avoid duds at the department’s movie nights.
+
+::: callout-tip
+Today we’re modeling *associations*, not *causation*. If A24 titles score higher, that could be curation or selection (Christian chooses A24 because he expects to like them), not “A24 causes higher ratings.”
+:::
+
+We’ll follow a standard pipeline:
+
+1)  *Load & peek*$—$confirm columns, types, and granularity.\
+2)  *Sanity checks*$—$missing and impossible values.\
+3)  *Descriptive statistics*$—$Summary stats for scale and plausibility.\
+4)  *Fit models*$—$Ordered Logit and Probit for $\mathbb P(Rating=m | X)$; compare on held-out data.\
+5)  *Explain*$—$report coefficients sensibly.\
+6)  *Deliver*$—$a short, readable summary with the few visuals that actually deliver insights.
+
+## Load & peek
+
+First things first: let’s open the box and see what Christian actually gave us. This step isn’t about modeling—it’s *orientation*. We want to be sure we understand the basic structure of the data.
+
+We load the data.
+
+```{r}
+#| label: load-data
+#| message: false
+
+## Load data.
+path <- "../data/ChristianMovieRatings.Rds" # If you preserved the structure of my folder, this should work; otherwise, edit.
+dta <- readRDS(path)
+```
+
+Now let’s peek at a few rows. We’re not hunting for patterns yet—just confirming that what we think we have is what we actually have. From Christian's documentation, we expect to see the following variables:
+
+-   `title`: movie’s title (identifier).
+-   `year`: year of release.
+-   `my_rating`: outcome.
+-   `imdb_rating`: IMDB rating (averaged).
+-   `director`, `country`, `genre`: directory, country of production, and genre of the movie.
+-   `owned`: whether Christian owns a DVD of the movie ($=1$ if yes).
+-   `budget`, `box_office`: budget and revenue generated from the movie (million \$).
+-   `director_affinity`: how many movies from the same director Christian already watched before.
+
+::: callout-tip
+While you peek, ask yourself:
+
+-   What does one row represent (i.e., what is the unit of observation)?
+-   Do we have a stable key to uniquely identify rows?
+
+In our data, one row is a *movie* observation, and `title` looks like a unique key.
+:::
+
+```{r}
+#| label: peek-data
+#| message: false
+
+## Kable. 
+dta %>% 
+  slice_head(n = 7) %>% 
+  kbl(caption = "Christian's movie data") %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+::: callout-note
+`my_rating` is ordinal: the numbers are category labels (from very bad to very good), not measurements on a numeric scale. Distances between labels aren’t meaningful. So arithmetic on the labels is invalid: you can’t say “an 8 is twice a 4,” nor assume the gap 7→8 equals the gap 4→5.
+
+------------------------------------------------------------------------
+
+Relatedly, `imdb_rating` is a (weighted) average of users’ ordinal ratings. Beyond lacking meaningful intepretation, averaging ordinal labels mixes users who use the scale differently (each rater has their own cutpoints). For analysis, prefer ordinal models or report medians or top-box shares $\mathbb P (Rating \geq m)$.
+:::
+
+::: callout-important
+If we (artificially) treat an ordered outcome $Y \in \{1, \dots, M \}$ as numeric, its expectation is $$
+  \mathbb{E} [Y] = \sum_{m=1}^M m \mathbb P (Y = m).
+$$ $\mathbb{E} [Y]$ is a weighted average of class labels $m$ with weights $\mathbb P (Y = m)$. However, the numbers $1, \dots, M$ are mere labels, not units. Therefore, $\mathbb{E} [Y]$ depends on how you code categories and isn’t invariant to all possible recodings.
+:::
+
+Next, we check column types. Some models behave very differently depending on types, and R will happily coerce behind your back if you let it.
+
+::: callout-warning
+#### Why column types matter
+
+If `my_rating` is numeric instead of (ordered) factor, many models will raise errors or produce odd results. If qualitative variables like `genre` arrive as numbers, the model may treat them as numeric, which is wrong.
+:::
+
+```{r}
+#| label: structure-data
+#| message: false
+
+## Column types.
+str(dta)
+```
+
+## Sanity checks
+
+If the data is messy, models will confidently learn nonsense. So before visuals or modeling, we audit the basics.
+
+::: callout-important
+#### “Garbage in, garbage out.”
+
+Even a fancy model can’t fix broken inputs.
+:::
+
+### Missingness
+
+If key fields are missing, fix that now—before plots and models.
+
+::: callout-tip
+If you find missing values, typical options are:
+
+(i) drop rows (safe only when few and not systematic),
+(ii) simple imputations for non-outcomes, or
+(iii) model-based imputations.
+
+Be especially careful if the outcome is missing—removing or imputing those rows can bias results.
+:::
+
+Because only few rows miss them, we’ll drop observations with missing `director`, `country`, `imdb_rating` or `director_affinity`. We’ll display below what we’re dropping. However, `budget` and `box_office` have a lot of missings relative to the sample; we'll exclude these variables from modelling rather than dropping more rows.
+
+```{r}
+#| label: sanity-checks-missingness
+
+## Missingness.
+miss_tbl <- dta %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "missing") %>%
+  mutate(n_rows = nrow(dta),
+         missing = as.integer(missing),
+         frac_missing = missing / n_rows,
+         pct_missing = percent(frac_missing, accuracy = 0.1)) %>%
+  arrange(desc(frac_missing))
+
+## Kable.
+miss_tbl %>%
+  dplyr::select(variable, missing, pct_missing) %>%
+  kbl(caption = "Missing values per column",
+      col.names = c("Variable", "Missing (n)", "Missing (%)"),
+      align = c("l", "r", "r")) %>%
+  kable_styling(full_width = FALSE,
+                bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+```{r}
+#| label: drop-missing-key-fields
+#| message: false
+#| warning: false
+
+## New data set with removed missing director, country, or imdb_rating, and budget and box_office columns.
+dta_model <- dta %>%
+  filter(!is.na(director), !is.na(country), !is.na(imdb_rating)) %>%
+  dplyr::select(-budget, -box_office)
+
+## Display.
+dta %>%
+  filter(is.na(director) | is.na(country) | is.na(imdb_rating)) %>%
+  kbl(caption = paste0("Observations we dropped")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+::: callout-tip
+When we drop many observations, manual inspection becomes infeasible. Instead, one can report descriptive statistics for both the *full* sample and the *restricted* (post-drop) sample and compare them. Differences tell us how the analysis sample deviates from the source data$—$useful for understanding the reference population and the external validity of our results.
+:::
+
+### Non-sensical values
+
+Now we apply plain common sense. By construction, `my_rating` and `imdb_rating` cannot be negative or larger than $10$. If they are, something went wrong upstream.
+
+::: callout-tip
+Build a small checklist of “obvious rules” for every project. If a rule is violated, decide whether to fix, filter, or flag the row—and write down that decision.
+:::
+
+```{r}
+## Non-sensical values.
+neg_or_g10_counts <- sapply(dta_model[, c("my_rating", "imdb_rating")], function(x) sum(x < 0 | x > 10))
+tibble(variable = names(neg_or_g10_counts),
+       n_rows = nrow(dta),
+       impossible_n = as.integer(neg_or_g10_counts),
+       impossible_perc = percent(impossible_n / n_rows, accuracy = 0.1)) %>%
+  dplyr::select(-n_rows) %>%
+  kbl(caption = "N. negative values per column", col.names = c("Variable", "Impossible (n)", "Impossible (%)"), align = c("l", "r", "r")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+Moreover, movies cannot come from future years (not yet). If so, those rows may need attention.
+
+```{r}
+## Non-sensical values.
+current_year <- format(Sys.Date(), "%Y")
+future_years <- sapply(dta_model[, c("year")], function(x) sum(x > current_year))
+tibble(n_rows = nrow(dta),
+       impossible_n = as.integer(future_years),
+       impossible_perc = percent(impossible_n / n_rows, accuracy = 0.1)) %>%
+  dplyr::select(-n_rows) %>%
+  kbl(caption = "Future values", col.names = c("Impossible (n)", "Impossible (%)"), align = c("r", "r")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Data descriptives
+Before we fit anything, we need to understand our data. We start by sizing the data set. How many rows do we have overall? How many unique movies?
+
+```{r}
+## Core counts.
+counts <- tibble(observations = nrow(dta_model),
+                 movie_unique = n_distinct(dta_model$title))
+
+## Kable.
+kbl(counts, caption = "Dataset size and uniqueness", col.names = c("N","N. movies")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+We have more rows than unique titles, so some titles repeat. That alone doesn’t mean the data are bad$—$remakes, re-releases, or alternate cuts can share a title.
+
+We check uniqueness by the (`title`, `year`) pair; now duplicates disappear. Earlier we claimed `title` was a unique key$—$it turns out that was wrong. The correct unique key is (`title`, `year`). We dispaly some repeated titles to confirm this intuition.
+
+```{r}
+#| label: movies-uniqueness-summary
+#| message: false
+#| warning: false
+
+## Core counts.
+counts <- tibble(observations = nrow(dta_model),
+                 movie_year_unique = dta_model %>% 
+                   distinct(title, year) %>% 
+                   nrow())
+
+
+kbl(counts, caption = "Dataset size and uniqueness", col.names = c("N","N. (title, year)")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped","hover","condensed","responsive"))
+```
+
+```{r}
+#| label: movies-duplicate-titles
+#| message: false
+#| warning: false
+
+## Select duplicate titles.
+dup_titles <- dta_model %>%
+  add_count(title, name = "n_title") %>%
+  filter(n_title > 1) %>%
+  arrange(desc(n_title), title, year) %>%
+  dplyr::select(-n_title) %>%
+  slice_head(n = 10) 
+
+## Kable.
+dup_titles %>%
+  kbl(caption = paste0("Repeating titles (showing first 10 of ", nrow(dup_titles), ")")) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+Next, we investigate scale and plausibility. Min/max/mean/sd tell us if values live where we expect and whether any column needs attention (e.g., huge spread, suspicious extremes).
+
+::: callout-warning
+#### Why summary stats matter
+If a variable’s range is off (e.g., negative rating or future years), models will faithfully learn nonsense. Moreover, a “nice” mean can hide a broken column (e.g., many zeros + a few giant values). Looking at all summary stats (min/max/mean/sd) is a fast “smell test” for outliers, unit mistakes, or columns that need transformation.
+:::
+
+Here is a useful function to compute summary stats; you can also copy-paste it in your future projects.
+
+```{r}
+#| label: useful-function
+#| message: false
+
+## Useful function.
+summarize_vars <- function(df, 
+                           vars = character(),
+                           digits = 3, include_na_level = TRUE) {
+  ## Keep only columns that exist; warn on missing names.
+  exist <- intersect(vars, names(df))
+
+  if (length(setdiff(vars, exist)) > 0) {
+    warning("These vars were not found and were ignored: ",
+            paste(setdiff(vars, exist), collapse = ", "))
+  }
+
+  ## Summary stats.
+  vars_list <- lapply(vars, function(v) {
+    x <- df[[v]]
+
+    tibble(variable = v,
+           n = sum(!is.na(x)),
+           missing = sum(is.na(x)),
+           min = suppressWarnings(min(x, na.rm = TRUE)),
+           mean = mean(x, na.rm = TRUE),
+           sd = sd(x, na.rm = TRUE),
+           max = suppressWarnings(max(x, na.rm = TRUE)))
+  })
+  
+  vars_list <- Filter(Negate(is.null), vars_list)  
+  
+  ## Bundle in table.
+  out <- if (length(vars_list)) {
+    bind_rows(vars_list) %>%
+      mutate(across(c(min, mean, sd, max), ~ round(.x, digits)))
+  } else {
+    tibble()
+  }
+}
+```
+
+::: callout-tip
+For qualitative variables (e.g., `genre`), computing min/mean/sd/max doesn’t make sense. Instead, we *dummy-encode* each level into a 0/1 indicator. This is often helpful for modeling too, since coefficients become easier to interpret. To keep summaries readable, we avoid dummy-expanding very high-cardinality variables (e.g., `directors`) at this stage. Furthermore, since $\approx 66\%$ of titles are from the US (you can verify yourself), we’ll summarize `country` with a single indicator `us` ($= 1$ if the movie is from the US).
+:::
+
+::: callout-important
+Below we display the means of `my_rating` and `imdb_rating`. As noted above, these are ordinal scores, so their averages have limited interpretability. We report them here only for (coding) convenience.
+:::
+
+```{r}
+#| label: descriptives
+#| message: false
+
+## Expand `genre` into dummy columns.
+genre_dummies <- as_tibble(model.matrix(~ dta_model$genre - 1), .name_repair = "minimal")
+names(genre_dummies) <- levels(dta_model$genre)
+genre_dummies <- genre_dummies %>%
+  rename(Noir = `Film-Noir`,
+         SciFi = `Sci-Fi`)
+
+## Bind dummies to the original data. Drop original genre.
+new_dta <- bind_cols(dta_model, genre_dummies) %>%
+  dplyr::select(-genre)
+
+## Code US variable and drop country.
+new_dta <- new_dta %>%
+  mutate(us = as.numeric(ifelse(country == "USA", 1, 0))) %>%
+  dplyr::select(-country)
+
+## Compute summary table using our function.
+stats_table <- summarize_vars(new_dta, vars = c("my_rating", "imdb_rating", "owned", "director_affinity", "us", colnames(genre_dummies)))
+
+## Kable.
+stats_table %>%
+  kbl(caption = "Descriptive statistics") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+## Fit models
+Now we get to the core task: fit simple, transparent models for $\mathbb P(Rating=m | X)$. Before we press “go,” let’s quickly peek at the current data set.
+
+```{r}
+#| label: peek-new-data
+#| message: false
+
+## Kable.
+new_dta %>%
+  slice_head(n = 7) %>%
+  kbl(caption = "Estimation sample") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
+
+### Baseline models
+We start with a baseline: model $\mathbb P (Rating = m | X)$ using only `imdb_rating`, `owned`, and `us`. We fit two standard binary models: ordered Logit and Probit. We train the models on one split ($80\%$) and evaluate their performance on a held-out test set ($20\%$). That way, we measure how well the models generalize to data they haven’t seen.
+
+::: callout-tip
+#### Held-out test $=$ honest assessment
+
+Fitting and judging on the same data rewards memorization (*overfitting*). A held-out test set simulates future, unseen observations.
+:::
+
+::: callout-warning
+#### Train on past, test on future
+
+To mimic forecasting and avoid “peeking into the future,” we could split by release year: train on films released up to a cutoff year, test on films released after it. However, recent films differ systematically from older ones, so a time split would mix covariate shift with model performance. We thus use a standard random split.
+:::
+
+::: callout-tip
+`imdb_rating` is a (weighted) average of user scores, so we treat it as a numeric covariate. An alternative would be to round to the nearest integer and treat it as ordered.
+:::
+
+```{r}
+#| label: data-split
+#| message: false
+
+## Train/test split.
+spl <- initial_split(new_dta, prop = 0.8, strata = my_rating) # Keep class balance.
+train <- training(spl)
+test <- testing(spl)
+```
+
+```{r}
+#| label: fit-baseline
+#| message: false
+#| warning: false
+
+## Fit baseline models.
+ologit_base <- polr(factor(my_rating) ~ imdb_rating + owned + us, data = train, method = "logistic")  
+oprobit_base <- polr(factor(my_rating) ~ imdb_rating + owned + us, data = train, method = "probit")  
+```
+
+We evaluate on the held-out test set to get an honest sense of generalization. We use two performance measures:
+
+$$ MSE(\hat{\pi}) = \frac{1}{n} \sum_{i = 1}^n \sum_{m = 1}^M [\mathbb{1} (Y_i = m) - \hat{\pi}_m (\boldsymbol{X_i})]^2,$$ $$ RPS(\hat{\pi}) = \frac{1}{n} \sum_{i = 1}^n \frac{1}{M - 1} \sum_{m = 1}^M [ \mathbb{1} (Y_i \leq m) - \sum_{j = 1}^m \hat{\pi}_j (\boldsymbol{X_i})]^2.$$ Lower is better for both.
+
+Results indicate that ordered Logit and Probit perform practically identically.
+
+```{r}
+#| label: evaluate-baseline
+#| message: false
+#| warning: false
+
+## Predict on the test set. 
+ologit_base_preds <- predict(ologit_base, newdata = test, type = "probs")
+oprobit_base_preds <- predict(oprobit_base, newdata = test, type = "probs")
+
+## Outcome on test set.
+Y_test <- test$my_rating
+
+## Metrics.
+eval_metrics <- function(p, y) {
+  tibble(mse = ocf::mean_squared_error(y, p), # MSE for ordered probability predictions.
+         rps = ocf::mean_ranked_score(y, p)) # Rank probability score.
+}
+
+performance_base <- bind_rows(eval_metrics(ologit_base_preds,  Y_test) %>% 
+                                mutate(model = "Logit"),
+                    eval_metrics(oprobit_base_preds, Y_test) %>% 
+                      mutate(model = "Probit")) %>%
+  dplyr::select(model, mse, rps) %>%
+  mutate(model_type = "Baseline")
+
+## Plot.
+performance_base_long <- performance_base %>%
+  pivot_longer(cols = c(mse, rps), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", rps = "RPS"),
+         model = factor(model, levels = c("Logit", "Probit")))
+
+ggplot(performance_base_long, aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(cols = vars(factor(metric, levels = c("MSE", "RPS"))), scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(performance_base_long$value) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+### Adding more covariates
+We extend the baseline by adding `genre` dummies, so the model can shift rating probabilities by genre. To avoid the dummy-variable trap (perfect multicollinearity), we omit one category and use it as the reference. We choose `Gyser` (horror) because Christian is objectively wrong about what counts as horror.
+
+Results barely change after adding genre dummies. Apparently, Christian’s ratings aren’t strongly genre-driven.
+
+::: callout-tip
+*Parsimony* is a key desideratum in model building: when two models perform similarly on held-out data, prefer the simpler one for interpretability. Our results show that adding genre dummies yields no meaningful gain in performance. Therefore, in the next models we omit genre dummies.
+:::
+
+```{r}
+#| label: fit-with-genre
+#| message: false
+#| warning: false
+
+## Fit new models.
+these_genres <- setdiff(colnames(genre_dummies), "Gyser") 
+rhs <- paste(c("imdb_rating + owned + us", sprintf("`%s`", these_genres)), collapse = " + ")
+fml <- as.formula(paste("factor(my_rating) ~", rhs))
+
+ologit_genre <- polr(fml, data = train, method = "logistic")  
+oprobit_genre <- polr(fml, data = train, method = "probit")  
+
+## Predict on the test set. 
+ologit_genre_preds <- predict(ologit_genre, newdata = test, type = "probs")
+ologit_genre_preds <- predict(oprobit_genre, newdata = test, type = "probs")
+
+## Metrics.
+performance_genre <- bind_rows(eval_metrics(ologit_genre_preds, Y_test) %>% 
+                                mutate(model = "Logit"),
+                    eval_metrics(ologit_genre_preds, Y_test) %>% 
+                      mutate(model = "Probit")) %>%
+  dplyr::select(model, mse, rps) %>%
+  mutate(model_type = "+ Genre controls")
+
+## Plot.
+performance_genre_long <- performance_genre %>%
+  pivot_longer(cols = c(mse, rps), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", rps = "RPS"),
+         model = factor(model, levels = c("Logit", "Probit")))
+
+ggplot(bind_rows(performance_base_long, performance_genre_long), aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(rows = vars(factor(metric, levels = c("MSE", "RPS"))), 
+             cols = vars(factor(model_type, levels = c("Baseline", "+ Genre controls"))),
+             scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(max(performance_base_long$value, performance_genre_long$value)) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+### Year context via feature engineering
+Sometimes better predictions require feature engineering—being creative and thoughtful about new covariates.
+
+Here we extend the baseline by adding decade dummies so the model can shift rating probabilities by release era (1950s, 1960s, $\dots$). We omit $1920s$ to avoid multicollinearity.
+
+Again, results barely change after adding decade dummies.
+
+```{r}
+#| label: fit-director-experience
+#| message: false
+#| warning: false
+
+## Construct director experience. Currently not used.
+director_dta <- new_dta %>%
+  count(director, year, name = "n_dir_year") %>%
+  arrange(director, year) %>%
+  group_by(director) %>%
+  mutate(director_experience = dplyr::lag(cumsum(n_dir_year), 1, default = 0L)) %>%
+  ungroup() 
+
+train <- train %>%
+  left_join(director_dta, by = c("director", "year"))
+test <- test %>%
+  left_join(director_dta, by = c("director", "year"))
+
+## Construct decade dummies.
+train <- train %>%
+  mutate(decade_num = floor(year / 10) * 10,            
+         decade_lab = ifelse(is.na(decade_num), NA, paste0(decade_num, "s")),
+         decade = factor(decade_lab, levels = sort(unique(decade_lab)), ordered = TRUE))
+test <- test %>%
+  mutate(decade_num = floor(year / 10) * 10,            
+         decade_lab = ifelse(is.na(decade_num), NA, paste0(decade_num, "s")),
+         decade = factor(decade_lab, levels = sort(unique(decade_lab)), ordered = TRUE))
+
+mm_train <- model.matrix(~ decade - 1, data = train, na.action = na.pass) %>%
+  as_tibble()
+mm_test <- model.matrix(~ decade - 1, data = test,  na.action = na.pass) %>%
+  as_tibble()
+
+train <- bind_cols(train, mm_train)
+test <- bind_cols(test,  mm_test)
+
+## Fit new models.
+these_decades <- setdiff(colnames(mm_train), "decade1920s") 
+rhs <- paste(c("imdb_rating + owned + us", sprintf("`%s`", these_decades)), collapse = " + ")
+fml <- as.formula(paste("factor(my_rating) ~", rhs))
+
+ologit_decade <- polr(fml, data = train, method = "logistic")  
+oprobit_decade <- polr(fml, data = train, method = "probit")  
+
+## Predict on the test set. 
+ologit_decade_preds <- predict(ologit_decade, newdata = test, type = "probs")
+oprobit_decade_preds <- predict(oprobit_decade, newdata = test, type = "probs")
+
+## Metrics.
+performance_decade <- bind_rows(eval_metrics(ologit_decade_preds, Y_test) %>% 
+                    mutate(model = "Logit"),
+                  eval_metrics(oprobit_decade_preds, Y_test) %>% 
+                    mutate(model = "Probit")) %>%
+  dplyr::select(model, mse, rps) %>%
+  mutate(model_type = "+ Decade controls")
+
+## Plot.
+performance_decade_long <- performance_decade %>%
+  pivot_longer(cols = c(mse, rps), names_to = "metric", values_to = "value") %>%
+  mutate(metric = recode(metric, mse = "MSE", rps = "RPS"),
+         model = factor(model, levels = c("Logit", "Probit")))
+
+ggplot(bind_rows(performance_base_long, performance_genre_long, performance_decade_long), aes(x = model, y = value, fill = model_type)) +
+  geom_col(width = 0.68) +
+  facet_grid(rows = vars(factor(metric, levels = c("MSE", "RPS"))), 
+             cols = vars(factor(model_type, levels = c("Baseline", "+ Genre controls", "+ Decade controls"))),
+             scales = "free_y") +
+  labs(title = "Held-out test performance", x = NULL, y = "Score") +
+  coord_cartesian(ylim = c(0, max(max(performance_base_long$value, performance_genre_long$value, performance_decade_long$value)) * 1.12)) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(),
+        axis.text.x = element_text(angle = 15, hjust = 0.5),
+        legend.position = "none")
+```
+
+## Explain
+We now focus on the baseline specification$—$the simplest specification with competitive performance. To maximize accuracy for our end goal, we refit the models on the full data set (train + test) and report their raw summaries and interpretable outputs. All subsequent interpretation are based on these refit models.
+
+```{r}
+#| label: fit-baseline-full
+#| message: false
+#| warning: false
+
+## Fit models on full data.
+ologit_base_full <- polr(factor(my_rating) ~ imdb_rating + owned + us, data = new_dta, method = "logistic", Hess = TRUE)  
+oprobit_base_full <- polr(factor(my_rating) ~ imdb_rating + owned + us, data = new_dta, method = "probit", Hess = TRUE)  
+```
+
+Let’s peek at the estimated coefficients. Keep in mind: ordered logit/probit coefficients aren’t on the probability scale, so you can’t read them as “probability changes.” That’s why we’ll focus on marginal effects next.
+
+```{r}
+#| label: peek-estimates
+#| message: false
+#| warning: false
+
+## Tidy fit summaries.
+tidy_wald <- function(fit, model_name) {
+  s <- summary(fit)
+  co <- as.data.frame(s$coefficients)
+  co$term <- rownames(co)
+  co <- co %>% 
+    filter(!grepl("\\|", term))
+  z <- qnorm(0.975)
+  co %>%
+    transmute(term,
+              estimate = Value,
+              conf.low = Value - z * `Std. Error`,conf.high= Value + z * `Std. Error`,
+              model = model_name)
+}
+
+tidy_logit <- tidy_wald(ologit_base_full,  "Logit")
+tidy_probit <- tidy_wald(oprobit_base_full, "Probit")
+
+all_tidy <- bind_rows(tidy_logit, tidy_probit)
+
+## Format each cell as "\hat{\beta}\n[low, high]".
+fmt_cell <- function(est, lo, hi, digits = 3) {
+  paste0(formatC(est, format = "f", digits = digits), "\n[",
+         formatC(lo, format = "f", digits = digits), ", ",
+         formatC(hi, format = "f", digits = digits), "]")
+}
+
+tab_cells <- all_tidy %>%
+  mutate(cell = fmt_cell(estimate, conf.low, conf.high)) %>%
+  dplyr::select(Variable = term, model, cell) %>%
+  pivot_wider(names_from = model, values_from = cell)
+
+## Kable.
+tab_cells %>%
+  kbl(align = c("l", "c", "c"), booktabs = TRUE, escape = FALSE, caption = "Coefficient estimates and 95% confidence intervals") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, width = "8cm")
+```
+
+We now use the fitted models to compute *mean marginal effects*.
+
+::: callout-tip
+*Mean marginal effects* and *marginal effects at the mean* and generally differ, and they answer slightly different questions. A mean marginal effect averages individual marginal effects $\nabla^j \pi(\boldsymbol{x})$ over the sample, so it reflects "typical" behavior across real covariate profiles and is usually the most interpretable quantity to report. A marginal effect at the mean evaluates $\nabla^j \pi(\cdot)$ at the mean covariate vector; it’s quick, but the “average person” may not exist—especially awkward with dummies—so its interpretation is thinner. As a rule of thumb, lean on marginal effects at the mean for substantive reporting and keep mean marginal effects as a lightweight check.
+:::
+
+Logit and Probit tell the same story: IMDb matters most, “owned” helps a bit, and US origin adds essentially no extra signal. At the decision margin, a bump in IMDb mostly moves mass out of 3–6 and into 7–8; it barely touches 10. Owned titles lean the same way$—$classic selection: Christian tends to buy what he likes.
+
+```{r}
+#| label: marginal-effects
+#| message: false
+#| warning: false
+
+## Useful function: mean marginal effects for a polr model.
+ame_polr <- function(fit, data, vars_cont = character(), vars_bin = character()) {
+  ## Handling inputs and checks.
+  stopifnot(inherits(fit, "polr"))
+
+  P0 <- predict(fit, newdata = data, type = "probs")
+  classes <- colnames(P0)
+  M <- length(classes)
+
+  X <- model.matrix(fit, data)[, -1]
+  beta <- coef(fit)               
+  eta <- as.numeric(X %*% beta)  
+  zetas <- as.numeric(fit$zeta)    
+  bounds <- c(-Inf, zetas, Inf)
+
+  link <- fit$method
+  pdf_fun <- if (link == "logistic") {
+    function(u) plogis(u) * (1 - plogis(u))
+  } else if (link == "probit") {
+    function(u) dnorm(u)
+  } else stop("Unsupported link: ", link)
+
+  out_rows <- list()
+
+  ## Continuous variables: analytic derivative & average.
+  for (v in vars_cont) {
+    if (!v %in% names(beta)) next
+    bj <- beta[[v]]
+    ame_m <- sapply(seq_len(M), function(m) {
+      f_left <- pdf_fun(bounds[m] - eta)   
+      f_right <- pdf_fun(bounds[m+1] - eta)   
+      mean(bj * (f_left - f_right), na.rm = TRUE)
+    })
+    out_rows[[v]] <- setNames(ame_m, classes)
+  }
+
+  ## Binary variables: discrete change & average.
+  for (v in vars_bin) {
+    if (!v %in% colnames(data)) next
+    d1 <- data
+    d0 <- data
+    d1[[v]] <- 1L; d0[[v]] <- 0L
+    P1 <- predict(fit, newdata = d1, type = "probs")
+    P0 <- predict(fit, newdata = d0, type = "probs")
+    ame_m <- colMeans(P1 - P0, na.rm = TRUE)
+    out_rows[[v]] <- setNames(ame_m, classes)
+  }
+
+  ## Bind & pretty,
+  ame_mat <- do.call(rbind, out_rows)
+  ame_tbl <- as_tibble(ame_mat, rownames = "Variable")
+  ame_tbl
+}
+
+## Apply the function.
+continuous_vars <- c("imdb_rating")
+binary_vars <- c("owned", "us")    
+
+ame_logit <- ame_polr(ologit_base_full, new_dta, continuous_vars, binary_vars) 
+ame_probit <- ame_polr(oprobit_base_full, new_dta, continuous_vars, binary_vars) 
+
+## Two-panel table: classes as columns, variables as rows.
+tab_logit <- ame_logit
+tab_probit <- ame_probit 
+
+n_logit <- nrow(tab_logit)
+n_probit <- nrow(tab_probit)
+tab_all <- bind_rows(tab_logit, tab_probit)
+
+## Kable.
+kbl(tab_all, align = c("l", rep("c", ncol(tab_all)-2), "l"), digits = 3, booktabs = TRUE,
+    caption = "Average marginal Effects") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  group_rows("Panel A: Logit",  1, n_logit) %>%
+  group_rows("Panel B: Probit", n_logit + 1, n_logit + n_probit)
+```
+
+## Deliver
+We turn the models into something we can use for our department's movie nights. For each film we compute two personalized scores:
+
+-   *Watchlist score* $\Rightarrow \mathbb P(Rating \geq 7 | X)$.
+-   *Disaster risk* $\Rightarrow \mathbb P(Rating \leq 3 | X)$.
+
+We then rank candidates by the watchlist score (high → low) and, separately, by disaster risk (high → low). Think of it as a two-list triage: what to watch next, and what to avoid.
+
+::: callout-tip
+This is where we turn patterns into decisions. The models summarized how Christian rates; now we use that to produce actionable lists$—$a short watch soon list and a short skip list.
+:::
+
+::: callout-tip
+Logit and Probit deliver nearly identical predictive performance, so we don't expect downstream results to meaningfully differ. For clarity, we report only the logit results. A full report would include the probit tables/figures in an appendix as a *robustness check*.
+:::
+
+Christian and IMDb mostly vibe$—$the top-right cluster (Shawshank, The Godfather, LOTR, 12 Angry Men, $\dots$) screams watch now, while the bottom-left rogues’ gallery (Sharknado, Disaster Movie, Catwoman, Home Alone 4, $\dots$) politely says hard pass.
+
+```{r}
+#| label: watchlist-disaster
+#| message: false
+#| warning: false
+
+## Select fit and compute watchlist score and disaster risk,
+fit <- ologit_base_full
+
+preds <- as.data.frame(predict(fit, newdata = new_dta, type = "probs"))
+classes <- as.integer(colnames(preds))
+p_good7 <- rowSums(preds[, classes >= 7, drop = FALSE])
+p_bad3 <- rowSums(preds[, classes <= 3, drop = FALSE])
+
+pred <- new_dta %>%
+  mutate(p_good7 = p_good7, p_bad3 = p_bad3) %>%
+  dplyr::select(title, year, director, imdb_rating, my_rating, p_good7, p_bad3)
+
+best <- pred %>% arrange(desc(p_good7)) %>% slice_head(n = 10) %>%
+  mutate(kind = "Watch soon", score = p_good7)
+worst <- pred %>% arrange(desc(p_bad3))  %>% slice_head(n = 10) %>%
+  mutate(kind = "Probably skip", score = p_bad3)
+
+highlight <- bind_rows(best, worst)
+
+## Plot.
+ggplot() +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 7, ymax = Inf, fill = "steelblue", alpha = 0.06) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = 3, fill = "firebrick", alpha = 0.06) +
+  geom_point(data = new_dta, aes(imdb_rating, my_rating), color = "grey80", alpha = 0.35, size = 1.3) +
+  geom_point(data = highlight, aes(imdb_rating, my_rating, color = kind, size = score), alpha = 0.95) +
+  geom_hline(yintercept = c(3,7), linetype = "dashed", linewidth = 0.5, color = "grey60") +
+  geom_text_repel(data = highlight, aes(imdb_rating, my_rating, 
+                                        label = title, color = kind), 
+                  size = 2.8, seed = 1975, box.padding = 1.35, point.padding = 0.55,
+                  min.segment.length = 0, max.overlaps = Inf, show.legend = FALSE) +
+  scale_color_manual(values = c("Watch soon" = "steelblue", "Probably skip" = "firebrick")) +
+  scale_size(name = "Confidence", range = c(2.5, 7), breaks = c(0.4, 0.6, 0.8), labels = percent_format(accuracy = 1)) +
+  scale_x_continuous("IMDb rating", limits = c(min(new_dta$imdb_rating, na.rm = TRUE) - 0.1, max(new_dta$imdb_rating, na.rm=TRUE) + 0.1)) +
+  scale_y_continuous("Christian’s rating", breaks = 1:10, limits = c(1, 10)) +
+  labs(caption = "Each dot is a film. Colored points label the top 10 'Watch soon' (blue) and 'Probably skip' (red). Point size is 
+proportional to the corresponding probability.") +
+  guides(color = guide_legend(override.aes = list(size = 4, alpha = 1))) +
+  theme_bw(base_size = 13) +
+  theme(panel.grid.minor = element_blank(), legend.position = "none", plot.title.position = "plot",
+        legend.title = element_blank(), plot.caption.position = "plot", plot.caption = element_text(hjust = 0))
+```
