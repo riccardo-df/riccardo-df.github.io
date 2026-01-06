@@ -1,7 +1,7 @@
 ---
 title: ""
-page-layout: full
 toc: false
+page-layout: full
 ---
 
 ::: {.g-col-12 .g-col-md-5}
@@ -9,6 +9,9 @@ toc: false
 :::
 
 **Postdoctoral Researcher · University of Southern Denmark**
+
+::: {.callout-tip appearance="minimal"}
+### Current position
 
 ::: {.justified}
 <p style="margin-bottom: -0.75rem;">
@@ -19,7 +22,9 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 (Principal Investigator: Seetha Menon).
 </small>
 :::
+:::
 
+::: {.callout-tip appearance="minimal"}
 ### Research interests
 
 ::: {.keywords}
@@ -29,11 +34,14 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 <span class="keyword">*Mental health*</span>
 <span class="keyword">*LGBTQ+ economics*</span>
 :::
+:::
 
+::: {.callout-tip appearance="minimal"}
 ### Background
 
 ::: {.justified}
 I obtained my Ph.D. in Economics and Finance from the University of Rome Tor Vergata in September 2024. My training is primarily in econometrics, with an emphasis on causal inference and machine learning.
 
 Outside academia, I enjoy hiking, training in the boxing ring, and playing bass guitar.
+:::
 :::

@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - assets/teaching/**
   render:
     - index.qmd
     - research.qmd
@@ -33,7 +35,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: pulse
     toc: false
     smooth-scroll: true
     css: styles.css
