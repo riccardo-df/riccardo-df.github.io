@@ -11,7 +11,7 @@ page-layout: full
 **Postdoctoral Researcher · University of Southern Denmark**
 
 ::: {.callout-tip appearance="minimal"}
-### Current position
+### **Current position**
 
 ::: {.justified}
 <p style="margin-bottom: -0.75rem;">
@@ -25,7 +25,7 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 :::
 
 ::: {.callout-tip appearance="minimal"}
-### Research interests
+### **Research interests**
 
 ::: {.keywords}
 <span class="keyword">*Causal inference*</span>
@@ -37,7 +37,7 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 :::
 
 ::: {.callout-tip appearance="minimal"}
-### Background
+### **Background**
 
 ::: {.justified}
 I obtained my Ph.D. in Economics and Finance from the University of Rome Tor Vergata in September 2024. My training is primarily in econometrics, with an emphasis on causal inference and machine learning.

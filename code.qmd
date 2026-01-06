@@ -8,7 +8,7 @@ page-layout: full
 
 ::: {.g-col-12}
 ::: {.callout-tip appearance="minimal"}
-### causalQual — Causal inference for qualitative outcomes
+### **causalQual — Causal inference for qualitative outcomes**
 
 ```{=html}
 <div class="pkg-row">
@@ -35,7 +35,7 @@ page-layout: full
 
 ::: {.g-col-12}
 ::: {.callout-tip appearance="minimal"}
-### valiCATE — Validation of CATE Models  
+### **valiCATE — Validation of CATE Models**  
 
 ```{=html}
 <div class="pkg-row">
@@ -61,7 +61,7 @@ page-layout: full
 
 ::: {.g-col-12}
 ::: {.callout-tip appearance="minimal"}
-### ocf — Ordered Correlation Forest    
+### **ocf — Ordered Correlation Forest**    
 
 ```{=html}
 <div class="pkg-row">
@@ -88,7 +88,7 @@ page-layout: full
 
 ::: {.g-col-12}
 ::: {.callout-tip appearance="minimal"}
-### aggTrees — Aggregation Trees  
+### **aggTrees — Aggregation Trees**  
 
 ```{=html}
 <div class="pkg-row">

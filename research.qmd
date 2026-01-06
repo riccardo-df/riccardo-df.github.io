@@ -8,9 +8,9 @@ page-layout: full
 
 ::: {.g-col-12 .g-col-lg-6}
 ::: {.callout-tip appearance="minimal"}
-### Causal inference for qualitative outcomes (2025)
+### **Causal inference for qualitative outcomes**
 
-**Di Francesco, R. & Mellace, G.**  
+**Di Francesco, R. & Mellace, G. (2025)** 
 *Economics Letters*, 112626.
 
 [📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
@@ -29,9 +29,9 @@ page-layout: full
 
 ::: {.g-col-12 .g-col-lg-6}
 ::: {.callout-tip appearance="minimal"}
-### Ordered correlation forest (2025)
+### **Ordered correlation forest** 
 
-**Di Francesco, R.**  
+**Di Francesco, R. (2025)**  
 *Econometric Reviews*, 44(4), 416–432.
 
 <div class="paper-actions">
@@ -63,7 +63,7 @@ page-layout: full
 ## Working papers
 
 ::: {.callout-note appearance="minimal"}
-### Aggregation Trees (2024)
+### **Aggregation Trees** (2024)
 
 **arXiv:2410.11408**
 
@@ -77,7 +77,7 @@ page-layout: full
 :::
 
 ::: {.callout-note appearance="minimal"}
-### The Cost of Coming Out (2024)
+### **The Cost of Coming Out** (2024)
 
 **arXiv:2403.03649** (with [Enzo Brox](https://sites.google.com/view/ebrox))
 
