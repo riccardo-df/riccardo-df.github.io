@@ -35,7 +35,7 @@ website:
 
 format:
   html:
-    theme: pulse
+    theme: defualt
     toc: false
     smooth-scroll: true
     css: styles.css
