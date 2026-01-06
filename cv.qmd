@@ -32,7 +32,7 @@ page-layout: full
   <iframe
     src="assets/others/cv.pdf"
     class="asset-frame"
-    title="Curriculm vitae">
+    title="Curriculum vitae">
   </iframe>
 </dialog>
 ```
