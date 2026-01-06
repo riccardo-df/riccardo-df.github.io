@@ -9,10 +9,12 @@ project:
     - conferences.qmd
     - news.qmd
     - posts/**.qmd
+    - cv.qmd
 
 website:
   title: "Riccardo Di Francesco"
   navbar:
+    pinned: true
     left:
       - href: index.qmd
         text: Home
@@ -26,15 +28,12 @@ website:
         text: Conferences
       - href: news.qmd
         text: News
-    right:
-      - href: assets/others/cv.pdf
+      - href: cv.qmd
         text: CV
 
 format:
   html:
-    theme:
-      light: cosmo
-      dark: darkly
+    theme: cosmo
     toc: false
     smooth-scroll: true
     css: styles.css

@@ -4,3 +4,6 @@ _site
 Gemfile.lock
 .bundle
 vendor/
+
+/.quarto/
+**/*.quarto_ipynb

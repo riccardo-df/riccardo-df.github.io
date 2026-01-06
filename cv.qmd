@@ -1,0 +1,38 @@
+---
+title: "Curriculum Vitae"
+toc: false
+page-layout: full
+---
+
+```{=html}
+<div class="asset-page">
+  <div class="asset-page-header">
+    <div class="paper-actions">
+      <a class="btn btn-paper" type="button" onclick="document.getElementById('cv').showModal()">
+        🔎 Open PDF
+      </a>
+      <a class="btn btn-paper" href="/assets/others/cv.pdf" download>
+        ⬇ Download PDF
+      </a>
+    </div>
+  </div>
+  
+<dialog id="cv" class="asset-dialog">
+  <div class="asset-dialog-header">
+    <div>
+      <div class="asset-dialog-title">🔎 Open PDF</div>
+      <div class="asset-dialog-sub">Curriculm vitae</div>
+    </div>
+    <button class="btn btn-media" type="button"
+      onclick="document.getElementById('cv').close()">
+      Close
+    </button>
+  </div>
+
+  <iframe
+    src="assets/others/cv.pdf"
+    class="asset-frame"
+    title="Curriculm vitae">
+  </iframe>
+</dialog>
+```

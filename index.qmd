@@ -4,53 +4,36 @@ page-layout: full
 toc: false
 ---
 
-# Riccardo Di Francesco  
-**Postdoctoral Researcher · University of Southern Denmark**
-
-I am a Postdoctoral Researcher at the University of Southern Denmark, working on the project  
-**“Beyond the Paycheck: Insights into the Effect of Unemployment, Organisational Change, and Job Security on Mental Health”**  
-(Principal Investigator: Seetha Menon).
-
-::: {.hero-links}
-[Research](research.qmd){.btn .btn-primary} 
-[Code](code.qmd){.btn .btn-outline-primary}
-[News](news.qmd){.btn .btn-outline-primary}
-[CV](assets/others/cv.pdf){.btn .btn-outline-primary}
-:::
-
 ::: {.g-col-12 .g-col-md-5}
 ![](assets/images/new_profile2.jpeg){fig-alt="Portrait of Riccardo Di Francesco" .hero-img}
 :::
 
----
+**Postdoctoral Researcher · University of Southern Denmark**
 
-## Research interests
-
-- **Causal inference**  
-- **Machine learning**
-- **Mental health**   
-- **LGBTQ+ economics**  
-
----
-
-## Background
-
-I obtained my **Ph.D. in Economics and Finance** from the University of Rome Tor Vergata in September 2024.  
-My training is primarily in econometrics, with an emphasis on causal inference and machine learning.
-
----
-
-## Selected links
-
-- 📄 [Research](research)  
-- 📚 [Publications](news)  
-- 💻 [Code](code)  
-- 🎓 [Teaching](teaching)  
-- 🗓️ [Conferences](conferences)  
-- 📎 [Curriculum Vitae](assets/others/cv.pdf)
-
----
+::: {.justified}
+<p style="margin-bottom: -0.75rem;">
+I am a Postdoctoral Researcher at the University of Southern Denmark, working on the project *Beyond the Paycheck: Insights into the Effect of Unemployment, Organisational Change, and Job Security on Mental Health.*
+</p>
 
 <small>
-Outside academia, I enjoy hiking, training in the boxing ring, and playing bass guitar.
+(Principal Investigator: Seetha Menon).
 </small>
+:::
+
+### Research interests
+
+::: {.keywords}
+<span class="keyword">*Causal inference*</span>
+<span class="keyword">*Machine learning*</span>
+<span class="keyword">*Text analysis*</span>
+<span class="keyword">*Mental health*</span>
+<span class="keyword">*LGBTQ+ economics*</span>
+:::
+
+### Background
+
+::: {.justified}
+I obtained my Ph.D. in Economics and Finance from the University of Rome Tor Vergata in September 2024. My training is primarily in econometrics, with an emphasis on causal inference and machine learning.
+
+Outside academia, I enjoy hiking, training in the boxing ring, and playing bass guitar.
+:::

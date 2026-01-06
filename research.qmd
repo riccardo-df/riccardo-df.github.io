@@ -1,30 +1,138 @@
 ---
-title: Research
-layout: page
+title: "Research"
+toc: false
+page-layout: full
 ---
-
-# Research
 
 ## Publications
-- <b>Di Francesco, R. & Mellace, G. (2025). **Causal inference for qualitative outcomes**. Economics Letters, 112626.</b><br>
-[*paper*](https://www.sciencedirect.com/science/article/pii/S016517652500463X) | [*R package*](https://riccardo-df.github.io/causalQual/) | [*podcast*](https://drive.google.com/file/d/19WJQsrR53737NM-Lt-zJL5G4XZ9Xybzl/view?usp=sharing)
 
-- <b>Di Francesco, R. (2025). **Ordered correlation forest**. Econometric Reviews, 44(4), 416-432.</b><br>
-[*paper*](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596) | [*R package*](https://riccardo-df.github.io/ocf/) | [*podcast*](https://drive.google.com/file/d/1P9noLFIhFDm83dYoHBDM79xVVEzQ5V7f/view?usp=sharing) | [*award*](https://riccardo-df.github.io/assets/others/EmergingEconometrician_DiFrancesco.pdf) | [*newspaper article*](https://riccardo-df.github.io/assets/others/messaggero2025.jpeg)
+::: {.g-col-12 .g-col-lg-6}
+::: {.callout-tip appearance="minimal"}
+### Causal inference for qualitative outcomes (2025)
 
----
+**Di Francesco, R. & Mellace, G.**  
+*Economics Letters*, 112626.
 
-## Working Papers
-- <b>**Aggregation Trees.** arXiv preprint arXiv:2410.11408 (2024).</b><br>
-[*paper*](https://arxiv.org/abs/2410.11408) | [*R package*](https://riccardo-df.github.io/aggTrees/index.html)
+[📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
+[💻 R package](https://riccardo-df.github.io/causalQual/){.btn .btn-code}
 
-> <sub> *Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of p-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.* </sub>
+<div class="podcast-wrap">
+  <div class="podcast-label"></div>
 
----
+  <audio controls preload="none" class="podcast-audio">
+    <source src="assets/audio/causalQualPodcast.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+:::
+:::
 
-- <b>**The Cost of Coming Out.** arXiv preprint arXiv:2403.03649 (2024) (joint with [Enzo Brox](https://sites.google.com/view/ebrox)).</b><br>
-[*paper*](https://arxiv.org/abs/2403.03649) | [*podcast*](https://drive.google.com/file/d/1KLnz4wA1v7agiHloNLnKTc19EqilZaxX/view?usp=sharing)
+::: {.g-col-12 .g-col-lg-6}
+::: {.callout-tip appearance="minimal"}
+### Ordered correlation forest (2025)
 
-> <sub> *The fear of social stigma leads many individuals worldwide to hesitate in disclosing their sexual orientation. Since concealing identity is costly, it is crucial to understand the extent of anti-LGB sentiments and reactions to coming out. This paper uses an innovative data source from a popular online game together with a natural experiment to overcome existing data and endogeneity issues. We exploit exogenous variation in the identity of a character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.* </sub>
+**Di Francesco, R.**  
+*Econometric Reviews*, 44(4), 416–432.
 
----
+<div class="paper-actions">
+  <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">📄 Paper</a>
+  <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">💻 R package</a>
+
+  <button class="btn btn-media" type="button"
+    onclick="document.getElementById('award-ocf').showModal()">
+    🏆 Award
+  </button>
+
+  <button class="btn btn-media" type="button"
+    onclick="document.getElementById('press-ocf').showModal()">
+    📰 Press
+  </button>
+</div>
+
+<div class="podcast-wrap">
+  <div class="podcast-label"></div>
+
+  <audio controls preload="none" class="podcast-audio">
+    <source src="assets/audio/OCFPodcast.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+:::
+:::
+
+## Working papers
+
+::: {.callout-note appearance="minimal"}
+### Aggregation Trees (2024)
+
+**arXiv:2410.11408**
+
+::: {.small}
+*Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of p-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.*
+:::
+
+[📄 Paper](https://arxiv.org/abs/2410.11408){.btn .btn-paper}
+[💻 R package](https://riccardo-df.github.io/aggTrees/index.html){.btn .btn-code}
+
+:::
+
+::: {.callout-note appearance="minimal"}
+### The Cost of Coming Out (2024)
+
+**arXiv:2403.03649** (with [Enzo Brox](https://sites.google.com/view/ebrox))
+
+::: {.small}
+*The fear of social stigma leads many individuals worldwide to hesitate in disclosing their sexual orientation. Since concealing identity is costly, it is crucial to understand the extent of anti-LGB sentiments and reactions to coming out. This paper uses an innovative data source from a popular online game together with a natural experiment to overcome existing data and endogeneity issues. We exploit exogenous variation in the identity of a character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.*
+:::
+
+[📄 Paper](https://arxiv.org/abs/2403.03649){.btn .btn-paper}
+
+<div class="podcast-wrap">
+  <div class="podcast-label"></div>
+
+  <audio controls preload="none" class="podcast-audio">
+    <source src="assets/audio/ComingOutPodcast.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+:::
+
+```{=html}
+<dialog id="award-ocf" class="asset-dialog">
+  <div class="asset-dialog-header">
+    <div>
+      <div class="asset-dialog-title">🏆 Award</div>
+      <div class="asset-dialog-sub">Emerging Econometrician</div>
+    </div>
+    <button class="btn btn-media" type="button"
+      onclick="document.getElementById('award-ocf').close()">
+      Close
+    </button>
+  </div>
+
+  <iframe
+    src="assets/others/EmergingEconometrician_DiFrancesco.pdf"
+    class="asset-frame"
+    title="Award PDF">
+  </iframe>
+</dialog>
+
+<dialog id="press-ocf" class="asset-dialog">
+  <div class="asset-dialog-header">
+    <div>
+      <div class="asset-dialog-title">📰 Press</div>
+      <div class="asset-dialog-sub">Article image</div>
+    </div>
+    <button class="btn btn-media" type="button"
+      onclick="document.getElementById('press-ocf').close()">
+      Close
+    </button>
+  </div>
+
+  <img
+    src="assets/others/messaggero2025.jpeg"
+    class="asset-img"
+    alt="Newspaper article about the paper">
+</dialog>
+```
