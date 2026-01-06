@@ -33,7 +33,7 @@ p { margin: 0.85rem 0; }
   width: 100%;
   max-width: 520px;
   display: block;
-  margin: -10 auto;
+  margin: -10;
 }
 
 .hero-links {
