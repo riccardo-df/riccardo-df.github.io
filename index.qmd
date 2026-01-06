@@ -1,11 +1,8 @@
 ---
-title: Home
+title: ""
 page-layout: full
 toc: false
 ---
-
-::: {.grid align-items-center style="margin-top: 1.5rem;"}
-::: {.g-col-12 .g-col-md-7}
 
 # Riccardo Di Francesco  
 **Postdoctoral Researcher · University of Southern Denmark**
@@ -21,11 +18,8 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 [CV](assets/others/cv.pdf){.btn .btn-outline-primary}
 :::
 
-:::
-
 ::: {.g-col-12 .g-col-md-5}
 ![](assets/images/new_profile2.jpeg){fig-alt="Portrait of Riccardo Di Francesco" .hero-img}
-:::
 :::
 
 ---
