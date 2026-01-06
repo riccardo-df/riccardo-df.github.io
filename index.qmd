@@ -1,12 +1,46 @@
 ---
-title: ""
-page-layout: full
+layout: page
+title: Home
 ---
 
-# Riccardo Di Francesco
+# Riccardo Di Francesco  
+**Postdoctoral Researcher · University of Southern Denmark**
 
-Postdoctoral Researcher, University of Southern Denmark
+---
 
-- Causal inference for qualitative outcomes
-- Applied micro using Danish administrative data
-- Open-source R tools
+I am a Postdoctoral Researcher at the University of Southern Denmark, working on the project  
+**“Beyond the Paycheck: Insights into the Effect of Unemployment, Organisational Change, and Job Security on Mental Health”**  
+(Principal Investigator: Seetha Menon).
+
+---
+
+## Research interests
+
+- **Causal inference**  
+- **Machine learning**
+- **Mental health**   
+- **LGBTQ+ economics**  
+
+---
+
+## Background
+
+I obtained my **Ph.D. in Economics and Finance** from the University of Rome Tor Vergata in September 2024.  
+My training is primarily in econometrics, with an emphasis on causal inference and machine learning.
+
+---
+
+## Selected links
+
+- 📄 [Research](research)  
+- 📚 [Publications](news)  
+- 💻 [Code](code)  
+- 🎓 [Teaching](teaching)  
+- 🗓️ [Conferences](conferences)  
+- 📎 [Curriculum Vitae](assets/others/cv.pdf)
+
+---
+
+<small>
+Outside academia, I enjoy hiking, training in the boxing ring, and playing bass guitar.
+</small>
