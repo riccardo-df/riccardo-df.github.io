@@ -65,6 +65,7 @@ research: true
 conferences: true
 code: true
 teaching: true
+news: true
 
 # do you want to show the "read time" of the posts?
 read-time: true
