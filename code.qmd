@@ -7,7 +7,7 @@ page-layout: full
 ## R packages
 
 ::: {.g-col-12}
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **causalQual — Causal inference for qualitative outcomes**
 
 ```{=html}
@@ -34,7 +34,7 @@ page-layout: full
 :::
 
 ::: {.g-col-12}
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **valiCATE — Validation of CATE Models**  
 
 ```{=html}
@@ -60,7 +60,7 @@ page-layout: full
 :::
 
 ::: {.g-col-12}
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **ocf — Ordered Correlation Forest**    
 
 ```{=html}
@@ -87,7 +87,7 @@ page-layout: full
 :::
 
 ::: {.g-col-12}
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **aggTrees — Aggregation Trees**  
 
 ```{=html}
