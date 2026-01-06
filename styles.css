@@ -1,0 +1,29 @@
+/* --- readability --- */
+body {
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+p { margin: 0.85rem 0; }
+
+/* prevent overly long lines on wide screens */
+.page-columns .content {
+  max-width: 860px;
+}
+
+/* --- hero tweaks --- */
+.hero-img {
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin-left: auto;
+}
+
+.hero-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
