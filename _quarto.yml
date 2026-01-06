@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Riccardo Di Francesco"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: code.qmd
+        text: Code
+      - href: teaching.qmd
+        text: Teaching
+      - href: conferences.qmd
+        text: Conferences
+      - href: news.qmd
+        text: News
+    right:
+      - href: assets/others/cv.pdf
+        text: CV
+
+format:
+  html:
+    theme: cosmo
+    toc: false
+    smooth-scroll: true
