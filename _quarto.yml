@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - index.qmd
+    - research.qmd
+    - code.qmd
+    - teaching.qmd
+    - conferences.qmd
+    - news.qmd
+    - posts/**.qmd
 
 website:
   title: "Riccardo Di Francesco"
