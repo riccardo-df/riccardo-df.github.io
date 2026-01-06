@@ -7,7 +7,7 @@ page-layout: full
 ## Academic year 2025/2026
 
 ::: {.callout-note appearance="minimal"}
-### **Guest Lecturer — Microeconometrics**
+### **Guest Lecturer$—$Microeconometrics**
 
 ::: {.small}
 *Master of Science course*  
@@ -33,7 +33,7 @@ I delivered two guest lectures integrating theory, implementation, and applied c
 ## Academic year 2023/2024
 
 ::: {.callout-note appearance="minimal"}
-### **Teaching Assistant — Statistics**
+### **Teaching Assistant$—$Statistics**
 
 ::: {.small}
 *Bachelor of Science course*  
@@ -45,7 +45,7 @@ I assisted students in implementing R code for the analysis of real data sets. S
 :::
 
 ::: {.callout-note appearance="minimal"}
-### **Teaching Assistant — Applied Statistics and Econometrics**
+### **Teaching Assistant$—$Applied Statistics and Econometrics**
 
 ::: {.small}
 *Bachelor of Science course*  
@@ -59,7 +59,7 @@ Students completed a research project as part of the course requirements. I supp
 ## Academic year 2021/2022
 
 ::: {.callout-note appearance="minimal"}
-### **Teaching Assistant — Statistical Learning**
+### **Teaching Assistant$—$Statistical Learning**
 
 ::: {.small}
 *Master of Science course*  
