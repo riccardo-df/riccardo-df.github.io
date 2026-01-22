@@ -7,7 +7,6 @@ page-layout: full
 ## Publications
 
 ::: {.g-col-12 .g-col-lg-6}
-
 ::: {.callout-note appearance="minimal"}
 ### **Aggregation trees**
 
@@ -26,7 +25,7 @@ page-layout: full
 :::
 :::
 
-::: {.callout-note appearance="minimal"}
+::: {.g-col-12 .g-col-lg-6}
 ::: {.callout-note appearance="minimal"}
 ### **Causal inference for qualitative outcomes**
 
