@@ -7,7 +7,27 @@ page-layout: full
 ## Publications
 
 ::: {.g-col-12 .g-col-lg-6}
-::: {.callout-tip appearance="minimal"}
+
+::: {.callout-note appearance="minimal"}
+### **Aggregation trees**
+
+*Di Francesco, R. (2026)*
+*Econometric Reviews, 1–26*
+
+**arXiv:2410.11408**
+
+::: {.small}
+*Uncovering the heterogeneous effects of particular policies or “treatments” is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial, as it poses the risk of p-hacking and requires balancing interpretability with granularity. This article proposes a non parametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with “honesty” and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte Carlo study and apply it to revisit the impact of maternal smoking on birth weight. Consistent with prior research, we find stronger effects for children born to adult mothers. We further provide novel evidence that effects are more pronounced when prenatal care begins earlier.*
+:::
+
+[📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309){.btn .btn-paper}
+[💻 R package](https://riccardo-df.github.io/aggTrees/index.html){.btn .btn-code}
+
+:::
+:::
+
+::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **Causal inference for qualitative outcomes**
 
 *Di Francesco, R. & Mellace, G. (2025)* 
@@ -28,7 +48,7 @@ page-layout: full
 :::
 
 ::: {.g-col-12 .g-col-lg-6}
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **Ordered correlation forest** 
 
 *Di Francesco, R. (2025)*
@@ -61,20 +81,6 @@ page-layout: full
 :::
 
 ## Working papers
-
-::: {.callout-note appearance="minimal"}
-### **Aggregation Trees** (2024)
-
-**arXiv:2410.11408**
-
-::: {.small}
-*Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of p-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.*
-:::
-
-[📄 Paper](https://arxiv.org/abs/2410.11408){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/aggTrees/index.html){.btn .btn-code}
-
-:::
 
 ::: {.callout-note appearance="minimal"}
 ### **The Cost of Coming Out** (2024)
