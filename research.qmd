@@ -10,7 +10,7 @@ page-layout: full
 ::: {.callout-note appearance="minimal"}
 ### **Aggregation trees**
 
-*Di Francesco, R. (2026)*
+*Di Francesco, R. (2026).*
 *Econometric Reviews, 1–26*
 
 ::: {.small}
@@ -27,7 +27,7 @@ page-layout: full
 ::: {.callout-note appearance="minimal"}
 ### **Causal inference for qualitative outcomes**
 
-*Di Francesco, R. & Mellace, G. (2025)* 
+*Di Francesco, R. & Mellace, G. (2025).* 
 *Economics Letters*, 112626.
 
 [📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
@@ -48,7 +48,7 @@ page-layout: full
 ::: {.callout-note appearance="minimal"}
 ### **Ordered correlation forest** 
 
-*Di Francesco, R. (2025)*
+*Di Francesco, R. (2025).*
 *Econometric Reviews*, 44(4), 416–432.
 
 <div class="paper-actions">
