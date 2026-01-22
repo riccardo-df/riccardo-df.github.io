@@ -10,7 +10,7 @@ page-layout: full
 
 **Postdoctoral Researcher · University of Southern Denmark**
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **Current position**
 
 ::: {.justified}
@@ -24,7 +24,7 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 :::
 :::
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **Research interests**
 
 ::: {.keywords}
@@ -36,7 +36,7 @@ I am a Postdoctoral Researcher at the University of Southern Denmark, working on
 :::
 :::
 
-::: {.callout-tip appearance="minimal"}
+::: {.callout-note appearance="minimal"}
 ### **Background**
 
 ::: {.justified}
