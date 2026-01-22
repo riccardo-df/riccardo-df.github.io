@@ -5,6 +5,20 @@ page-layout: full
 ---
 
 ::: {.callout-note appearance="minimal"}
+### **January 2026$—$Publication**
+
+How do you discover **who benefits most from a policy**$—$without $p$-hacking or arbitrary subgroup choices?
+
+Researchers often report treatment effects for hand-picked subgroups.
+But subgroup selection trades off interpretability, granularity, and statistical validity.
+
+My paper *Aggregation trees*, **now published in Econometric Reviews**, introduces a nonparametric method that constructs a sequence of nested subgroups, allowing a transparent exploration of treatment effect heterogeneity and delivering valid inference for each group.
+
+[📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309){.btn .btn-paper}
+[💻 R package](https://riccardo-df.github.io/aggTrees/){.btn .btn-code}
+:::
+
+::: {.callout-note appearance="minimal"}
 ### **November 2025$—$Media coverage**
 
 When machine learning meets econometrics$—$and makes the news.
