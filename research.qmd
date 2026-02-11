@@ -28,15 +28,6 @@ page-layout: full
 
 [📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
 [💻 R package](https://riccardo-df.github.io/causalQual/){.btn .btn-code}
-
-<div class="podcast-wrap">
-  <div class="podcast-label"></div>
-
-  <audio controls preload="none" class="podcast-audio">
-    <source src="assets/audio/causalQualPodcast.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
 :::
 :::
 
@@ -61,15 +52,6 @@ page-layout: full
     📰 Press
   </button>
 </div>
-
-<div class="podcast-wrap">
-  <div class="podcast-label"></div>
-
-  <audio controls preload="none" class="podcast-audio">
-    <source src="assets/audio/OCFPodcast.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
 :::
 :::
 
@@ -85,16 +67,6 @@ page-layout: full
 :::
 
 [📄 Paper](https://arxiv.org/abs/2403.03649){.btn .btn-paper}
-
-<div class="podcast-wrap">
-  <div class="podcast-label"></div>
-
-  <audio controls preload="none" class="podcast-audio">
-    <source src="assets/audio/ComingOutPodcast.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
-
 :::
 
 ```{=html}
