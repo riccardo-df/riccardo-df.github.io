@@ -58,12 +58,12 @@ page-layout: full
 ## Working papers
 
 ::: {.callout-note appearance="minimal"}
-### **The Cost of Coming Out** (2024)
+### **Behavioral Consequences of Sexual Orientation Disclosure in a Large-Scale Digital Environment** (2026)
 
 **arXiv:2403.03649** (with [Enzo Brox](https://sites.google.com/view/ebrox))
 
 ::: {.small}
-*The fear of social stigma leads many individuals worldwide to hesitate in disclosing their sexual orientation. Since concealing identity is costly, it is crucial to understand the extent of anti-LGB sentiments and reactions to coming out. This paper uses an innovative data source from a popular online game together with a natural experiment to overcome existing data and endogeneity issues. We exploit exogenous variation in the identity of a character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.*
+*Many individuals hesitate to disclose their sexual orientation, anticipating that disclosure may alter how others respond to them. At the same time, concealing one's identity can entail substantial personal and social costs. Understanding how others react to sexual orientation disclosure is therefore central to evaluating the broader consequences of coming out. This paper uses an innovative data set from a popular online video game together with a natural experiment to causally identify behavioral responses to sexual minority disclosure. We exploit exogenous variation in the identity of a playable character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.*
 :::
 
 [📄 Paper](https://arxiv.org/abs/2403.03649){.btn .btn-paper}
