@@ -4,6 +4,13 @@ toc: false
 page-layout: full
 ---
 
+## 2026
+
+::: {.keywords}
+<span class="keyword">*European Association of Young Economists Annual Meeting* (EAYE)</span>
+<span class="keyword">*VIVE– Danish Center for Social Science Research* (invited presentation)</span>
+:::
+
 ## 2025
 
 ::: {.keywords}
