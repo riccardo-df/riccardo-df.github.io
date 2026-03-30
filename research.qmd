@@ -11,7 +11,7 @@ page-layout: full
 ### **Aggregation trees**
 
 *Di Francesco, R. (2026).*
-*Econometric Reviews, 1–26*
+*Econometric Reviews*, 45(5), 634–659.
 
 [📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309){.btn .btn-paper}
 [💻 R package](https://riccardo-df.github.io/aggTrees/index.html){.btn .btn-code}
