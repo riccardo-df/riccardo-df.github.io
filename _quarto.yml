@@ -15,6 +15,7 @@ project:
 
 website:
   title: "Riccardo Di Francesco"
+  favicon: assets/images/favicon/favicon.svg
   navbar:
     pinned: true
     background: "#0f1b2d"
