@@ -1,71 +1,94 @@
 ---
-title: "Teaching"
+title: ""
 toc: false
 page-layout: full
 ---
 
-## Academic year 2025/2026
+```{=html}
+<div class="content-page">
 
-::: {.callout-note appearance="minimal"}
-### **Guest Lecturer$—$Microeconometrics**
-
-::: {.small}
-*Master of Science course*  
-*Taught by Giovanni Mellace*  
-*University of Southern Denmark, Odense*
-:::
-
-I delivered two guest lectures integrating theory, implementation, and applied case studies.
-
-<div class="paper-actions teaching-actions">
-  <span class="teaching-label">📊 Slides:</span>
-  <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/DiscreteOutcomes.html">Discrete outcomes</a>
-  <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html">Causal machine learning</a>
+<div class="page-header fade-in">
+  <h1 class="page-title">Teaching</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
 </div>
 
-<div class="paper-actions teaching-actions">
-  <span class="teaching-label">💻 Notebooks:</span>
-  <a class="btn btn-code" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/LeagueofLogits.html">League of Logits</a>
-  <a class="btn btn-code" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/GoodBadOrdinal.html">Ordinal outcomes</a>
+<div class="timeline">
+
+  <!-- 2025/2026 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2025 / 2026</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Guest lecturer &mdash; Microeconometrics</div>
+    <div class="timeline-card-meta">
+      Master of Science course &middot; Taught by Giovanni Mellace<br>
+      University of Southern Denmark, Odense
+    </div>
+    <div class="timeline-card-desc">
+      I delivered two guest lectures integrating theory, implementation, and applied case studies.
+    </div>
+    <div class="teaching-actions-grid">
+      <span class="teaching-label">Slides:</span>
+      <div class="teaching-btns">
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/DiscreteOutcomes.html">Discrete outcomes</a>
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/causalML.html">Causal ML</a>
+      </div>
+      <span class="teaching-label">Notebooks:</span>
+      <div class="teaching-btns">
+        <a class="btn btn-code" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/LeagueofLogits.html">League of Logits</a>
+        <a class="btn btn-code" href="https://riccardo-df.github.io/assets/teaching/2025-26/Microeconometrics/GoodBadOrdinal.html">Ordinal outcomes</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2023/2024 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2023 / 2024</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Teaching assistant &mdash; Statistics</div>
+    <div class="timeline-card-meta">
+      Bachelor of Science course &middot; Taught by Livia De Giovanni<br>
+      LUISS University, Rome
+    </div>
+    <div class="timeline-card-desc">
+      I assisted students in implementing R code for the analysis of real data sets. Students completed an empirical project and submitted a written report, which I evaluated and graded.
+    </div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Teaching assistant &mdash; Applied statistics and econometrics</div>
+    <div class="timeline-card-meta">
+      Bachelor of Science course &middot; Taught by Marianna Brunetti<br>
+      LUISS University, Rome
+    </div>
+    <div class="timeline-card-desc">
+      Students completed a research project as part of the course requirements. I supported them in formulating research questions, collecting data, applying econometric methods, and I assessed the final projects.
+    </div>
+  </div>
+
+  <!-- 2021/2022 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2021 / 2022</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Teaching assistant &mdash; Statistical learning</div>
+    <div class="timeline-card-meta">
+      Master of Science course &middot; Taught by Tommaso Proietti<br>
+      University of Rome Tor Vergata, Rome
+    </div>
+    <div class="timeline-card-desc">
+      I conducted interactive tutorials focused on the practical application of machine learning methods in R, with an emphasis on hands-on data analysis and interpretation.
+    </div>
+  </div>
+
 </div>
-:::
 
-## Academic year 2023/2024
-
-::: {.callout-note appearance="minimal"}
-### **Teaching Assistant$—$Statistics**
-
-::: {.small}
-*Bachelor of Science course*  
-*Taught by Livia De Giovanni*  
-*LUISS University, Rome*
-:::
-
-I assisted students in implementing R code for the analysis of real data sets. Students completed an empirical project and submitted a written report, which I evaluated and graded.
-:::
-
-::: {.callout-note appearance="minimal"}
-### **Teaching Assistant$—$Applied Statistics and Econometrics**
-
-::: {.small}
-*Bachelor of Science course*  
-*Taught by Marianna Brunetti*  
-*LUISS University, Rome*
-:::
-
-Students completed a research project as part of the course requirements. I supported them in formulating research questions, collecting data, applying econometric methods, and I assessed the final projects.
-:::
-
-## Academic year 2021/2022
-
-::: {.callout-note appearance="minimal"}
-### **Teaching Assistant$—$Statistical Learning**
-
-::: {.small}
-*Master of Science course*  
-*Taught by Tommaso Proietti*  
-*University of Rome Tor Vergata, Rome*
-:::
-
-I conducted interactive tutorials focused on the practical application of machine learning methods in R, with an emphasis on hands-on data analysis and interpretation.
-:::
+</div>
+```

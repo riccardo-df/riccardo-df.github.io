@@ -1,0 +1,33 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Scroll fade-in animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  document.querySelectorAll(".fade-in").forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Auto-update talks count from conferences page
+  const talksEl = document.getElementById("stat-talks");
+  if (talksEl) {
+    fetch("conferences.html")
+      .then((r) => r.text())
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const count = doc.querySelectorAll(".timeline-card").length;
+        if (count > 0) talksEl.textContent = count;
+      })
+      .catch(() => {});
+  }
+});
+</script>

@@ -1,123 +1,136 @@
 ---
-title: News
+title: ""
 toc: false
 page-layout: full
 ---
 
-::: {.callout-note appearance="minimal"}
-### **January 2026$—$Publication**
-
-How do you discover **who benefits most from a policy**$—$without $p$-hacking or arbitrary subgroup choices?
-
-Researchers often report treatment effects for hand-picked subgroups.
-But subgroup selection trades off interpretability, granularity, and statistical validity.
-
-My paper *Aggregation trees*, **now published in Econometric Reviews**, introduces a nonparametric method that constructs a sequence of nested subgroups, allowing a transparent exploration of treatment effect heterogeneity and delivering valid inference for each group.
-
-[📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/aggTrees/){.btn .btn-code}
-:::
-
-::: {.callout-note appearance="minimal"}
-### **November 2025$—$Media coverage**
-
-When machine learning meets econometrics$—$and makes the news.
-
-My paper *Ordered correlation forests* was featured in the **Italian newspaper Il Messaggero**.
-
-<div class="paper-actions">
-  <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">📄 Paper</a>
-  <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">💻 R package</a>
-
-  <button class="btn btn-media" type="button"
-    onclick="document.getElementById('press-ocf').showModal()">
-    📰 Press
-  </button>
-</div>
-:::
-
-::: {.callout-note appearance="minimal"}
-### **November 2025$—$Award**
-
-My paper *Ordered correlation forest* has been recognized with the **Emerging Econometrician Award**.
-
-The award is presented to the best paper published in *Econometric Reviews* by scholars within seven years of their Ph.D.
-
-<div class="paper-actions">
-  <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">📄 Paper</a>
-  <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">💻 R package</a>
-
-  <button class="btn btn-media" type="button"
-    onclick="document.getElementById('award-ocf').showModal()">
-    🏆 Award
-  </button>
-</div>
-:::
-
-::: {.callout-note appearance="minimal"}
-### **October 2025$—$Publication**
-
-What if your outcome variable is **not an actual number**?
-
-• Health: *poor → fair → good → excellent*  
-• Job quality: *temporary → permanent → managerial*  
-• Satisfaction: *very dissatisfied → very satisfied*
-
-My paper *Causal inference for qualitative outcomes*, **now published in Econometric Reviews**, shows how to do causal inference with qualitative outcomes.
-
-[📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/causalQual/){.btn .btn-code}
-:::
-
-::: {.callout-note appearance="minimal"}
-### **January 2025$—$Publication**
-
-What if ordered outcomes were not forced into a logit or probit box?
-
-Think of self-reported health, life satisfaction, or well-being scales.  
-Popular models impose strong parametric assumptions$—$often without much justification.
-
-My paper *Ordered correlation forest*, **now published in Econometric Reviews**, introduces a machine-learning approach that handles ordered outcomes flexibly and delivers valid inference without assuming a specific error distribution.
-
-[📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/ocf/){.btn .btn-code}
-:::
-
 ```{=html}
+<div class="content-page">
+
+<div class="page-header fade-in">
+  <h1 class="page-title">News</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
+</div>
+
+<!-- January 2026 — Publication -->
+<div class="news-card fade-in">
+  <div class="news-date-col">
+    <div class="news-month">Jan</div>
+    <div class="news-year">2026</div>
+    <span class="news-type type-publication">Publication</span>
+  </div>
+  <div class="news-content">
+    <div class="news-title">Aggregation trees published</div>
+    <div class="news-desc">
+      Who benefits most from a policy&mdash;and how do you find out without <em>p</em>-hacking? My paper <em>Aggregation trees</em>, <strong>now published in Econometric Reviews</strong>, automatically discovers the subgroups that matter and leverages double machine learning for rigorous inference on each group's treatment effect.
+    </div>
+    <div class="paper-actions">
+      <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309">Paper</a>
+      <a class="btn btn-code" href="https://riccardo-df.github.io/aggTrees/">R package</a>
+    </div>
+  </div>
+</div>
+
+<!-- November 2025 — Media -->
+<div class="news-card fade-in">
+  <div class="news-date-col">
+    <div class="news-month">Nov</div>
+    <div class="news-year">2025</div>
+    <span class="news-type type-media">Media</span>
+  </div>
+  <div class="news-content">
+    <div class="news-title">Featured in Il Messaggero</div>
+    <div class="news-desc">
+      A random forest that does econometrics&mdash;interesting enough to make the front page. <em>Ordered correlation forest</em> was picked up by <strong>Il Messaggero</strong>, one of Italy's largest national newspapers.
+    </div>
+    <div class="paper-actions">
+      <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">Paper</a>
+      <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">R package</a>
+      <button class="btn btn-media" type="button" onclick="document.getElementById('press-ocf').showModal()">Press</button>
+    </div>
+  </div>
+</div>
+
+<!-- November 2025 — Award -->
+<div class="news-card fade-in">
+  <div class="news-date-col">
+    <div class="news-month">Nov</div>
+    <div class="news-year">2025</div>
+    <span class="news-type type-award">Award</span>
+  </div>
+  <div class="news-content">
+    <div class="news-title">Emerging Econometrician award</div>
+    <div class="news-desc">
+      Best paper in <em>Econometric Reviews</em> by a scholar within seven years of their Ph.D.&mdash;my <em>Ordered correlation forest</em> took home the <strong>Emerging Econometrician Award</strong>.
+    </div>
+    <div class="paper-actions">
+      <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">Paper</a>
+      <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">R package</a>
+      <button class="btn btn-media" type="button" onclick="document.getElementById('award-ocf').showModal()">Award</button>
+    </div>
+  </div>
+</div>
+
+<!-- October 2025 — Publication -->
+<div class="news-card fade-in">
+  <div class="news-date-col">
+    <div class="news-month">Oct</div>
+    <div class="news-year">2025</div>
+    <span class="news-type type-publication">Publication</span>
+  </div>
+  <div class="news-content">
+    <div class="news-title">Causal inference for qualitative outcomes published</div>
+    <div class="news-desc">
+      Health rated <em>poor &rarr; fair &rarr; good &rarr; excellent</em>&mdash;that is not a number, so why treat it like one? <em>Causal inference for qualitative outcomes</em>, <strong>now in Economics Letters</strong>, gives you clean causal effects on every category, with your favourite identification strategy.
+    </div>
+    <div class="paper-actions">
+      <a class="btn btn-paper" href="https://www.sciencedirect.com/science/article/pii/S016517652500463X">Paper</a>
+      <a class="btn btn-code" href="https://riccardo-df.github.io/causalQual/">R package</a>
+    </div>
+  </div>
+</div>
+
+<!-- January 2025 — Publication -->
+<div class="news-card fade-in">
+  <div class="news-date-col">
+    <div class="news-month">Jan</div>
+    <div class="news-year">2025</div>
+    <span class="news-type type-publication">Publication</span>
+  </div>
+  <div class="news-content">
+    <div class="news-title">Ordered correlation forest published</div>
+    <div class="news-desc">
+      Ordered logit assumes too much; plain random forests give you no inference. <em>Ordered correlation forest</em>, <strong>now in Econometric Reviews</strong>, splits the difference&mdash;a forest built for ordered outcomes that hands you predictions and marginal effects with valid confidence intervals.
+    </div>
+    <div class="paper-actions">
+      <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">Paper</a>
+      <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">R package</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Dialogs -->
 <dialog id="award-ocf" class="asset-dialog">
   <div class="asset-dialog-header">
     <div>
-      <div class="asset-dialog-title">🏆 Award</div>
+      <div class="asset-dialog-title">Award</div>
       <div class="asset-dialog-sub">Emerging Econometrician</div>
     </div>
-    <button class="btn btn-media" type="button"
-      onclick="document.getElementById('award-ocf').close()">
-      Close
-    </button>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('award-ocf').close()">Close</button>
   </div>
-
-  <iframe
-    src="assets/others/EmergingEconometrician_DiFrancesco.pdf"
-    class="asset-frame"
-    title="Award PDF">
-  </iframe>
+  <iframe src="assets/others/EmergingEconometrician_DiFrancesco.pdf" class="asset-frame" title="Award PDF"></iframe>
 </dialog>
 
 <dialog id="press-ocf" class="asset-dialog">
   <div class="asset-dialog-header">
     <div>
-      <div class="asset-dialog-title">📰 Press</div>
+      <div class="asset-dialog-title">Press</div>
       <div class="asset-dialog-sub">Article image</div>
     </div>
-    <button class="btn btn-media" type="button"
-      onclick="document.getElementById('press-ocf').close()">
-      Close
-    </button>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('press-ocf').close()">Close</button>
   </div>
-
-  <img
-    src="assets/others/messaggero2025.jpeg"
-    class="asset-img"
-    alt="Newspaper article about the paper">
+  <img src="assets/others/messaggero2025.jpeg" class="asset-img" alt="Newspaper article about the paper">
 </dialog>
 ```

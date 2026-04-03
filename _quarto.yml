@@ -17,13 +17,15 @@ website:
   title: "Riccardo Di Francesco"
   navbar:
     pinned: true
+    background: "#0f1b2d"
+    foreground: "#ffffff"
     left:
       - href: index.qmd
         text: Home
       - href: research.qmd
         text: Research
       - href: code.qmd
-        text: Code
+        text: Software
       - href: teaching.qmd
         text: Teaching
       - href: conferences.qmd
@@ -32,10 +34,41 @@ website:
         text: News
       - href: cv.qmd
         text: CV
+    right:
+      - icon: github
+        href: https://github.com/riccardo-df
+        aria-label: GitHub
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=e8hV630AAAAJ&hl=it
+        aria-label: Google Scholar
+      - icon: person-badge
+        href: https://orcid.org/0009-0004-3030-8724
+        aria-label: ORCID
+      - icon: envelope-fill
+        href: mailto:rdf@sam.sdu.dk
+        aria-label: Email
+  page-footer:
+    left: |
+      &copy; 2026 Riccardo Di Francesco
+    center: |
+      Built with [Quarto](https://quarto.org)
+    right: |
+      [GitHub](https://github.com/riccardo-df) &middot; [Scholar](https://scholar.google.com/citations?user=e8hV630AAAAJ&hl=it)
+    background: "#0f1b2d"
+    foreground: "#ffffffcc"
 
 format:
   html:
-    theme: defualt
+    theme:
+      dark: [darkly, custom.scss]
+      light: [default, custom.scss]
     toc: false
     smooth-scroll: true
-    css: styles.css
+    mainfont: Inter
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    include-after-body:
+      - scroll-animations.html

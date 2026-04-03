@@ -4,44 +4,88 @@ toc: false
 page-layout: full
 ---
 
-::: {.g-col-12 .g-col-md-5}
-![](assets/images/new_profile2.jpeg){fig-alt="Portrait of Riccardo Di Francesco" .hero-img}
-:::
+```{=html}
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="hero-label">Postdoctoral Researcher</span>
+      <h1 class="hero-name">Riccardo Di Francesco</h1>
+      <p class="hero-affiliation">University of Southern Denmark</p>
+      <p class="hero-tagline">
+        I build new econometric tools that bring machine learning and causal inference together&mdash;then put them to work on questions about mental health and LGBTQ+ economics that traditional methods struggle to answer.
+      </p>
 
-**Postdoctoral Researcher · University of Southern Denmark**
+      <div class="hero-buttons">
+        <a href="research.html" class="btn-cta btn-gold">View research</a>
+        <a href="assets/others/cv.pdf" download class="btn-cta btn-outline">Download CV</a>
+      </div>
+    </div>
 
-::: {.callout-note appearance="minimal"}
-### **Current position**
+    <div class="hero-photo-wrap">
+      <img src="assets/images/new_profile2.jpeg" alt="Portrait of Riccardo Di Francesco" class="hero-img">
+    </div>
+  </div>
+</section>
 
-::: {.justified}
-<p style="margin-bottom: -0.75rem;">
-I am a Postdoctoral Researcher at the University of Southern Denmark, working on the project *Beyond the Paycheck: Insights into the Effect of Unemployment, Organisational Change, and Job Security on Mental Health.*
-</p>
+<!-- STATS BAR -->
+<div class="stats-bar fade-in">
+  <div class="stat-item">
+    <div class="stat-number">3</div>
+    <div class="stat-label">Publications</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">4</div>
+    <div class="stat-label">R packages</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" id="stat-talks">20</div>
+    <div class="stat-label">Talks</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">1</div>
+    <div class="stat-label">Award</div>
+  </div>
+</div>
 
-<small>
-(Principal Investigator: Seetha Menon).
-</small>
-:::
-:::
+<!-- RESEARCH INTERESTS -->
+<div class="section-header fade-in">
+  <h2 class="section-title">Research interests</h2>
+  <div class="section-line"></div>
+</div>
 
-::: {.callout-note appearance="minimal"}
-### **Research interests**
+<div class="interest-tags fade-in" style="max-width:700px;margin:0 auto;">
+  <span class="interest-tag">Causal inference</span>
+  <span class="interest-tag">Machine learning</span>
+  <span class="interest-tag">Text analysis</span>
+  <span class="interest-tag">Mental health</span>
+  <span class="interest-tag">LGBTQ+ economics</span>
+</div>
 
-::: {.keywords}
-<span class="keyword">*Causal inference*</span>
-<span class="keyword">*Machine learning*</span>
-<span class="keyword">*Text analysis*</span>
-<span class="keyword">*Mental health*</span>
-<span class="keyword">*LGBTQ+ economics*</span>
-:::
-:::
+<!-- RECENT NEWS -->
+<div class="section-header fade-in">
+  <h2 class="section-title">Recent news</h2>
+  <div class="section-line"></div>
+</div>
 
-::: {.callout-note appearance="minimal"}
-### **Background**
+<div class="news-compact fade-in">
+  <div class="news-item-compact">
+    <span class="news-date-compact">Jan 2026</span>
+    <span class="news-text-compact"><strong>Aggregation trees</strong> published in <em>Econometric Reviews</em>.</span>
+  </div>
+  <div class="news-item-compact">
+    <span class="news-date-compact">Nov 2025</span>
+    <span class="news-text-compact"><strong>Ordered correlation forest</strong> featured in <em>Il Messaggero</em> &middot; Awarded <strong>Emerging Econometrician award</strong>.</span>
+  </div>
+  <div class="news-item-compact">
+    <span class="news-date-compact">Oct 2025</span>
+    <span class="news-text-compact"><strong>Causal inference for qualitative outcomes</strong> published in <em>Economics Letters</em>.</span>
+  </div>
+  <div class="news-item-compact" style="border-bottom:none;">
+    <span class="news-date-compact"></span>
+    <span class="news-text-compact"><a href="news.html">View all news &rarr;</a></span>
+  </div>
+</div>
 
-::: {.justified}
-I obtained my Ph.D. in Economics and Finance from the University of Rome Tor Vergata in September 2024. My training is primarily in econometrics, with an emphasis on causal inference and machine learning.
-
-Outside academia, I enjoy hiking, training in the boxing ring, and playing bass guitar.
-:::
-:::
+<div style="height:3rem;"></div>
+```

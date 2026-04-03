@@ -1,0 +1,1290 @@
+/*-- scss:defaults --*/
+
+// ===========================
+// COLOR TOKENS
+// ===========================
+$navy:    #0f1b2d;
+$gold:    #d4a039;
+$teal:    #2b9f93;
+$coral:   #e05a47;
+$light-bg: #f8f9fa;
+$card-bg:  #ffffff;
+$text:     #1a1a2e;
+$text-muted: #6c757d;
+
+// Bootstrap overrides (don't set $body-bg/$body-color — let each base theme handle it)
+$primary:    $gold;
+$link-color: $teal;
+$link-hover-color: darken($teal, 10%);
+$font-family-sans-serif: "Inter", system-ui, -apple-system, sans-serif;
+$font-family-monospace:  "JetBrains Mono", "Fira Code", monospace;
+$headings-font-family:   "DM Serif Display", Georgia, serif;
+$font-size-base: 1.05rem;
+$headings-font-weight: 700;
+$border-radius: 12px;
+$border-radius-lg: 14px;
+$navbar-bg: $navy;
+$navbar-fg: #ffffff;
+$footer-bg: $navy;
+$footer-fg: rgba(255,255,255,0.8);
+
+/*-- scss:rules --*/
+
+// ===========================
+// TYPOGRAPHY
+// ===========================
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: $navy;
+}
+
+.quarto-title-block { display: none; }
+
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+code, pre {
+  font-family: $font-family-monospace;
+}
+
+.justified {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+// ===========================
+// NAVBAR
+// ===========================
+.navbar {
+  background: $navy !important;
+  border-bottom: 2px solid rgba($gold, 0.3);
+  padding: 0.6rem 1rem;
+  backdrop-filter: blur(10px);
+
+  .navbar-brand {
+    font-family: $headings-font-family;
+    font-size: 1.25rem;
+    color: #fff !important;
+    letter-spacing: 0.02em;
+  }
+
+  .navbar-nav .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover, &.active {
+      color: $gold !important;
+      background: rgba(255,255,255,0.06);
+    }
+  }
+
+  .navbar-toggler {
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+  }
+
+  // Social icons in navbar
+  .navbar-nav .nav-item .bi {
+    font-size: 1.1rem;
+  }
+}
+
+// ===========================
+// PAGE FOOTER
+// ===========================
+.quarto-footer, footer.footer {
+  background: $navy;
+  color: $footer-fg;
+  border-top: 2px solid rgba($gold, 0.3);
+  padding: 1.5rem 0;
+  font-size: 0.88rem;
+
+  a {
+    color: $gold;
+    text-decoration: none;
+    &:hover { color: lighten($gold, 15%); }
+  }
+}
+
+// ===========================
+// CARDS (base)
+// ===========================
+.card, .pub-card, .pkg-card, .news-card, .teaching-card {
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    border-color: rgba($gold, 0.4);
+  }
+}
+
+// ===========================
+// HERO SECTION (homepage)
+// ===========================
+.hero-section {
+  position: relative;
+  padding: 3rem 0 2rem;
+  overflow: hidden;
+
+  // Decorative gradient blobs
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba($gold, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($teal, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text {
+  .hero-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: $gold;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-name {
+    font-family: $headings-font-family;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: $navy;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-affiliation {
+    font-size: 1.1rem;
+    color: $text-muted;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: $text;
+    margin-bottom: 1.5rem;
+    max-width: 520px;
+  }
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &.btn-gold {
+    background: $gold;
+    color: #fff;
+    border: 2px solid $gold;
+    &:hover {
+      background: darken($gold, 8%);
+      border-color: darken($gold, 8%);
+      transform: translateY(-1px);
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  &.btn-outline {
+    background: transparent;
+    color: $navy;
+    border: 2px solid rgba($navy, 0.3);
+    &:hover {
+      border-color: $navy;
+      background: rgba($navy, 0.04);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+  }
+}
+
+.hero-photo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-img {
+  border-radius: $border-radius;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-photo-wrap {
+    order: -1;
+
+    .hero-img { max-width: 240px; }
+  }
+
+  .hero-text {
+    .hero-tagline { max-width: 100%; }
+  }
+
+  .hero-buttons { justify-content: center; }
+}
+
+// ===========================
+// STATS BAR
+// ===========================
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  background: $card-bg;
+  border-radius: $border-radius;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+  .stat-item {
+    text-align: center;
+
+    .stat-number {
+      font-family: $headings-font-family;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: $gold;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: $text-muted;
+      margin-top: 0.3rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+// ===========================
+// SECTION HEADERS
+// ===========================
+.section-header {
+  text-align: center;
+  margin: 3rem 0 1.5rem;
+
+  .section-title {
+    font-family: $headings-font-family;
+    font-size: 1.8rem;
+    color: $navy;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-line {
+    width: 50px;
+    height: 3px;
+    background: $gold;
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+}
+
+// ===========================
+// RESEARCH INTEREST TAGS
+// ===========================
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+
+  .interest-tag {
+    padding: 0.45rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    border: 1px solid rgba($navy, 0.15);
+    border-radius: 999px;
+    color: $navy;
+    background: rgba($navy, 0.03);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba($gold, 0.08);
+      border-color: rgba($gold, 0.4);
+      color: darken($gold, 10%);
+    }
+  }
+}
+
+// ===========================
+// HIGHLIGHT CARDS (homepage)
+// ===========================
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.highlight-card {
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    border-color: rgba($gold, 0.35);
+  }
+
+  .highlight-title {
+    font-family: $headings-font-family;
+    font-size: 1.15rem;
+    color: $navy;
+    margin-bottom: 0.3rem;
+  }
+
+  .highlight-meta {
+    font-size: 0.85rem;
+    color: $text-muted;
+    margin-bottom: 0.8rem;
+  }
+
+  .highlight-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+  }
+}
+
+// ===========================
+// NEWS ITEMS (homepage compact)
+// ===========================
+.news-compact {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.news-item-compact {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  .news-date-compact {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: $gold;
+    white-space: nowrap;
+    min-width: 100px;
+  }
+
+  .news-text-compact {
+    font-size: 0.95rem;
+    color: $text;
+
+    a {
+      color: $teal;
+      text-decoration: none;
+      font-weight: 500;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// ===========================
+// BUTTONS (global)
+// ===========================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.3;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  background: transparent;
+  color: $text;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-paper {
+  border-color: rgba($teal, 0.4);
+  color: darken($teal, 5%);
+
+  &:hover {
+    background: rgba($teal, 0.06);
+    border-color: $teal;
+    color: darken($teal, 5%);
+  }
+}
+
+.btn-code {
+  border-color: rgba($teal, 0.4);
+  color: darken($teal, 5%);
+
+  &:hover {
+    background: rgba($teal, 0.06);
+    border-color: $teal;
+    color: darken($teal, 5%);
+  }
+}
+
+.btn-media {
+  border-color: rgba($coral, 0.4);
+  color: $coral;
+
+  &:hover {
+    background: rgba($coral, 0.06);
+    border-color: $coral;
+    color: $coral;
+  }
+}
+
+.paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+// ===========================
+// PUBLICATION CARDS
+// ===========================
+.pub-card {
+  position: relative;
+  padding: 1.6rem;
+  margin-bottom: 1.2rem;
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    border-color: rgba($gold, 0.35);
+  }
+
+  .pub-title {
+    font-family: $headings-font-family;
+    font-size: 1.2rem;
+    color: $navy;
+    margin-bottom: 0.3rem;
+    padding-right: 100px;
+  }
+
+  .pub-authors {
+    font-size: 0.9rem;
+    color: $text-muted;
+    margin-bottom: 0.2rem;
+    font-style: italic;
+  }
+
+  .pub-journal {
+    font-size: 0.88rem;
+    color: $text-muted;
+    margin-bottom: 0.8rem;
+  }
+
+  .pub-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+
+    &.badge-published {
+      background: rgba($teal, 0.1);
+      color: $teal;
+      border: 1px solid rgba($teal, 0.25);
+    }
+
+    &.badge-working {
+      background: rgba($gold, 0.1);
+      color: darken($gold, 10%);
+      border: 1px solid rgba($gold, 0.3);
+    }
+  }
+
+  .pub-abstract-toggle {
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: $teal;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+
+    &:hover { color: darken($teal, 10%); }
+
+    .toggle-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+      font-size: 0.7rem;
+    }
+
+    &.open .toggle-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  .pub-abstract {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: $text-muted;
+
+    &.open {
+      max-height: 600px;
+      padding-top: 0.8rem;
+    }
+
+    p { margin: 0; }
+  }
+}
+
+// ===========================
+// PACKAGE GRID
+// ===========================
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pkg-card {
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    border-color: rgba($gold, 0.35);
+  }
+
+  .pkg-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .pkg-card-logo {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+  }
+
+  .pkg-card-name {
+    font-family: $font-family-monospace;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $navy;
+  }
+
+  .pkg-card-subtitle {
+    font-size: 0.85rem;
+    color: $text-muted;
+    margin-top: 0.15rem;
+  }
+
+  .pkg-cran-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    background: rgba($teal, 0.1);
+    color: $teal;
+    border: 1px solid rgba($teal, 0.2);
+    margin-top: 0.3rem;
+  }
+
+  .pkg-card-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: $text;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  .pkg-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+}
+
+// ===========================
+// TIMELINE
+// ===========================
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.9rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba($navy, 0.12);
+  }
+}
+
+.timeline-year {
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+
+  .timeline-dot {
+    position: absolute;
+    left: -1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background: $gold;
+    border-radius: 50%;
+    border: 3px solid $light-bg;
+    box-shadow: 0 0 0 2px rgba($gold, 0.3);
+    z-index: 1;
+  }
+
+  .timeline-year-label {
+    font-family: $headings-font-family;
+    font-size: 1.4rem;
+    color: $navy;
+    font-weight: 700;
+  }
+}
+
+.timeline-card {
+  position: relative;
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1.15rem;
+    top: 1.2rem;
+    width: 8px;
+    height: 8px;
+    background: $teal;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: rgba($gold, 0.3);
+  }
+
+  .timeline-card-title {
+    font-family: $headings-font-family;
+    font-size: 1.1rem;
+    color: $navy;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-card-meta {
+    font-size: 0.85rem;
+    color: $text-muted;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .timeline-card-desc {
+    font-size: 0.9rem;
+    color: $text;
+    line-height: 1.55;
+    margin-bottom: 0.7rem;
+  }
+}
+
+.teaching-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.teaching-actions-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 0.6rem;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+
+.teaching-actions-grid .teaching-label {
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.teaching-actions-grid .teaching-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.teaching-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-right: 0.15rem;
+}
+
+// ===========================
+// CONFERENCE CHIPS
+// ===========================
+.conf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.conf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 999px;
+  background: $card-bg;
+  color: $text;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($gold, 0.05);
+    border-color: rgba($gold, 0.3);
+  }
+
+  .conf-invited {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.12rem 0.45rem;
+    border-radius: 999px;
+    background: rgba($gold, 0.12);
+    color: $gold;
+    border: 1px solid rgba($gold, 0.25);
+  }
+}
+
+.conf-invited-inline {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba($gold, 0.12);
+  color: $gold;
+  border: 1px solid rgba($gold, 0.25);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+// ===========================
+// NEWS CARDS (news page)
+// ===========================
+.news-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  background: $card-bg;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: $border-radius;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+    border-color: rgba($gold, 0.3);
+  }
+
+  .news-date-col {
+    flex-shrink: 0;
+    min-width: 80px;
+    text-align: center;
+
+    .news-month {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: $gold;
+    }
+
+    .news-year {
+      font-family: $headings-font-family;
+      font-size: 1.3rem;
+      color: $navy;
+      line-height: 1.2;
+    }
+
+    .news-type {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+      display: inline-block;
+
+      &.type-publication {
+        background: rgba($teal, 0.1);
+        color: $teal;
+      }
+
+      &.type-award {
+        background: rgba($gold, 0.1);
+        color: darken($gold, 5%);
+      }
+
+      &.type-media {
+        background: rgba($coral, 0.1);
+        color: $coral;
+      }
+    }
+  }
+
+  .news-content {
+    flex: 1;
+    min-width: 0;
+
+    .news-title {
+      font-family: $headings-font-family;
+      font-size: 1.15rem;
+      color: $navy;
+      margin-bottom: 0.4rem;
+    }
+
+    .news-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: $text;
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .news-card {
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .news-date-col { text-align: left; }
+  }
+}
+
+// ===========================
+// CV PAGE
+// ===========================
+.cv-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+
+  .cv-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .cv-iframe {
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: $border-radius;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+}
+
+// ===========================
+// DIALOG / MODALS
+// ===========================
+.asset-dialog {
+  width: min(980px, 94vw);
+  height: min(84vh, 900px);
+  padding: 1.2rem;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: $border-radius-lg;
+  background: $card-bg;
+  color: $text;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.20);
+
+  &::backdrop { background: rgba(0,0,0,0.55); }
+}
+
+.asset-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.asset-dialog-title { font-weight: 700; font-size: 1.05rem; line-height: 1.2; }
+.asset-dialog-sub { opacity: 0.7; font-size: 0.88rem; }
+
+.asset-frame {
+  width: 100%;
+  height: calc(100% - 3.2rem);
+  border: 0;
+  border-radius: 10px;
+}
+
+.asset-img {
+  max-width: 100%;
+  max-height: calc(100% - 3.2rem);
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+// ===========================
+// SCROLL ANIMATIONS
+// ===========================
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Staggered delays for card grids
+@for $i from 1 through 12 {
+  .fade-in:nth-child(#{$i}) {
+    transition-delay: #{($i - 1) * 0.08}s;
+  }
+}
+
+// ===========================
+// CONTENT WRAPPER
+// ===========================
+.content-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .page-title {
+    font-family: $headings-font-family;
+    font-size: 2.2rem;
+    color: $navy;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-line {
+    width: 50px;
+    height: 3px;
+    background: $gold;
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+}
+
+.section-label {
+  font-family: $headings-font-family;
+  font-size: 1.4rem;
+  color: $navy;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba($gold, 0.2);
+}
+
+// ===========================
+// DARK MODE OVERRIDES
+// ===========================
+.quarto-dark {
+  $dark-bg: #0d1117;
+  $dark-card: #161b22;
+  $dark-border: rgba(255,255,255,0.08);
+  $dark-text: #b0c4cc;
+  $dark-muted: #8b949e;
+
+  body, & {
+    background: $dark-bg;
+    color: $dark-text;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #f0f3f6;
+  }
+
+  .hero-text .hero-name { color: #f0f3f6; }
+  .hero-text .hero-affiliation { color: $dark-muted; }
+  .hero-text .hero-tagline { color: $dark-text; }
+
+  .card, .pub-card, .pkg-card, .news-card, .teaching-card,
+  .highlight-card, .timeline-card, .stats-bar {
+    background: $dark-card;
+    border-color: $dark-border;
+
+    &:hover {
+      border-color: rgba($gold, 0.35);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.30);
+    }
+  }
+
+  // --- Titles (all card types) ---
+  .pub-card .pub-title,
+  .pkg-card .pkg-card-name,
+  .news-card .news-title,
+  .timeline-card .timeline-card-title,
+  .highlight-card .highlight-title,
+  .section-label,
+  .page-header .page-title,
+  .section-header .section-title,
+  .news-card .news-date-col .news-year,
+  .timeline-year .timeline-year-label {
+    color: #f0f3f6;
+  }
+
+  // --- Body text / descriptions (the readability fix) ---
+  .pub-card .pub-authors,
+  .pub-card .pub-journal,
+  .pub-card .pub-abstract,
+  .timeline-card .timeline-card-meta,
+  .pkg-card .pkg-card-subtitle {
+    color: $dark-muted;
+  }
+
+  .pkg-card .pkg-card-desc,
+  .timeline-card .timeline-card-desc,
+  .news-card .news-content .news-desc,
+  .hero-text .hero-tagline,
+  .highlight-card p {
+    color: $dark-text;
+  }
+
+  // --- Chips, tags, badges ---
+  .conf-chip {
+    background: $dark-card;
+    border-color: $dark-border;
+    color: $dark-text;
+  }
+
+  .interest-tag {
+    border-color: $dark-border;
+    color: $dark-text;
+    background: rgba(255,255,255,0.03);
+
+    &:hover {
+      background: rgba($gold, 0.08);
+      border-color: rgba($gold, 0.3);
+    }
+  }
+
+  // --- Buttons ---
+  .btn {
+    color: $dark-text;
+    border-color: $dark-border;
+  }
+
+  .btn-paper, .btn-code {
+    color: lighten($teal, 10%);
+    border-color: rgba($teal, 0.3);
+  }
+
+  .btn-media {
+    color: lighten($coral, 10%);
+    border-color: rgba($coral, 0.3);
+  }
+
+  .btn-cta.btn-outline {
+    color: $dark-text;
+    border-color: rgba(255,255,255,0.2);
+
+    &:hover {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.05);
+    }
+  }
+
+  // --- Labels, meta ---
+  .teaching-label {
+    color: $dark-muted;
+  }
+
+  .section-label {
+    border-bottom-color: rgba($gold, 0.15);
+  }
+
+  // --- Structural elements ---
+  .timeline::before {
+    background: rgba(255,255,255,0.08);
+  }
+
+  .timeline-year .timeline-dot {
+    border-color: $dark-bg;
+  }
+
+  .asset-dialog {
+    background: $dark-card;
+    border-color: $dark-border;
+    color: $dark-text;
+  }
+
+  .cv-container .cv-iframe {
+    border-color: $dark-border;
+  }
+
+  .stats-bar .stat-item .stat-label {
+    color: $dark-muted;
+  }
+
+  .news-item-compact {
+    border-bottom-color: $dark-border;
+
+    .news-text-compact { color: $dark-text; }
+  }
+
+  .hero-text .hero-name { color: #f0f3f6; }
+  .hero-text .hero-affiliation { color: $dark-muted; }
+}

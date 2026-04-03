@@ -1,114 +1,109 @@
 ---
-title: "Code"
+title: ""
 toc: false
 page-layout: full
 ---
 
-## R packages
-
-::: {.g-col-12}
-::: {.callout-note appearance="minimal"}
-### **causalQual$—$Causal inference for qualitative outcomes**
-
 ```{=html}
-<div class="pkg-row">
-  <div class="pkg-main">
-    <div class="pkg-actions">
-      <a class="btn btn-code" href="https://riccardo-df.github.io/causalQual/">🌐 Website</a>
-      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/causalQual/index.html">📦 CRAN</a>
-    </div>
+<div class="content-page">
 
-    <div class="small justified">
-      <em>'causalQual' provides a suite of tools for estimating causal effects when the outcome of interest is qualitative - i.e., multinomial or ordered. The package implements the framework introduced in <a href="https://www.sciencedirect.com/science/article/pii/S016517652500463X">Di Francesco and Mellace (2025)</a>, shifting the focus to well-defined and interpretable estimands that quantify how treatment affects the probability distribution over outcome categories. It supports selection-on-observables, instrumental variables, regression discontinuity, and difference-in-differences designs.</em>
+<div class="page-header fade-in">
+  <h1 class="page-title">Software</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
+</div>
+
+<h2 class="section-label fade-in">R packages</h2>
+
+<div class="pkg-grid">
+
+  <!-- causalQual -->
+  <div class="pkg-card fade-in">
+    <div class="pkg-card-header">
+      <div class="pkg-card-logo">
+        <a href="https://riccardo-df.github.io/causalQual/">
+          <img src="assets/images/causalQual-logo.svg" alt="causalQual logo">
+        </a>
+      </div>
+      <div>
+        <div class="pkg-card-name">causalQual</div>
+        <div class="pkg-card-subtitle">Causal inference for qualitative outcomes</div>
+      </div>
+    </div>
+    <div class="pkg-card-desc">
+      Your treatment reshaped how people rank their health, satisfaction, or job quality&mdash;but standard methods pretend the outcome is a number. causalQual gives you sharp, interpretable causal effects on every category of a qualitative outcome, plugging straight into IV, RDD, and DiD designs you already know.
+    </div>
+    <div class="pkg-card-actions">
+      <a class="btn btn-code" href="https://riccardo-df.github.io/causalQual/">Website</a>
+      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/causalQual/index.html">CRAN</a>
     </div>
   </div>
 
-  <div class="pkg-logo">
-    <a href="https://riccardo-df.github.io/causalQual/">
-      <img src="assets/images/causalQual-logo.svg" alt="causalQual logo">
-    </a>
+  <!-- valiCATE -->
+  <div class="pkg-card fade-in">
+    <div class="pkg-card-header">
+      <div class="pkg-card-logo">
+        <a href="https://riccardo-df.github.io/valiCATE/">
+          <img src="assets/images/valiCATE-logo.svg" alt="valiCATE logo">
+        </a>
+      </div>
+      <div>
+        <div class="pkg-card-name">valiCATE</div>
+        <div class="pkg-card-subtitle">Validation of CATE models</div>
+      </div>
+    </div>
+    <div class="pkg-card-desc">
+      You estimated heterogeneous treatment effects&mdash;but can you trust them? valiCATE stress-tests any CATE model with best linear prediction, sorted group ATEs, and rank-weighted ATEs, so you know whether your personalized effects are signal or noise.
+    </div>
+    <div class="pkg-card-actions">
+      <a class="btn btn-code" href="https://riccardo-df.github.io/valiCATE/">Website</a>
+    </div>
   </div>
+
+  <!-- ocf -->
+  <div class="pkg-card fade-in">
+    <div class="pkg-card-header">
+      <div class="pkg-card-logo">
+        <a href="https://riccardo-df.github.io/ocf/">
+          <img src="assets/images/ocf-logo.svg" alt="ocf logo">
+        </a>
+      </div>
+      <div>
+        <div class="pkg-card-name">ocf</div>
+        <div class="pkg-card-subtitle">Ordered correlation forest</div>
+      </div>
+    </div>
+    <div class="pkg-card-desc">
+      Stop forcing ordered outcomes into logit or probit boxes. ocf is a random forest tailor-made for ordered categories&mdash;delivering predictions and marginal effects with valid confidence intervals out of the box.
+    </div>
+    <div class="pkg-card-actions">
+      <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">Website</a>
+      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/ocf/index.html">CRAN</a>
+    </div>
+  </div>
+
+  <!-- aggTrees -->
+  <div class="pkg-card fade-in">
+    <div class="pkg-card-header">
+      <div class="pkg-card-logo">
+        <a href="https://riccardo-df.github.io/aggTrees/">
+          <img src="assets/images/aggTrees-logo.svg" alt="aggTrees logo">
+        </a>
+      </div>
+      <div>
+        <div class="pkg-card-name">aggTrees</div>
+        <div class="pkg-card-subtitle">Aggregation trees</div>
+      </div>
+    </div>
+    <div class="pkg-card-desc">
+      Who benefits most from a policy&mdash;and can you prove it? aggTrees automatically discovers the subgroups that matter, uses double machine learning for rigorous inference on each group's treatment effect, and lets you zoom from broad patterns to fine-grained heterogeneity without <em>p</em>-hacking.
+    </div>
+    <div class="pkg-card-actions">
+      <a class="btn btn-code" href="https://riccardo-df.github.io/aggTrees/">Website</a>
+      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/aggTrees/index.html">CRAN</a>
+    </div>
+  </div>
+
+</div>
+
 </div>
 ```
-:::
-:::
-
-::: {.g-col-12}
-::: {.callout-note appearance="minimal"}
-### **valiCATE$—$Validation of CATE Models**  
-
-```{=html}
-<div class="pkg-row">
-  <div class="pkg-main">
-    <div class="pkg-actions">
-      <a class="btn btn-code" href="https://riccardo-df.github.io/valiCATE/">🌐 Website</a>
-    </div>
-
-    <div class="small justified">
-      <em>Validation of machine learning models for the conditional average treatment effects (CATEs). Models are validated by estimating the best linear predictor of the actual CATEs using the estimated CATEs, the sorted group average treatment effects, and the rank-weighted average treatment effects induced by the estimated CATEs.</em>
-    </div>
-  </div>
-
-  <div class="pkg-logo">
-    <a href="https://riccardo-df.github.io/valiCATE/">
-      <img src="assets/images/valiCATE-logo.svg" alt="valiCATE logo">
-    </a>
-  </div>
-</div>
-```
-:::
-:::
-
-::: {.g-col-12}
-::: {.callout-note appearance="minimal"}
-### **ocf$—$Ordered Correlation Forest**    
-
-```{=html}
-<div class="pkg-row">
-  <div class="pkg-main">
-    <div class="pkg-actions">
-      <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">🌐 Website</a>
-      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/ocf/index.html">📦 CRAN</a>
-    </div>
-
-    <div class="small justified">
-      <em>Machine learning estimator specifically optimized for predictive modeling of ordered non-numeric outcomes. 'ocf' provides forest-based estimation of the conditional choice probabilities and the covariates’ marginal effects. Under an "honesty" condition, the estimates are consistent and asymptotically normal and standard errors can be obtained by leveraging the weight-based representation of the random forest predictions. Please reference the use as <a href="https://doi.org/10.1080/07474938.2024.2429596">Di Francesco (2025)</a>.</em>
-    </div>
-  </div>
-
-  <div class="pkg-logo">
-    <a href="https://riccardo-df.github.io/ocf/">
-      <img src="assets/images/ocf-logo.svg" alt="ocf logo">
-    </a>
-  </div>
-</div>
-```
-:::
-:::
-
-::: {.g-col-12}
-::: {.callout-note appearance="minimal"}
-### **aggTrees$—$Aggregation Trees**  
-
-```{=html}
-<div class="pkg-row">
-  <div class="pkg-main">
-    <div class="pkg-actions">
-      <a class="btn btn-code" href="https://riccardo-df.github.io/aggTrees/">🌐 Website</a>
-      <a class="btn btn-paper" href="https://cran.r-project.org/web/packages/aggTrees/index.html">📦 CRAN</a>
-    </div>
-
-    <div class="small justified">
-      <em>Nonparametric data-driven approach to discovering heterogeneous subgroups in a selection-on-observables framework. 'aggTrees' allows researchers to assess whether there exists relevant heterogeneity in treatment effects by generating a sequence of optimal groupings, one for each level of granularity. For each grouping, we obtain point estimation and inference about the group average treatment effects. Please reference the use as <a href="https://doi.org/10.1080/07474938.2025.2610309">Di Francesco (2026)</a>.</em>
-    </div>
-  </div>
-
-  <div class="pkg-logo">
-    <a href="https://riccardo-df.github.io/aggTrees/">
-      <img src="assets/images/aggTrees-logo.svg" alt="aggTrees logo">
-    </a>
-  </div>
-</div>
-```
-:::
-:::

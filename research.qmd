@@ -1,109 +1,129 @@
 ---
-title: "Research"
+title: ""
 toc: false
 page-layout: full
 ---
 
-## Publications
-
-::: {.g-col-12 .g-col-lg-6}
-::: {.callout-note appearance="minimal"}
-### **Aggregation trees**
-
-*Di Francesco, R. (2026).*
-*Econometric Reviews*, 45(5), 634–659.
-
-[📄 Paper](https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/aggTrees/index.html){.btn .btn-code}
-
-:::
-:::
-
-::: {.g-col-12 .g-col-lg-6}
-::: {.callout-note appearance="minimal"}
-### **Causal inference for qualitative outcomes**
-
-*Di Francesco, R. & Mellace, G. (2025).* 
-*Economics Letters*, 112626.
-
-[📄 Paper](https://www.sciencedirect.com/science/article/pii/S016517652500463X){.btn .btn-paper}
-[💻 R package](https://riccardo-df.github.io/causalQual/){.btn .btn-code}
-:::
-:::
-
-::: {.g-col-12 .g-col-lg-6}
-::: {.callout-note appearance="minimal"}
-### **Ordered correlation forest** 
-
-*Di Francesco, R. (2025).*
-*Econometric Reviews*, 44(4), 416–432.
-
-<div class="paper-actions">
-  <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">📄 Paper</a>
-  <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">💻 R package</a>
-
-  <button class="btn btn-media" type="button"
-    onclick="document.getElementById('award-ocf').showModal()">
-    🏆 Award
-  </button>
-
-  <button class="btn btn-media" type="button"
-    onclick="document.getElementById('press-ocf').showModal()">
-    📰 Press
-  </button>
-</div>
-:::
-:::
-
-## Working papers
-
-::: {.callout-note appearance="minimal"}
-### **Behavioral Consequences of Sexual Orientation Disclosure in a Large-Scale Digital Environment** (2026)
-
-**arXiv:2403.03649** (with [Enzo Brox](https://sites.google.com/view/ebrox))
-
-::: {.small}
-*Many individuals hesitate to disclose their sexual orientation, anticipating that disclosure may alter how others respond to them. At the same time, concealing one's identity can entail substantial personal and social costs. Understanding how others react to sexual orientation disclosure is therefore central to evaluating the broader consequences of coming out. This paper uses an innovative data set from a popular online video game together with a natural experiment to causally identify behavioral responses to sexual minority disclosure. We exploit exogenous variation in the identity of a playable character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.*
-:::
-
-[📄 Paper](https://arxiv.org/abs/2403.03649){.btn .btn-paper}
-:::
-
 ```{=html}
+<div class="content-page">
+
+<div class="page-header fade-in">
+  <h1 class="page-title">Research</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
+</div>
+
+<h2 class="section-label fade-in">Publications</h2>
+
+<!-- Aggregation Trees -->
+<div class="pub-card fade-in">
+  <div class="pub-title">Aggregation trees</div>
+  <div class="pub-authors">Di Francesco, R. (2026)</div>
+  <div class="pub-journal"><em>Econometric Reviews</em>, 45(5), 634&ndash;659</div>
+
+  <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+    <span class="toggle-arrow">&#9654;</span> Abstract
+  </button>
+  <div class="pub-abstract">
+    <p>Uncovering the heterogeneous effects of particular policies or "treatments" is a key concern for researchers and policymakers. A common approach is to report average treatment effects across subgroups based on observable covariates. However, the choice of subgroups is crucial as it poses the risk of <em>p</em>-hacking and requires balancing interpretability with granularity. This paper proposes a nonparametric approach to construct heterogeneous subgroups. The approach enables a flexible exploration of the trade-off between interpretability and the discovery of more granular heterogeneity by constructing a sequence of nested groupings, each with an optimality property. By integrating our approach with "honesty" and debiased machine learning, we provide valid inference about the average treatment effect of each group. We validate the proposed methodology through an empirical Monte-Carlo study and apply it to revisit the impact of maternal smoking on birth weight, revealing systematic heterogeneity driven by parental and birth-related characteristics.</p>
+  </div>
+
+  <div class="paper-actions" style="margin-top:0.8rem;">
+    <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2025.2610309">Paper</a>
+    <a class="btn btn-code" href="https://riccardo-df.github.io/aggTrees/index.html">R package</a>
+  </div>
+</div>
+
+<!-- Causal Inference for Qualitative Outcomes -->
+<div class="pub-card fade-in">
+  <div class="pub-title">Causal inference for qualitative outcomes</div>
+  <div class="pub-authors">Di Francesco, R. &amp; Mellace, G. (2025)</div>
+  <div class="pub-journal"><em>Economics Letters</em>, 112626</div>
+
+  <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+    <span class="toggle-arrow">&#9654;</span> Abstract
+  </button>
+  <div class="pub-abstract">
+    <p>Causal inference methods such as instrumental variables, regression discontinuity, and difference-in-differences are widely used to identify and estimate treatment effects. However, when outcomes are qualitative, their application poses fundamental challenges. This paper highlights these challenges and proposes an alternative framework that focuses on well-defined and interpretable estimands. We show that conventional identification assumptions suffice for identifying the new estimands and outline simple, intuitive estimation strategies that remain fully compatible with conventional econometric methods. We provide an accompanying open-source R package, causalQual, which is publicly available on CRAN.</p>
+  </div>
+
+  <div class="paper-actions" style="margin-top:0.8rem;">
+    <a class="btn btn-paper" href="https://www.sciencedirect.com/science/article/pii/S016517652500463X">Paper</a>
+    <a class="btn btn-code" href="https://riccardo-df.github.io/causalQual/">R package</a>
+  </div>
+</div>
+
+<!-- Ordered Correlation Forest -->
+<div class="pub-card fade-in">
+  <div class="pub-title">Ordered correlation forest</div>
+  <div class="pub-authors">Di Francesco, R. (2025)</div>
+  <div class="pub-journal"><em>Econometric Reviews</em>, 44(4), 416&ndash;432</div>
+
+  <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+    <span class="toggle-arrow">&#9654;</span> Abstract
+  </button>
+  <div class="pub-abstract">
+    <p>Empirical studies in various social sciences often involve categorical outcomes with inherent ordering, such as self-evaluations of subjective well-being and self-assessments in health domains. While ordered choice models, such as the ordered logit and ordered probit, are popular tools for analyzing these outcomes, they may impose restrictive parametric and distributional assumptions. This paper introduces a novel estimator, the ordered correlation forest, that can naturally handle non-linearities in the data and does not assume a specific error term distribution. The proposed estimator modifies a standard random forest splitting criterion to build a collection of forests, each estimating the conditional probability of a single class. Under an "honesty" condition, predictions are consistent and asymptotically normal. The weights induced by each forest are used to obtain standard errors for the predicted probabilities and the covariates' marginal effects. Evidence from synthetic data shows that the proposed estimator features a superior prediction performance than alternative forest-based estimators and demonstrates its ability to construct valid confidence intervals for the covariates' marginal effects.</p>
+  </div>
+
+  <div class="paper-actions" style="margin-top:0.8rem;">
+    <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">Paper</a>
+    <a class="btn btn-code" href="https://riccardo-df.github.io/ocf/">R package</a>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('award-ocf').showModal()">Award</button>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('press-ocf').showModal()">Press</button>
+  </div>
+</div>
+
+<h2 class="section-label fade-in">Working papers</h2>
+
+<!-- Working Paper -->
+<div class="pub-card fade-in">
+  <div class="pub-title">Behavioral consequences of sexual orientation disclosure in a large-scale digital environment</div>
+  <div class="pub-authors">Di Francesco, R. &amp; Brox, E. (2026)</div>
+  <div class="pub-journal">arXiv:2403.03649</div>
+
+  <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+    <span class="toggle-arrow">&#9654;</span> Abstract
+  </button>
+  <div class="pub-abstract">
+    <p>Many individuals hesitate to disclose their sexual orientation, anticipating that disclosure may alter how others respond to them. At the same time, concealing one's identity can entail substantial personal and social costs. Understanding how others react to sexual orientation disclosure is therefore central to evaluating the broader consequences of coming out. This paper uses an innovative data set from a popular online video game together with a natural experiment to causally identify behavioral responses to sexual minority disclosure. We exploit exogenous variation in the identity of a playable character to identify the effects of coming out on players' revealed preferences for that character across diverse regions globally. Our findings reveal a substantial and persistent negative impact of coming out.</p>
+  </div>
+
+  <div class="paper-actions" style="margin-top:0.8rem;">
+    <a class="btn btn-paper" href="https://arxiv.org/abs/2403.03649">Paper</a>
+  </div>
+</div>
+
+</div>
+
+<!-- Abstract toggle script -->
+<script>
+function toggleAbstract(btn) {
+  btn.classList.toggle("open");
+  const abstract = btn.nextElementSibling;
+  abstract.classList.toggle("open");
+}
+</script>
+
+<!-- Dialogs -->
 <dialog id="award-ocf" class="asset-dialog">
   <div class="asset-dialog-header">
     <div>
-      <div class="asset-dialog-title">🏆 Award</div>
+      <div class="asset-dialog-title">Award</div>
       <div class="asset-dialog-sub">Emerging Econometrician</div>
     </div>
-    <button class="btn btn-media" type="button"
-      onclick="document.getElementById('award-ocf').close()">
-      Close
-    </button>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('award-ocf').close()">Close</button>
   </div>
-
-  <iframe
-    src="assets/others/EmergingEconometrician_DiFrancesco.pdf"
-    class="asset-frame"
-    title="Award PDF">
-  </iframe>
+  <iframe src="assets/others/EmergingEconometrician_DiFrancesco.pdf" class="asset-frame" title="Award PDF"></iframe>
 </dialog>
 
 <dialog id="press-ocf" class="asset-dialog">
   <div class="asset-dialog-header">
     <div>
-      <div class="asset-dialog-title">📰 Press</div>
+      <div class="asset-dialog-title">Press</div>
       <div class="asset-dialog-sub">Article image</div>
     </div>
-    <button class="btn btn-media" type="button"
-      onclick="document.getElementById('press-ocf').close()">
-      Close
-    </button>
+    <button class="btn btn-media" type="button" onclick="document.getElementById('press-ocf').close()">Close</button>
   </div>
-
-  <img
-    src="assets/others/messaggero2025.jpeg"
-    class="asset-img"
-    alt="Newspaper article about the paper">
+  <img src="assets/others/messaggero2025.jpeg" class="asset-img" alt="Newspaper article about the paper">
 </dialog>
 ```

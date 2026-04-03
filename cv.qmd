@@ -1,38 +1,25 @@
 ---
-title: "Curriculum Vitae"
+title: ""
 toc: false
 page-layout: full
 ---
 
 ```{=html}
-<div class="asset-page">
-  <div class="asset-page-header">
-    <div class="paper-actions">
-      <a class="btn btn-paper" type="button" onclick="document.getElementById('cv').showModal()">
-        🔎 Open PDF
-      </a>
-      <a class="btn btn-paper" href="/assets/others/cv.pdf" download>
-        ⬇ Download PDF
-      </a>
-    </div>
-  </div>
-  
-<dialog id="cv" class="asset-dialog">
-  <div class="asset-dialog-header">
-    <div>
-      <div class="asset-dialog-title">🔎 Open PDF</div>
-      <div class="asset-dialog-sub">Curriculm vitae</div>
-    </div>
-    <button class="btn btn-media" type="button"
-      onclick="document.getElementById('cv').close()">
-      Close
-    </button>
+<div class="content-page">
+
+<div class="page-header fade-in">
+  <h1 class="page-title">Curriculum vitae</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
+</div>
+
+<div class="cv-container fade-in">
+  <div class="cv-buttons">
+    <a href="assets/others/cv.pdf" download class="btn-cta btn-gold">Download PDF</a>
+    <a href="assets/others/cv.pdf" target="_blank" class="btn-cta btn-outline">Open in new tab</a>
   </div>
 
-  <iframe
-    src="assets/others/cv.pdf"
-    class="asset-frame"
-    title="Curriculum vitae">
-  </iframe>
-</dialog>
+  <iframe src="assets/others/cv.pdf" class="cv-iframe" title="Curriculum Vitae"></iframe>
+</div>
+
+</div>
 ```

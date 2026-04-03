@@ -1,50 +1,145 @@
 ---
-title: "Conferences"
+title: ""
 toc: false
 page-layout: full
 ---
 
-## 2026
+```{=html}
+<div class="content-page">
 
-::: {.keywords}
-<span class="keyword">*Annual Conference of the International Association for Applied Econometrics* (IAAE)</span>
-<span class="keyword">*Frontiers of Causal Inference and Machine Learning* (CIML, invited presentation)</span>
-<span class="keyword">*European Association of Young Economists Annual Meeting* (EAYE)</span>
-<span class="keyword">*VIVE– Danish Center for Social Science Research* (invited presentation)</span>
-:::
+<div class="page-header fade-in">
+  <h1 class="page-title">Conferences</h1>
+  <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
+</div>
 
-## 2025
+<div class="timeline">
 
-::: {.keywords}
-<span class="keyword">*16th International Health Economics Association World Congress* (IHEA)</span>
-<span class="keyword">*Annual Conference of the International Association for Applied Econometrics* (IAAE)</span>
-<span class="keyword">*38th Annual Conference of the European Society for Population Economics* (ESPE)</span>
-<span class="keyword">*11th Italian Congress of Econometrics and Empirical Economics* (ICEEE)</span>
-:::
+  <!-- 2026 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2026</div>
+  </div>
 
-## 2024
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Annual conference of the International Association for Applied Econometrics</div>
+    <div class="timeline-card-meta">IAAE</div>
+  </div>
 
-::: {.keywords}
-<span class="keyword">*CSQIEP Virtual Seminar*</span>
-<span class="keyword">*Rome Conference on Econometrics: Frontiers in Casual Inference*</span>
-<span class="keyword">*3rd Rome Ph.D. in Economics and Finance Conference*</span>
-<span class="keyword">*29th International Panel Data Conference* (IPDC)</span>
-<span class="keyword">*Annual Conference of the International Association for Applied Econometrics* (IAAE Thessaloniki)</span>
-<span class="keyword">*Annual Conference of the International Association for Applied Econometrics* (IAAE Xiamen)</span>
-<span class="keyword">*Annual Conference of the Scottish Economic Society* (SES)</span>
-:::
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Frontiers of Causal Inference and Machine Learning <span class="conf-invited-inline">Invited</span></div>
+    <div class="timeline-card-meta">CIML</div>
+  </div>
 
-## 2023
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">European Association of Young Economists annual meeting</div>
+    <div class="timeline-card-meta">EAYE</div>
+  </div>
 
-::: {.keywords}
-<span class="keyword">*2nd Rome Ph.D. in Economics and Finance Conference*</span>
-<span class="keyword">*11th SIdE Workshop for Ph.D. students in Econometrics and Empirical Economics* (WEEE)</span>
-<span class="keyword">*10th Italian Congress of Econometrics and Empirical Economics* (ICEEE)</span>
-:::
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">VIVE &ndash; Danish Center for Social Science Research <span class="conf-invited-inline">Invited</span></div>
+    <div class="timeline-card-meta">Internal seminar</div>
+  </div>
 
-## 2022
+  <!-- 2025 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2025</div>
+  </div>
 
-::: {.keywords}
-<span class="keyword">*1st Rome Ph.D. in Economics and Finance Conference*</span>
-<span class="keyword">*10th SIdE Workshop for Ph.D. students in Econometrics and Empirical Economics* (WEEE)</span>
-:::
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">16th International Health Economics Association world congress</div>
+    <div class="timeline-card-meta">IHEA</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Annual conference of the International Association for Applied Econometrics</div>
+    <div class="timeline-card-meta">IAAE</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">38th annual conference of the European Society for Population Economics</div>
+    <div class="timeline-card-meta">ESPE</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">11th Italian Congress of Econometrics and Empirical Economics</div>
+    <div class="timeline-card-meta">ICEEE</div>
+  </div>
+
+  <!-- 2024 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2024</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">CSQIEP virtual seminar</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Rome conference on econometrics: frontiers in causal inference</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">3rd Rome Ph.D. in Economics and Finance conference</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">29th International Panel Data Conference</div>
+    <div class="timeline-card-meta">IPDC</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Annual conference of the International Association for Applied Econometrics</div>
+    <div class="timeline-card-meta">IAAE Thessaloniki</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Annual conference of the International Association for Applied Econometrics</div>
+    <div class="timeline-card-meta">IAAE Xiamen</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Annual conference of the Scottish Economic Society</div>
+    <div class="timeline-card-meta">SES</div>
+  </div>
+
+  <!-- 2023 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2023</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">2nd Rome Ph.D. in Economics and Finance conference</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">11th SIdE workshop for Ph.D. students in Econometrics and Empirical Economics</div>
+    <div class="timeline-card-meta">WEEE</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">10th Italian Congress of Econometrics and Empirical Economics</div>
+    <div class="timeline-card-meta">ICEEE</div>
+  </div>
+
+  <!-- 2022 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2022</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">1st Rome Ph.D. in Economics and Finance conference</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">10th SIdE workshop for Ph.D. students in Econometrics and Empirical Economics</div>
+    <div class="timeline-card-meta">WEEE</div>
+  </div>
+
+</div>
+
+</div>
+```
