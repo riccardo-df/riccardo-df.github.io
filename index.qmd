@@ -5,6 +5,12 @@ page-layout: full
 ---
 
 ```{=html}
+<!-- JOB MARKET BANNER -->
+<div class="jm-banner">
+  <span class="jm-banner-text">I am on the <strong>2026–2027 academic job market</strong>.</span>
+  <a href="assets/others/cv.pdf" download class="jm-banner-link">Download CV &rarr;</a>
+</div>
+
 <!-- HERO SECTION -->
 <section class="hero-section">
   <div class="hero-grid">

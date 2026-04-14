@@ -133,6 +133,47 @@ code, pre {
 }
 
 // ===========================
+// JOB MARKET BANNER
+// ===========================
+.jm-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
+  background: rgba($gold, 0.08);
+  border: 1px solid rgba($gold, 0.25);
+  border-radius: 8px;
+  font-size: 0.95rem;
+
+  .jm-banner-text {
+    color: $text;
+  }
+
+  .jm-banner-link {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: darken($gold, 10%);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .jm-banner {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
+}
+
+// ===========================
 // HERO SECTION (homepage)
 // ===========================
 .hero-section {
@@ -1283,6 +1324,14 @@ code, pre {
     border-bottom-color: $dark-border;
 
     .news-text-compact { color: $dark-text; }
+  }
+
+  .jm-banner {
+    background: rgba($gold, 0.06);
+    border-color: rgba($gold, 0.2);
+
+    .jm-banner-text { color: $dark-text; }
+    .jm-banner-link { color: $gold; }
   }
 
   .hero-text .hero-name { color: #f0f3f6; }
