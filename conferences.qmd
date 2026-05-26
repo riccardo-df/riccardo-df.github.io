@@ -26,13 +26,13 @@ page-layout: full
   </div>
 
   <div class="timeline-card fade-in">
-    <div class="timeline-card-title">Frontiers of Causal Inference and Machine Learning <span class="conf-invited-inline">Invited</span></div>
-    <div class="timeline-card-meta">CIML</div>
+    <div class="timeline-card-title">European Association of Young Economists annual meeting</div>
+    <div class="timeline-card-meta">EAYE</div>
   </div>
 
   <div class="timeline-card fade-in">
-    <div class="timeline-card-title">European Association of Young Economists annual meeting</div>
-    <div class="timeline-card-meta">EAYE</div>
+    <div class="timeline-card-title">Frontiers of Causal Inference and Machine Learning <span class="conf-invited-inline">Invited</span></div>
+    <div class="timeline-card-meta">CIML</div>
   </div>
 
   <div class="timeline-card fade-in">
