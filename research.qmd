@@ -78,7 +78,7 @@ page-layout: full
 <!-- Working Paper -->
 <div class="pub-card fade-in">
   <div class="pub-title">Behavioral consequences of sexual orientation disclosure in a large-scale digital environment</div>
-  <div class="pub-authors">Di Francesco, R. &amp; Brox, E. (2026)</div>
+  <div class="pub-authors">Brox, E. &amp; Di Francesco, R. (2026)</div>
   <div class="pub-journal">arXiv:2403.03649</div>
 
   <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
@@ -107,7 +107,7 @@ page-layout: full
 
 <div class="pub-card fade-in">
   <div class="pub-title">The value of coworker complementarities in team production</div>
-  <div class="pub-authors">Di Francesco, R. &amp; Brox, E.</div>
+  <div class="pub-authors">Brox, E. &amp; Di Francesco, R.</div>
 </div>
 
 <div class="pub-card fade-in">
