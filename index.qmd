@@ -19,7 +19,11 @@ page-layout: full
       <h1 class="hero-name">Riccardo Di Francesco</h1>
       <p class="hero-affiliation">University of Southern Denmark</p>
       <p class="hero-tagline">
-        I study how workplace conditions shape employee health, using population-wide Danish administrative data and modern causal inference methods. I also develop econometric and machine learning tools for treatment effect heterogeneity and ordered outcomes.
+        I study how firms, labour markets, and public policy shape worker health and behavior, using large-scale administrative and digital data. I also develop econometric and machine learning tools for treatment effect heterogeneity and ordered outcomes.
+      </p>
+      <p style="margin-top:0.6rem;font-size:0.875rem;color:#aaa;">
+        <span style="color:#d4a039;font-weight:600;">Job market paper:</span>
+        <a href="jm.html" style="color:#ccc;text-decoration:none;">Well-being salience in corporate disclosures and worker health</a>
       </p>
 
       <div class="hero-buttons">
