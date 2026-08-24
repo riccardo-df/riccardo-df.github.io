@@ -15,8 +15,8 @@ page-layout: full
 <section class="hero-section">
   <div class="hero-grid">
     <div class="hero-text">
-      <span class="hero-label">Postdoctoral Researcher</span>
       <h1 class="hero-name">Riccardo Di Francesco</h1>
+      <span class="hero-label">Postdoctoral Researcher</span>
       <p class="hero-affiliation">University of Southern Denmark</p>
       <p class="hero-tagline" style="text-align:justify;">
         I am an applied microeconomist working on health economics, labour economics, and econometrics. My empirical work studies how firms and labour markets shape worker health and behavior, drawing on data ranging from population-wide administrative registers to professional sports leagues and online platforms. My methodological work develops machine learning tools for heterogeneous treatment effects and ordered outcomes&mdash;problems that arise directly in my applied research.
