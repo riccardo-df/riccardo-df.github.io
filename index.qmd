@@ -22,13 +22,8 @@ page-layout: full
         I am an applied microeconomist working on health economics, labour economics, and econometrics. My empirical work studies how firms and labour markets shape worker health and behavior, drawing on data ranging from population-wide administrative registers to professional sports leagues and online platforms. My methodological work develops machine learning tools for heterogeneous treatment effects and ordered outcomes&mdash;problems that arise directly in my applied research.
       </p>
       <p style="margin-top:0.75rem;font-size:0.875rem;color:#aaa;">
-        <span style="color:#d4a039;font-weight:600;">Job market paper:</span> <a href="jm.html" style="color:#ccc;text-decoration:none;">Well-being salience in corporate disclosures and worker health</a> <a href="jm.html" style="display:inline-block;border:1px solid #d4a039;color:#d4a039;font-size:0.72rem;font-weight:600;padding:0.15rem 0.6rem;border-radius:4px;text-decoration:none;letter-spacing:0.03em;vertical-align:middle;white-space:nowrap;">Details &rarr;</a>
+        <span style="color:#d4a039;font-weight:600;">Job market paper:</span> <a href="jm.html" style="color:#ccc;text-decoration:none;">Well-being salience in corporate disclosures and worker health</a> <a href="jm.html" style="display:inline-block;border:1px solid #d4a039;color:#d4a039;font-size:0.65rem;font-weight:600;padding:0.08rem 0.4rem;border-radius:3px;text-decoration:none;letter-spacing:0.03em;vertical-align:middle;white-space:nowrap;">Details &rarr;</a>
       </p>
-
-      <div class="hero-buttons">
-        <a href="research.html" class="btn-cta btn-gold">View research</a>
-        <a href="assets/others/cv.pdf" download class="btn-cta btn-outline">Download CV</a>
-      </div>
     </div>
 
     <div class="hero-photo-wrap">
