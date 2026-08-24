@@ -232,7 +232,7 @@ code, pre {
   .hero-name {
     font-family: $headings-font-family;
     font-size: clamp(2rem, 4vw, 3rem);
-    color: $navy;
+    color: $navy !important;
     line-height: 1.15;
     margin-bottom: 0.5rem;
   }
@@ -1198,7 +1198,7 @@ code, pre {
     color: #f0f3f6;
   }
 
-  .hero-text .hero-name { color: #f0f3f6; }
+  .hero-text .hero-name { color: #f0f3f6 !important; }
   .hero-text .hero-affiliation { color: $dark-muted; }
   .hero-text .hero-tagline { color: $dark-text; }
 
@@ -1334,6 +1334,6 @@ code, pre {
     .jm-banner-link { color: $gold; }
   }
 
-  .hero-text .hero-name { color: #f0f3f6; }
+  .hero-text .hero-name { color: #f0f3f6 !important; }
   .hero-text .hero-affiliation { color: $dark-muted; }
 }
