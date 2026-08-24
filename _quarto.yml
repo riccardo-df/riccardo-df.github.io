@@ -6,6 +6,7 @@ project:
     - Firm_engagement.pdf
   render:
     - index.qmd
+    - jm.qmd
     - research.qmd
     - code.qmd
     - teaching.qmd
@@ -24,6 +25,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: jm.qmd
+        text: Job Market
       - href: research.qmd
         text: Research
       - href: code.qmd

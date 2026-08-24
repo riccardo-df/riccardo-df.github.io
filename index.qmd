@@ -8,7 +8,7 @@ page-layout: full
 <!-- JOB MARKET BANNER -->
 <div class="jm-banner">
   <span class="jm-banner-text">I am on the <strong>2026–2027 academic job market</strong>.</span>
-  <a href="assets/others/cv.pdf" download class="jm-banner-link">Download CV &rarr;</a>
+  <a href="jm.html" class="jm-banner-link">Job market page &rarr;</a>
 </div>
 
 <!-- HERO SECTION -->
@@ -51,6 +51,22 @@ page-layout: full
   <div class="stat-item">
     <div class="stat-number">1</div>
     <div class="stat-label">Award</div>
+  </div>
+</div>
+
+<!-- JOB MARKET PAPER -->
+<div class="section-header fade-in">
+  <h2 class="section-title">Job market paper</h2>
+  <div class="section-line"></div>
+</div>
+
+<div class="pub-card fade-in" style="border-left:4px solid #d4a039;padding-left:1.2rem;max-width:860px;margin:0 auto 2rem;">
+  <div style="display:inline-block;background:#d4a039;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:3px;margin-bottom:0.5rem;text-transform:uppercase;">Job Market Paper</div>
+  <div class="pub-title">Well-being salience in corporate disclosures and worker health</div>
+  <div class="pub-authors">Di Francesco, R., Hull, P. &amp; Menon, S.</div>
+  <p style="margin-top:0.6rem;font-size:0.9rem;color:#666;">We study how firms' orientation toward employee well-being&mdash;measured from the language of Danish corporate disclosures&mdash;shapes worker health. Exploiting workers' mobility between firms, we find that moving to a higher-salience employer raises sickness absence but not mental-health-care use, pointing to a behavioral rather than a health channel.</p>
+  <div class="paper-actions" style="margin-top:0.8rem;">
+    <a class="btn btn-paper" href="jm.html">Full details &rarr;</a>
   </div>
 </div>
 
