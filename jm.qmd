@@ -12,29 +12,25 @@ page-layout: full
   <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
 </div>
 
-<!-- JMP: paper + figures side by side -->
-<div class="fade-in" style="display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start;margin-bottom:2rem;">
+<!-- JMP -->
+<div class="fade-in" style="max-width:780px;margin:0 auto 3rem;">
+  <div style="display:inline-block;background:#d4a039;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:3px;margin-bottom:0.9rem;text-transform:uppercase;">Job Market Paper</div>
+  <h2 style="font-size:1.35rem;font-weight:700;margin:0 0 0.3rem;line-height:1.3;">Well-being salience in corporate disclosures and worker health</h2>
+  <p style="color:#888;font-size:0.9rem;margin:0 0 1.2rem;">Di Francesco, R., Hull, P. &amp; Menon, S.</p>
+  <p style="line-height:1.75;margin:0;">We study how firms' orientation toward employee well-being shapes the health of their workers. Because this orientation is not directly observable, we measure it from the language Danish firms use in their public disclosures, applying language models to construct a firm-level <em>well-being salience score</em>. We link this score to population-wide administrative registers of health and work absence over 2013&ndash;2022, and exploit workers' mobility between firms to estimate how worker health responds to a change in the salience of their employer. We find an asymmetry: workers who move to higher-salience firms take substantially more sickness absence, while their use of mental-health care does not change. Because worsening health would raise both, the absence response reflects behavior rather than deteriorating health. Our results show that firms shape not only worker health but how workers act on it, and that the language of routine corporate disclosure can be read for economically meaningful features of the workplace that administrative data leave unrecorded.</p>
+</div>
 
-  <!-- Left: paper card -->
-  <div class="pub-card" style="flex:1;min-width:280px;border-left:4px solid #d4a039;padding-left:1.2rem;">
-    <div style="display:inline-block;background:#d4a039;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:3px;margin-bottom:0.5rem;text-transform:uppercase;">Job Market Paper</div>
-    <div class="pub-title">Well-being salience in corporate disclosures and worker health</div>
-    <div class="pub-authors">Di Francesco, R., Hull, P. &amp; Menon, S.</div>
-    <p style="margin-top:0.8rem;">We study how firms' orientation toward employee well-being shapes the health of their workers. Because this orientation is not directly observable, we measure it from the language Danish firms use in their public disclosures, applying language models to construct a firm-level <em>well-being salience score</em>. We link this score to population-wide administrative registers of health and work absence over 2013&ndash;2022, and exploit workers' mobility between firms to estimate how worker health responds to a change in the salience of their employer. We find an asymmetry: workers who move to higher-salience firms take substantially more sickness absence, while their use of mental-health care does not change. Because worsening health would raise both, the absence response reflects behavior rather than deteriorating health. Our results show that firms shape not only worker health but how workers act on it, and that the language of routine corporate disclosure can be read for economically meaningful features of the workplace that administrative data leave unrecorded.</p>
-  </div>
+<!-- Figures -->
+<div class="fade-in" style="max-width:780px;margin:0 auto 3rem;">
+  <figure style="margin:0 0 2.5rem;">
+    <img src="assets/images/jmp_event_study.png" alt="Event study: sickness absence around firm moves" style="width:100%;border-radius:6px;display:block;">
+    <figcaption style="font-size:0.82rem;color:#666;margin-top:0.7rem;line-height:1.5;">Workers moving to higher-salience firms take significantly more sickness absence from the year of the move. Pre-trends are flat, supporting the mover design. The effect on mental-health-care use (not shown) is near zero &mdash; pointing to a behavioral rather than a health channel.</figcaption>
+  </figure>
 
-  <!-- Right: figures stacked -->
-  <div style="flex:0 0 380px;min-width:280px;display:flex;flex-direction:column;gap:1.5rem;">
-    <figure style="margin:0;">
-      <img src="assets/images/jmp_wordcloud.png" alt="Well-being language in Danish corporate annual reports" style="width:100%;border-radius:6px;">
-      <figcaption style="font-size:0.8rem;color:#666;margin-top:0.4rem;">Well-being language in Danish corporate annual reports. Firms using this vocabulary more intensively receive a higher salience score.</figcaption>
-    </figure>
-    <figure style="margin:0;">
-      <img src="assets/images/jmp_event_study.png" alt="Event study of sickness absence around firm moves" style="width:100%;border-radius:6px;">
-      <figcaption style="font-size:0.8rem;color:#666;margin-top:0.4rem;">Workers moving to higher-salience firms take significantly more sickness absence from the year of the move. Pre-trends are flat. The effect on mental-health-care use is near zero, pointing to a behavioral channel.</figcaption>
-    </figure>
-  </div>
-
+  <figure style="margin:0 auto;max-width:460px;">
+    <img src="assets/images/jmp_wordcloud.png" alt="Well-being language in Danish corporate annual reports" style="width:100%;border-radius:6px;display:block;">
+    <figcaption style="font-size:0.82rem;color:#666;margin-top:0.7rem;line-height:1.5;text-align:center;">Well-being language in Danish corporate annual reports. Firms that use this vocabulary more intensively receive a higher salience score.</figcaption>
+  </figure>
 </div>
 
 <h2 class="section-label fade-in">Materials</h2>
