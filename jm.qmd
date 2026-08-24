@@ -21,6 +21,18 @@ page-layout: full
   <p style="margin-top:0.6rem;font-size:0.875rem;color:#555;"><strong>Keywords:</strong> Worker health, mental health, firms and workers, sickness absence, mover design, text as data &nbsp;&middot;&nbsp; <strong>JEL:</strong> C45, D22, I12, J63, J81</p>
 </div>
 
+<h2 class="section-label fade-in">Key figures</h2>
+
+<figure class="fade-in" style="margin:0 0 2.5rem;">
+  <img src="assets/images/jmp_wordcloud.png" alt="Word cloud of well-being language in Danish corporate annual reports" style="width:100%;max-width:560px;display:block;margin:0 auto;border-radius:6px;">
+  <figcaption style="text-align:center;font-size:0.875rem;color:#666;margin-top:0.6rem;max-width:560px;margin-left:auto;margin-right:auto;">Well-being language in Danish corporate annual reports. Firms that use this vocabulary more intensively receive a higher well-being salience score.</figcaption>
+</figure>
+
+<figure class="fade-in" style="margin:0 0 2.5rem;">
+  <img src="assets/images/jmp_event_study.png" alt="Event study of sickness absence around firm moves" style="width:100%;max-width:760px;display:block;margin:0 auto;border-radius:6px;">
+  <figcaption style="text-align:center;font-size:0.875rem;color:#666;margin-top:0.6rem;max-width:760px;margin-left:auto;margin-right:auto;">Workers moving to higher-salience firms take significantly more sickness absence starting the year of the move. Pre-trends are flat, supporting the mover design. The effect on mental-health-care use (not shown) is near zero, pointing to a behavioral rather than a health channel.</figcaption>
+</figure>
+
 <h2 class="section-label fade-in">Materials</h2>
 
 <div class="fade-in" style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:2.5rem;">
