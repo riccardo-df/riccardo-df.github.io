@@ -19,11 +19,12 @@ page-layout: full
       <h1 class="hero-name">Riccardo Di Francesco</h1>
       <p class="hero-affiliation">University of Southern Denmark</p>
       <p class="hero-tagline">
-        I study how firms, labour markets, and public policy shape worker health and behavior, using large-scale administrative and digital data. I also develop econometric and machine learning tools for treatment effect heterogeneity and ordered outcomes.
+        I am an applied microeconomist working on health economics, labour economics, and econometrics. My empirical work studies how firms and labour markets shape worker health and behavior, drawing on data ranging from population-wide administrative registers to professional sports leagues and online platforms. My methodological work develops machine learning tools for heterogeneous treatment effects and ordered outcomes — problems that arise directly in my applied research — each paired with an open-source R package.
       </p>
       <p style="margin-top:0.6rem;font-size:0.875rem;color:#aaa;">
         <span style="color:#d4a039;font-weight:600;">Job market paper:</span>
         <a href="jm.html" style="color:#ccc;text-decoration:none;">Well-being salience in corporate disclosures and worker health</a>
+        &nbsp;<a href="jm.html" class="btn-cta btn-outline" style="font-size:0.75rem;padding:0.15rem 0.6rem;vertical-align:middle;">Details &rarr;</a>
       </p>
 
       <div class="hero-buttons">
