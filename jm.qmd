@@ -12,8 +12,6 @@ page-layout: full
   <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
 </div>
 
-<h2 class="section-label fade-in">Job market paper</h2>
-
 <!-- JMP -->
 <div class="pub-card fade-in" style="border-left:4px solid #d4a039;padding-left:1.2rem;">
   <div style="display:inline-block;background:#d4a039;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:3px;margin-bottom:0.5rem;text-transform:uppercase;">Job Market Paper</div>
