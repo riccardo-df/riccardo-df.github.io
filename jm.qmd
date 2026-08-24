@@ -13,8 +13,7 @@ page-layout: full
 </div>
 
 <p class="fade-in" style="text-align:center;color:#666;margin-bottom:2.5rem;">
-  I am on the <strong>2026&ndash;2027 academic job market</strong>.<br>
-  I am available for interviews at the EEA Job Market (December 2026).
+  I am on the <strong>2026&ndash;2027 academic job market</strong>.
 </p>
 
 <h2 class="section-label fade-in">Job market paper</h2>
