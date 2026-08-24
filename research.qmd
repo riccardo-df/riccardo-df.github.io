@@ -12,6 +12,22 @@ page-layout: full
   <div class="page-line" style="width:50px;height:3px;background:#d4a039;margin:0 auto;border-radius:2px;"></div>
 </div>
 
+<h2 class="section-label fade-in">Job market paper</h2>
+
+<!-- JMP -->
+<div class="pub-card fade-in" style="border-left:4px solid #d4a039;padding-left:1.2rem;">
+  <div style="display:inline-block;background:#d4a039;color:#fff;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:3px;margin-bottom:0.5rem;text-transform:uppercase;">Job Market Paper</div>
+  <div class="pub-title">Well-being salience in corporate disclosures and worker health</div>
+  <div class="pub-authors">Di Francesco, R., Hull, P. &amp; Menon, S.</div>
+
+  <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+    <span class="toggle-arrow">&#9654;</span> Abstract
+  </button>
+  <div class="pub-abstract">
+    <p>We study how firms' communication of employee well-being shapes worker health outcomes. Using sentence-embedding models applied to Danish corporate annual reports, we construct a firm-level well-being salience index and link it to population-wide administrative data. Identification exploits a mover design: we track workers who switch firms and use event-study variation in well-being salience between origin and destination employers. We find an asymmetric effect&mdash;moving to a higher-salience firm raises sickness absence but not mental-health-care use&mdash;consistent with a behavioral channel of reduced stigma rather than deteriorating health.</p>
+  </div>
+</div>
+
 <h2 class="section-label fade-in">Publications</h2>
 
 <!-- Aggregation Trees -->
@@ -91,6 +107,30 @@ page-layout: full
   <div class="paper-actions" style="margin-top:0.8rem;">
     <a class="btn btn-paper" href="https://arxiv.org/abs/2403.03649">Paper</a>
   </div>
+</div>
+
+</div>
+
+<h2 class="section-label fade-in">Work in progress</h2>
+
+<div class="pub-card fade-in">
+  <div class="pub-title">The value of coworker complementarities in team production</div>
+  <div class="pub-authors">Di Francesco, R. &amp; Brox, E.</div>
+</div>
+
+<div class="pub-card fade-in">
+  <div class="pub-title">Managerial hierarchy and worker mental health: Evidence from the Danish University Act</div>
+  <div class="pub-authors">Andersen, K. H., Di Francesco, R. &amp; Menon, S.</div>
+</div>
+
+<div class="pub-card fade-in">
+  <div class="pub-title">A local differencing test for the credibility of selection-on-observables</div>
+  <div class="pub-authors">Di Francesco, R. &amp; Peracchi, F.</div>
+</div>
+
+<div class="pub-card fade-in">
+  <div class="pub-title">Validating machine learning predictions of heterogeneous treatment effects</div>
+  <div class="pub-authors">Di Francesco, R. &amp; Knaus, M. C.</div>
 </div>
 
 </div>

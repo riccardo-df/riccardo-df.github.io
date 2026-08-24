@@ -19,7 +19,7 @@ page-layout: full
       <h1 class="hero-name">Riccardo Di Francesco</h1>
       <p class="hero-affiliation">University of Southern Denmark</p>
       <p class="hero-tagline">
-        I build new econometric tools that bring machine learning and causal inference together&mdash;then put them to work on questions about mental health and LGBTQ+ economics that traditional methods struggle to answer.
+        I study how workplace conditions shape employee mental health, using population-wide Danish administrative data and modern causal inference methods. I also develop econometric and machine learning tools for treatment effect heterogeneity and ordered outcomes.
       </p>
 
       <div class="hero-buttons">
@@ -61,11 +61,11 @@ page-layout: full
 </div>
 
 <div class="interest-tags fade-in" style="max-width:700px;margin:0 auto;">
+  <span class="interest-tag">Health economics</span>
+  <span class="interest-tag">Labour economics</span>
   <span class="interest-tag">Causal inference</span>
   <span class="interest-tag">Machine learning</span>
   <span class="interest-tag">Text analysis</span>
-  <span class="interest-tag">Mental health</span>
-  <span class="interest-tag">LGBTQ+ economics</span>
 </div>
 
 <!-- RECENT NEWS -->
