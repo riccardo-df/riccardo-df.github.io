@@ -78,7 +78,7 @@ page-layout: full
 <!-- Working Paper -->
 <div class="pub-card fade-in">
   <div class="pub-title">Behavioral consequences of sexual orientation disclosure in a large-scale digital environment</div>
-  <div class="pub-authors">Brox, E. &amp; Di Francesco, R. (2026)</div>
+  <div class="pub-authors">Brox, E. &amp; Di Francesco, R. (2024)</div>
   <div class="pub-journal">arXiv:2403.03649</div>
 
   <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
