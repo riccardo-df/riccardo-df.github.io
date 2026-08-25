@@ -219,14 +219,18 @@ code, pre {
 }
 
 .hero-text {
+  display: flex;
+  flex-direction: column;
+
   .hero-label {
-    display: inline-block;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: $gold;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    order: 1;
+    align-self: flex-start;
   }
 
   .hero-name {
@@ -234,13 +238,15 @@ code, pre {
     font-size: clamp(2rem, 4vw, 3rem);
     color: $navy !important;
     line-height: 1.15;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    order: 0;
   }
 
   .hero-affiliation {
     font-size: 1.1rem;
     color: $text-muted;
     margin-bottom: 1.2rem;
+    order: 2;
   }
 
   .hero-tagline {
@@ -248,7 +254,12 @@ code, pre {
     line-height: 1.65;
     color: $text;
     margin-bottom: 1.5rem;
+    order: 3;
     max-width: 520px;
+  }
+
+  > p:last-child {
+    order: 4;
   }
 }
 
