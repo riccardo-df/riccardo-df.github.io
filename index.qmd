@@ -63,7 +63,7 @@ page-layout: full
   <span class="interest-tag">Causal inference</span>
   <span class="interest-tag">Health economics</span>
   <span class="interest-tag">Labour economics</span>
-  <span class="interest-tag">Machine learning</span>
+  <span class="interest-tag">Causal machine learning</span>
 </div>
 
 <!-- RECENT NEWS -->
