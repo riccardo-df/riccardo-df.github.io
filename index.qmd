@@ -61,9 +61,9 @@ page-layout: full
 <div class="interest-tags fade-in" style="max-width:700px;margin:0 auto;">
   <span class="interest-tag">Econometrics</span>
   <span class="interest-tag">Causal inference</span>
+  <span class="interest-tag">Causal machine learning</span>
   <span class="interest-tag">Health economics</span>
   <span class="interest-tag">Labour economics</span>
-  <span class="interest-tag">Causal machine learning</span>
 </div>
 
 <!-- RECENT NEWS -->
@@ -79,11 +79,11 @@ page-layout: full
   </div>
   <div class="news-item-compact">
     <span class="news-date-compact">Nov 2025</span>
-    <span class="news-text-compact"><strong>Ordered correlation forest</strong> featured in <em>Il Messaggero</em> &middot; Awarded <strong>Emerging Econometrician award</strong>.</span>
+    <span class="news-text-compact"><strong>Ordered correlation forest</strong> featured in <em>Il Messaggero</em>.</span>
   </div>
   <div class="news-item-compact">
     <span class="news-date-compact">Oct 2025</span>
-    <span class="news-text-compact"><strong>Causal inference for qualitative outcomes</strong> published in <em>Economics Letters</em>.</span>
+    <span class="news-text-compact"><strong>Causal inference for qualitative outcomes</strong> published in <em>Economics Letters</em> &middot; Awarded <strong>Emerging Econometrician award</strong>.</span>
   </div>
   <div class="news-item-compact" style="border-bottom:none;">
     <span class="news-date-compact"></span>

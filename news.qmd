@@ -51,10 +51,10 @@ page-layout: full
   </div>
 </div>
 
-<!-- November 2025 — Award -->
+<!-- October 2025 — Award -->
 <div class="news-card fade-in">
   <div class="news-date-col">
-    <div class="news-month">Nov</div>
+    <div class="news-month">Oct</div>
     <div class="news-year">2025</div>
     <span class="news-type type-award">Award</span>
   </div>
