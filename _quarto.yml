@@ -50,7 +50,7 @@ website:
         href: https://orcid.org/0009-0004-3030-8724
         aria-label: ORCID
       - icon: envelope-fill
-        href: mailto:rdf@sam.sdu.dk
+        href: mailto:rdif@sam.sdu.dk
         aria-label: Email
   page-footer:
     left: |
