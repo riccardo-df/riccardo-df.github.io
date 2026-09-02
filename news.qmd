@@ -117,9 +117,9 @@ page-layout: full
     <span class="news-type type-award">Award</span>
   </div>
   <div class="news-content">
-    <div class="news-title">Honorable mention at IAAE</div>
+    <div class="news-title">IAAE student best paper &mdash; honorable mention</div>
     <div class="news-desc">
-      A forest built for ordered outcomes, taken on the road&mdash;my <em>Ordered correlation forest</em> came away with an <strong>honorable mention</strong> for the Student Best Paper Award at the IAAE annual conference in Thessaloniki.
+      <em>Ordered correlation forest</em> received an <strong>honorable mention</strong> for the Student Best Paper Award at the Annual Conference of the International Association for Applied Econometrics in Thessaloniki.
     </div>
     <div class="paper-actions">
       <a class="btn btn-paper" href="https://www.tandfonline.com/doi/full/10.1080/07474938.2024.2429596">Paper</a>
