@@ -125,6 +125,11 @@ page-layout: full
   <div class="pub-authors">Di Francesco, R. &amp; Knaus, M. C.</div>
 </div>
 
+<div class="pub-card fade-in">
+  <div class="pub-title">Joint ordered correlation forest</div>
+  <div class="pub-authors">Di Francesco, R.</div>
+</div>
+
 </div>
 
 <!-- Abstract toggle script -->
