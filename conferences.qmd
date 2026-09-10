@@ -21,6 +21,11 @@ page-layout: full
   </div>
 
   <div class="timeline-card fade-in">
+    <div class="timeline-card-title">DTU &ndash; Technical University of Denmark <span class="conf-invited-inline">Invited</span></div>
+    <div class="timeline-card-meta">Internal seminar</div>
+  </div>
+
+  <div class="timeline-card fade-in">
     <div class="timeline-card-title">Annual conference of the International Association for Applied Econometrics</div>
     <div class="timeline-card-meta">IAAE</div>
   </div>
