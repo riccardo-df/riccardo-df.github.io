@@ -23,7 +23,7 @@ page-layout: full
   <div class="timeline-card fade-in">
     <div class="timeline-card-title">Guest lecturer &mdash; Microeconometrics</div>
     <div class="timeline-card-meta">
-      Master of Science course &middot; Taught by Giovanni Mellace<br>
+      Master of Science course<br>
       University of Southern Denmark, Odense
     </div>
     <div class="timeline-card-desc">
@@ -52,7 +52,7 @@ page-layout: full
   <div class="timeline-card fade-in">
     <div class="timeline-card-title">Teaching assistant &mdash; Statistics</div>
     <div class="timeline-card-meta">
-      Bachelor of Science course &middot; Taught by Livia De Giovanni<br>
+      Bachelor of Science course<br>
       LUISS University, Rome
     </div>
     <div class="timeline-card-desc">
@@ -63,7 +63,7 @@ page-layout: full
   <div class="timeline-card fade-in">
     <div class="timeline-card-title">Teaching assistant &mdash; Applied statistics and econometrics</div>
     <div class="timeline-card-meta">
-      Bachelor of Science course &middot; Taught by Marianna Brunetti<br>
+      Bachelor of Science course<br>
       LUISS University, Rome
     </div>
     <div class="timeline-card-desc">
@@ -80,7 +80,7 @@ page-layout: full
   <div class="timeline-card fade-in">
     <div class="timeline-card-title">Teaching assistant &mdash; Statistical learning</div>
     <div class="timeline-card-meta">
-      Master of Science course &middot; Taught by Tommaso Proietti<br>
+      Master of Science course<br>
       University of Rome Tor Vergata, Rome
     </div>
     <div class="timeline-card-desc">

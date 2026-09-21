@@ -6,12 +6,10 @@ project:
     - Firm_engagement.pdf
   render:
     - index.qmd
-    - jm.qmd
     - research.qmd
     - code.qmd
     - teaching.qmd
     - conferences.qmd
-    - news.qmd
     - posts/**.qmd
     - cv.qmd
 
@@ -25,8 +23,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: jm.qmd
-        text: Job Market
       - href: research.qmd
         text: Research
       - href: code.qmd
@@ -35,8 +31,6 @@ website:
         text: Teaching
       - href: conferences.qmd
         text: Conferences
-      - href: news.qmd
-        text: News
       - href: cv.qmd
         text: CV
     right:
