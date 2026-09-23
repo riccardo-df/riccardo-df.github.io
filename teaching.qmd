@@ -14,6 +14,32 @@ page-layout: full
 
 <div class="timeline">
 
+  <!-- 2026/2027 -->
+  <div class="timeline-year fade-in">
+    <div class="timeline-dot"></div>
+    <div class="timeline-year-label">2026 / 2027</div>
+  </div>
+
+  <div class="timeline-card fade-in">
+    <div class="timeline-card-title">Guest lecturer &mdash; Population economics</div>
+    <div class="timeline-card-meta">
+      Master of Science course<br>
+      University of Southern Denmark, Odense
+    </div>
+    <div class="timeline-card-desc">
+      I delivered a block of four guest lectures on the fiscal side of population aging, covering national transfer accounts, pensions and labor supply, and the link between aging and healthcare expenditure.
+    </div>
+    <div class="teaching-actions-grid">
+      <span class="teaching-label">Slides:</span>
+      <div class="teaching-btns">
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2026-27/PopulationEconomics/L05-slides.pdf">Generational economy &amp; NTA</a>
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2026-27/PopulationEconomics/L06-slides.pdf">Pensions &amp; labor supply</a>
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2026-27/PopulationEconomics/L07-slides.pdf">Aging &amp; healthcare I</a>
+        <a class="btn btn-paper" href="https://riccardo-df.github.io/assets/teaching/2026-27/PopulationEconomics/L08-slides.pdf">Aging &amp; healthcare II</a>
+      </div>
+    </div>
+  </div>
+
   <!-- 2025/2026 -->
   <div class="timeline-year fade-in">
     <div class="timeline-dot"></div>
