@@ -119,11 +119,6 @@ page-layout: full
 </div>
 
 <div class="pub-card fade-in">
-  <div class="pub-title">Managerial hierarchy and worker mental health: Evidence from the Danish University Act</div>
-  <div class="pub-authors">Andersen, K. H., Di Francesco, R. &amp; Menon, S.</div>
-</div>
-
-<div class="pub-card fade-in">
   <div class="pub-title">A local differencing test for the credibility of selection-on-observables</div>
   <div class="pub-authors">Di Francesco, R. &amp; Peracchi, F.</div>
 </div>
