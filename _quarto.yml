@@ -40,6 +40,9 @@ website:
       - icon: mortarboard-fill
         href: https://scholar.google.com/citations?user=e8hV630AAAAJ&hl=it
         aria-label: Google Scholar
+      - icon: linkedin
+        href: https://www.linkedin.com/in/riccardo-difrancesco/
+        aria-label: LinkedIn
       - icon: person-badge
         href: https://orcid.org/0009-0004-3030-8724
         aria-label: ORCID
@@ -52,7 +55,7 @@ website:
     center: |
       Built with [Quarto](https://quarto.org)
     right: |
-      [GitHub](https://github.com/riccardo-df) &middot; [Scholar](https://scholar.google.com/citations?user=e8hV630AAAAJ&hl=it)
+      [GitHub](https://github.com/riccardo-df) &middot; [Scholar](https://scholar.google.com/citations?user=e8hV630AAAAJ&hl=it) &middot; [LinkedIn](https://www.linkedin.com/in/riccardo-difrancesco/)
     background: "#0f1b2d"
     foreground: "#ffffffcc"
 
